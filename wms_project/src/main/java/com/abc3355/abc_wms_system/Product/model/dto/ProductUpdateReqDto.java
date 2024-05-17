@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProductSaveReqDto {
+public class ProductUpdateReqDto {
+    private int productNo;
     private String ProductName;
     private int productPrice;
     private String isExpire;
@@ -14,5 +15,4 @@ public class ProductSaveReqDto {
     private int sizeNo;
     private int categoryNo;
     private int amount;
-    private int whId;
 }
