@@ -2,21 +2,23 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.abc3355.abc_wms_system.Product.model.dao.ProductMapper">
+<mapper namespace="com.abc3355.abc_wms_system.Product.model.dao.InventoryMapperPP">
 
 <!--
     창고
 -->
-    <select id="selectAll" resultType="int">
-        select count(*) from product
 
-    </select>
 
-    <insert id="saveProduct" parameterType="com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto" useGeneratedKeys="true"
-            keyProperty="productNo" keyColumn="product_no">
-        INSERT INTO PRODUCT (product_name, product_price, is_expire, color_no, size_no, category_no)
-        VALUES (#{productName}, #{productPrice}, #{isExpire}, #{colorNo}, #{sizeNo}, #{categoryNo})
+    <insert id="saveInventoryByNewProduct" parameterType="com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto">
+        INSERT INTO inventory (inventory_amount, wh_id, product_no)
+        VALUES (#{amount}, #{whId}, #{productNo})
     </insert>
+
+    <update id="updateInventory">
+
+    </update>
+
+
 
 <!--    <select id="findByMenuCode" resultType="menuDTO">-->
 <!--        select-->

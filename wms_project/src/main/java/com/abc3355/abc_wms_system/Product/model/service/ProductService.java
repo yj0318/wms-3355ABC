@@ -1,6 +1,8 @@
 package com.abc3355.abc_wms_system.Product.model.service;
 
+import com.abc3355.abc_wms_system.Product.model.dao.InventoryMapperPP;
 import com.abc3355.abc_wms_system.Product.model.dao.ProductMapper;
+import com.abc3355.abc_wms_system.Product.model.dao.StoreStatusMapper;
 import com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto;
 import com.abc3355.abc_wms_system.Product.model.dto.ProductUpdateReqDto;
 import org.apache.ibatis.session.SqlSession;
@@ -15,19 +17,29 @@ public class ProductService {
     public int saveProduct(ProductSaveReqDto productSaveReqDto) {
         SqlSession sqlSession = getSqlSession();
 
-        ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
+        ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+        InventoryMapperPP inventoryMapperPP = sqlSession.getMapper(InventoryMapperPP.class);
+        StoreStatusMapper storeStatusMapper = sqlSession.getMapper(StoreStatusMapper.class);
 
-        // 상품정보
-        int result = mapper.saveProduct(productSaveReqDto);
+        try{
+            // 상품 저장
+            int result = productMapper.saveProduct(productSaveReqDto);
 
-        System.out.println("id : " + productSaveReqDto.getProductNo());
-        int productNo = productSaveReqDto.getProductNo();
-        // 창ㅑ
+            // 재고 저장
+            inventoryMapperPP.saveInventoryByNewProduct(productSaveReqDto);
 
-        // 창고 입고 기록
+            // 창고 입고 기록 저장
+            storeStatusMapper.saveRecordByNewProduct(productSaveReqDto);
 
+            sqlSession.commit();
+            return result;
+        } catch (Exception e){
+            sqlSession.rollback();
+            throw new RuntimeException(e);
+        } finally {
+            sqlSession.close();
+        }
 
-        return result;
     }
 
     /**

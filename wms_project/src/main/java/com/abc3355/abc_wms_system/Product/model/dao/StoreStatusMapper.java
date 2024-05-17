@@ -6,15 +6,14 @@ import com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto;
 
 import java.util.List;
 
-public interface InventoryMapperPP {
+public interface StoreStatusMapper {
 
     /**
-     * 재고
+     * 창고 입고 기록
      */
-    int saveInventoryByNewProduct(ProductSaveReqDto productSaveReqDto);
+    int saveRecordByNewProduct(ProductSaveReqDto productSaveReqDto);
 
-    int updateInventory(InventoryReqDto inventoryReqDto);
+    int saveRecordByUpdateInventory(InventoryReqDto inventoryReqDto);
 
-
-
+    List<InventoryRecordResDto> getReceivingRecord();
 }
