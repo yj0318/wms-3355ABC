@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class InventoryRecordResDto {
+public class StoreStatusRecordResDto {
     private int no;
     private LocalDateTime date;
     private int amount;
