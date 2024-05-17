@@ -2,31 +2,32 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.abc3355.abc_wms_system.Product.model.dao.ProductMapper">
+<mapper namespace="com.abc3355.abc_wms_system.Product.model.dao.StoreStatusMapper">
 
 <!--
     창고
 -->
-    <select id="selectAll" resultType="int">
-        select count(*) from product
+    <select id="getReceivingRecord" resultType="com.abc3355.abc_wms_system.Product.model.dto.StoreStatusRecordResDto">
+        select * from store_status
 
     </select>
 
-    <insert id="saveProduct" parameterType="com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto" useGeneratedKeys="true"
-            keyProperty="productNo" keyColumn="product_no">
-        INSERT INTO PRODUCT (product_name, product_price, is_expire, color_no, size_no, category_no)
-        VALUES (#{productName}, #{productPrice}, #{isExpire}, #{colorNo}, #{sizeNo}, #{categoryNo})
+    <insert id="saveRecordByNewProduct" parameterType="com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto">
+        INSERT INTO store_status (date, amount, product_no)
+        VALUES (now(), #{amount}, #{productNo})
     </insert>
 
-    <update id="updateProduct" parameterType="com.abc3355.abc_wms_system.Product.model.dto.ProductUpdateReqDto">
-        update product
-        set product_name = #{productName}, product_price = #{productPrice}, is_expire = #{isExpire}, color_no = #{colorNo}, size_no = #{sizeNo}, category_no = #{categoryNo}
-        where product_no = #{productNo}
-    </update>
+    <insert id="saveRecordByUpdateInventory" parameterType="com.abc3355.abc_wms_system.Product.model.dto.InventoryReqDto">
+        INSERT INTO store_status (date, amount, product_no)
+        VALUES (now(), #{amount}, #{productNo})
+    </insert>
 
-    <delete id="deleteProduct">
-        delete from product where product_no = #{productNo}
+
+    <delete id="deleteStoreStatus">
+        delete from store_status where product_no = #{productNo}
     </delete>
+
+
 
 <!--    <select id="findByMenuCode" resultType="menuDTO">-->
 <!--        select-->
@@ -57,18 +58,13 @@
 <!--        )-->
 <!--    </insert>-->
 
-<!--    <update id="updateMenu">-->
-<!--        update-->
+
+<!--    <delete id="deleteMenu">-->
+<!--        delete from-->
 <!--        tbl_menu-->
-<!--        set-->
-<!--        menu_name = #{menuName},-->
-<!--        menu_price = #{menuPrice},-->
-<!--        category_code = #{categoryCode},-->
-<!--        orderable_status = #{orderableStatus}-->
 <!--        where-->
 <!--        menu_code = #{menuCode}-->
-<!--    </update>-->
-
+<!--    </delete>-->
 <!--    <select id="findAllCategory" resultType="categoryDTO">-->
 <!--        select-->
 <!--        *-->

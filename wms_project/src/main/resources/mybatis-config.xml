@@ -24,5 +24,7 @@
     </environments>
     <mappers>
         <mapper resource="sql/product/product-mapper.xml"/>
+        <mapper resource="sql/product/inventorypp-mapper.xml"/>
+        <mapper resource="sql/product/storestatus-mapper.xml"/>
     </mappers>
 </configuration>
