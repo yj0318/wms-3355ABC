@@ -7,7 +7,7 @@
 <!--
     창고
 -->
-    <select id="getReceivingRecord" resultType="map">
+    <select id="getReceivingRecord" resultType="com.abc3355.abc_wms_system.Product.model.dto.StoreStatusRecordResDto">
         select * from store_status
 
     </select>

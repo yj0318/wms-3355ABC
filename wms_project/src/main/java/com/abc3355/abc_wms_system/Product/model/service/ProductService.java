@@ -54,6 +54,7 @@ public class ProductService {
 
         try{
             int result = productMapper.updateProduct(productUpdateReqDto);
+
             sqlSession.commit();
             return result;
         } catch (Exception e){
@@ -88,7 +89,7 @@ public class ProductService {
                 sqlSession.commit();
                 return result;
             }
-
+            sqlSession.commit();
             return 0;
         } catch (Exception e){
             sqlSession.rollback();
@@ -100,19 +101,7 @@ public class ProductService {
     }
 
 
-    /**
-     * test
-     * @return
-     */
-    public int selectAll() {
-        SqlSession sqlSession = getSqlSession();
 
-        ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
-
-        int i = mapper.selectAll();
-
-        return i;
-    }
 
 
 }

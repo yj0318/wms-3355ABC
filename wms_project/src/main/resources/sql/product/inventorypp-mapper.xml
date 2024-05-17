@@ -6,7 +6,7 @@
 
 
     <select id="getProductAmt" resultType="int">
-        select count(*)
+        select inventory_amount
         from inventory
         where product_no = #{productNo}
     </select>
@@ -17,7 +17,9 @@
     </insert>
 
     <update id="updateInventory">
-
+        update inventory
+        set inventory_amount = #{amount}, wh_id = #{whId}, product_no = #{productNo}
+        where product_no = #{productNo}
     </update>
 
     <delete id="deleteInventory">
