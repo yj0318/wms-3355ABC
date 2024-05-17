@@ -23,6 +23,11 @@
     </insert>
 
 
+    <delete id="deleteStoreStatus">
+        delete from store_status where product_no = #{productNo}
+    </delete>
+
+
 
 <!--    <select id="findByMenuCode" resultType="menuDTO">-->
 <!--        select-->

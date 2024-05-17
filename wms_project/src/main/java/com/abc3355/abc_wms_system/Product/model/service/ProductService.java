@@ -68,8 +68,35 @@ public class ProductService {
      * 기존 상품 삭제
      */
     public int deleteProduct(int productNo){
+        SqlSession sqlSession = getSqlSession();
 
-        return 1;
+        ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+        InventoryMapperPP inventoryMapperPP = sqlSession.getMapper(InventoryMapperPP.class);
+        StoreStatusMapper storeStatusMapper = sqlSession.getMapper(StoreStatusMapper.class);
+
+        try{
+            //재고 확인
+            int productAmt = inventoryMapperPP.getProductAmt(productNo);
+            System.out.println("productAmt = " + productAmt);
+
+            if(productAmt == 0){
+                storeStatusMapper.deleteStoreStatus(productNo);
+                inventoryMapperPP.deleteInventory(productNo);
+                int result = productMapper.deleteProduct(productNo);
+
+
+                sqlSession.commit();
+                return result;
+            }
+
+            return 0;
+        } catch (Exception e){
+            sqlSession.rollback();
+            throw new RuntimeException(e);
+        } finally {
+            sqlSession.close();
+        }
+
     }
 
 

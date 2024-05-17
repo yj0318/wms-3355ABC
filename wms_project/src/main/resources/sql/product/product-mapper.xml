@@ -24,6 +24,10 @@
         where product_no = #{productNo}
     </update>
 
+    <delete id="deleteProduct">
+        delete from product where product_no = #{productNo}
+    </delete>
+
 <!--    <select id="findByMenuCode" resultType="menuDTO">-->
 <!--        select-->
 <!--        *-->
@@ -64,12 +68,7 @@
 <!--        where-->
 <!--        menu_code = #{menuCode}-->
 <!--    </update>-->
-<!--    <delete id="deleteMenu">-->
-<!--        delete from-->
-<!--        tbl_menu-->
-<!--        where-->
-<!--        menu_code = #{menuCode}-->
-<!--    </delete>-->
+
 <!--    <select id="findAllCategory" resultType="categoryDTO">-->
 <!--        select-->
 <!--        *-->

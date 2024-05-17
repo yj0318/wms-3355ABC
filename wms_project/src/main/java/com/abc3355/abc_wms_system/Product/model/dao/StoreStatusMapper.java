@@ -16,4 +16,6 @@ public interface StoreStatusMapper {
     int saveRecordByUpdateInventory(InventoryReqDto inventoryReqDto);
 
     List<InventoryRecordResDto> getReceivingRecord();
+
+    int deleteStoreStatus(int productNo);
 }
