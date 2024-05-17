@@ -1,13 +1,20 @@
 package com.abc3355.abc_wms_system.Product.model.dao;
 
-import com.abc3355.abc_wms_system.Product.model.dto.InventoryRecordResDto;
 import com.abc3355.abc_wms_system.Product.model.dto.InventoryReqDto;
-
-import java.util.List;
+import com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto;
 
 public interface InventoryMapperPP {
 
+    /**
+     * 재고
+     */
+    int getProductAmt(int productNo);
+    int saveInventoryByNewProduct(ProductSaveReqDto productSaveReqDto);
+
     int updateInventory(InventoryReqDto inventoryReqDto);
 
-    List<InventoryRecordResDto> getReceivingRecord();
+    int deleteInventory(int productNo);
+
+
+
 }

@@ -10,4 +10,15 @@ public class InventoryReqDto {
     private int productNo;
     private int whId;
     private int amount;
+
+    public void addAmount(int amount) {
+        this.amount += amount;
+    }
+
+    public InventoryReqDto(int productNo, int whId, int amount) {
+        this.productNo = productNo;
+        this.whId = whId;
+        this.amount = amount;
+    }
 }
+
