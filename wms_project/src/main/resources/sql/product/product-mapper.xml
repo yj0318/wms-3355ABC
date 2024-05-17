@@ -9,6 +9,12 @@
 
     </select>
 
+    <insert id="insertArticle" parameterType="com.example.madplay.model.Article" useGeneratedKeys="true"
+            keyProperty="productNo" keyColumn="product_no">
+        INSERT INTO PRODUCT (product_name, product_price, is_expire, color_no, size,no, category_no)
+        VALUES (#{productName}, #{productPrice}, #{isExpire}, #{colorNo}, #{sizeNo}, #{categoryNo})
+    </insert>
+
 <!--    <select id="findByMenuCode" resultType="menuDTO">-->
 <!--        select-->
 <!--        *-->

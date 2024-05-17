@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InventoryReqDto {
     private int productNo;
+    private int whId;
     private int amount;
 }

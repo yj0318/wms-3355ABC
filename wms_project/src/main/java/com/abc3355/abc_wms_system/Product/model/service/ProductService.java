@@ -13,8 +13,21 @@ public class ProductService {
      * 신상품 등록
      */
     public int saveProduct(ProductSaveReqDto productSaveReqDto) {
+        SqlSession sqlSession = getSqlSession();
 
-        return 1;
+        ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
+
+        // 상품정보
+        int result = mapper.saveProduct(productSaveReqDto);
+
+        System.out.println("id : " + productSaveReqDto.getProductNo());
+        int productNo = productSaveReqDto.getProductNo();
+        // 창ㅑ
+
+        // 창고 입고 기록
+
+
+        return result;
     }
 
     /**
