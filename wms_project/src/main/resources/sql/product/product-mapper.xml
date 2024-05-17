@@ -18,6 +18,12 @@
         VALUES (#{productName}, #{productPrice}, #{isExpire}, #{colorNo}, #{sizeNo}, #{categoryNo})
     </insert>
 
+    <update id="updateProduct" parameterType="com.abc3355.abc_wms_system.Product.model.dto.ProductUpdateReqDto">
+        update product
+        set product_name = #{productName}, product_price = #{productPrice}, is_expire = #{isExpire}, color_no = #{colorNo}, size_no = #{sizeNo}, category_no = #{categoryNo}
+        where product_no = #{productNo}
+    </update>
+
 <!--    <select id="findByMenuCode" resultType="menuDTO">-->
 <!--        select-->
 <!--        *-->

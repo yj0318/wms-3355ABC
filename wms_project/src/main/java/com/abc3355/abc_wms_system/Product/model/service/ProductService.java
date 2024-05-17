@@ -5,6 +5,7 @@ import com.abc3355.abc_wms_system.Product.model.dao.ProductMapper;
 import com.abc3355.abc_wms_system.Product.model.dao.StoreStatusMapper;
 import com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto;
 import com.abc3355.abc_wms_system.Product.model.dto.ProductUpdateReqDto;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import static com.abc3355.abc_wms_system.common.MyBatisTemplate.getSqlSession;
@@ -46,8 +47,21 @@ public class ProductService {
      * 기존 상품 수정
      */
     public int updateProduct(int productNo, ProductUpdateReqDto productUpdateReqDto) {
+        SqlSession sqlSession = getSqlSession();
 
-        return 1;
+        ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+        productUpdateReqDto.setProductNo(productNo);
+
+        try{
+            int result = productMapper.updateProduct(productUpdateReqDto);
+            sqlSession.commit();
+            return result;
+        } catch (Exception e){
+            sqlSession.rollback();
+            throw new RuntimeException(e);
+        } finally {
+            sqlSession.close();
+        }
     }
 
     /**

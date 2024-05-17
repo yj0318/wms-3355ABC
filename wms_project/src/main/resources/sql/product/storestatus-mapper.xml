@@ -22,6 +22,8 @@
         VALUES (now(), #{amount}, #{productNo})
     </insert>
 
+
+
 <!--    <select id="findByMenuCode" resultType="menuDTO">-->
 <!--        select-->
 <!--        *-->
@@ -51,17 +53,7 @@
 <!--        )-->
 <!--    </insert>-->
 
-<!--    <update id="updateMenu">-->
-<!--        update-->
-<!--        tbl_menu-->
-<!--        set-->
-<!--        menu_name = #{menuName},-->
-<!--        menu_price = #{menuPrice},-->
-<!--        category_code = #{categoryCode},-->
-<!--        orderable_status = #{orderableStatus}-->
-<!--        where-->
-<!--        menu_code = #{menuCode}-->
-<!--    </update>-->
+
 <!--    <delete id="deleteMenu">-->
 <!--        delete from-->
 <!--        tbl_menu-->

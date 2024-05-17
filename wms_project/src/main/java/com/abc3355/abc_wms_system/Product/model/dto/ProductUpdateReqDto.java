@@ -8,11 +8,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProductUpdateReqDto {
     private int productNo;
-    private String ProductName;
+    private String productName;
     private int productPrice;
     private String isExpire;
     private int colorNo;
     private int sizeNo;
     private int categoryNo;
-    private int amount;
+
+    public ProductUpdateReqDto(String productName, int productPrice, String isExpire, int colorNo, int sizeNo, int categoryNo) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.isExpire = isExpire;
+        this.colorNo = colorNo;
+        this.sizeNo = sizeNo;
+        this.categoryNo = categoryNo;
+    }
+
+    public void setProductNo(int productNo) {
+        this.productNo = productNo;
+    }
 }

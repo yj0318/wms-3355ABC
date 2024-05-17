@@ -1,6 +1,7 @@
 package com.abc3355.abc_wms_system.product.mapper;
 
 import com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto;
+import com.abc3355.abc_wms_system.Product.model.dto.ProductUpdateReqDto;
 import com.abc3355.abc_wms_system.Product.model.service.ProductService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,4 +24,19 @@ public class ProductMapperTest {
         assertThat(result).isEqualTo(1);
 
     }
+
+    @Test
+    public void updateTest(){
+        // given
+        ProductUpdateReqDto productUpdateReqDto = new ProductUpdateReqDto("updatename", 1001, "Y", 1, 1, 1);
+
+        // when
+        int result = productService.updateProduct(7, productUpdateReqDto);
+
+        // then
+        assertThat(result).isEqualTo(1);
+
+    }
+
+
 }
