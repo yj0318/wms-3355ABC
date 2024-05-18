@@ -24,5 +24,6 @@
     </environments>
     <mappers>
         <mapper resource="sql/product/product-mapper.xml"/>
+        <mapper resource="sql/user/login-mapper.xml"/>
     </mappers>
 </configuration>

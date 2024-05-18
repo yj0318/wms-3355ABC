@@ -1,9 +1,13 @@
 package com.abc3355.abc_wms_system.user.run;
 
+import com.abc3355.abc_wms_system.user.model.dto.UserDTO;
+import com.abc3355.abc_wms_system.user.view.LoginView;
+
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
         do {
 
@@ -21,6 +25,7 @@ public class Application {
     }
 
     private static void branchLogin() {
+        LoginView loginView = new LoginView();
         Scanner sc = new Scanner(System.in);
         do {
             System.out.println("==== 가맹점 로그인 ====");
@@ -28,7 +33,8 @@ public class Application {
             String userId = sc.nextLine();
             System.out.print("PW: ");
             String userPassword = sc.nextLine();
-        } while(true);
+            loginView.branchLoginMenu(userId, userPassword);
+        } while (true);
     }
 
     private static void headQuartersLogin() {
