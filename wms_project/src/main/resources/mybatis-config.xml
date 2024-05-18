@@ -29,5 +29,6 @@
         <mapper resource="sql/product/storestatus-mapper.xml"/>
         <mapper resource="sql/salesManager/salesManager-mapper.xml"/>
         <mapper resource="sql/searchProduct/search-mapper.xml"/>
+        <mapper resource="sql/orderProcess/order-process-mapper.xml"/>
     </mappers>
 </configuration>
