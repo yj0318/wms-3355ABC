@@ -1,6 +1,6 @@
 package com.abc3355.abc_wms_system.orderForm.view;
 
-import com.abc3355.abc_wms_system.orderForm.contoller.OrderFormController;
+import com.abc3355.abc_wms_system.orderForm.controller.OrderFormController;
 import com.abc3355.abc_wms_system.orderForm.model.dto.BranchOrderFormDTO;
 
 import java.util.Scanner;
