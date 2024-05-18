@@ -1,6 +1,5 @@
 package com.abc3355.abc_wms_system.salesManager.model.dto;
 
-
 import lombok.*;
 
 @NoArgsConstructor
@@ -8,9 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class SelectBranchAndDateDTO {
-
-    private int no;
-    private String startDate;
-    private String endDate;
+public class BranchDTO {
+        private int branchNo;
+        private String branchName;
 }
