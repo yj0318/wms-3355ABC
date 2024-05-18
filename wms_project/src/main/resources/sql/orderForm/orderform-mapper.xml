@@ -7,7 +7,7 @@
 
         <insert id="insertOrder" useGeneratedKeys="true" keyProperty="menuCode">
             insert into
-            tbl_menu
+            order_details
             values (
             null, #{menuName}, #{menuPrice}, #{categoryCode}, #{orderableStatus}
             )
