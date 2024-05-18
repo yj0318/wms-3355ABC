@@ -14,7 +14,7 @@ public class OrderFormView {
     public void orderFormMain(){
         String order = """
                 ========================
-                상품을 입력하시겠습니까?
+                상품을 입력하시겠습니까?(Y/N)
                 ========================
                 """;
         String input = sc.nextLine();

@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class BranchOrderFormDTO {
 
-    private int productNo; // 상품번호
+    private int productNo; // 상품번호 product
     private int orderAmount;  // 수량
 
 }
