@@ -10,6 +10,7 @@
     <typeAliases>
         <!-- 지정한 패키지 하위의 모든 클래스를 소문자로 시작하는 별칭으로 등록-->
         <package name="com.ohgiraffers"/>
+        <package name="com.abc3355.abc_wms_system"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -25,5 +26,8 @@
     <mappers>
         <mapper resource="sql/product/product-mapper.xml"/>
         <mapper resource="sql/user/login-mapper.xml"/>
+        <mapper resource="sql/product/inventorypp-mapper.xml"/>
+        <mapper resource="sql/product/storestatus-mapper.xml"/>
+        <mapper resource="sql/searchProduct/search-mapper.xml"/>
     </mappers>
 </configuration>

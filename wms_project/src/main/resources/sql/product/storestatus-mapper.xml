@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc3355.abc_wms_system.Product.model.dao.StoreStatusMapper">
+
+<!--
+    창고
+-->
+    <select id="getReceivingRecord" resultType="com.abc3355.abc_wms_system.Product.model.dto.StoreStatusRecordResDto">
+        select * from store_status
+
+    </select>
+
+    <insert id="saveRecordByNewProduct" parameterType="com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto">
+        INSERT INTO store_status (date, amount, product_no)
+        VALUES (now(), #{amount}, #{productNo})
+    </insert>
+
+    <insert id="saveRecordByUpdateInventory" parameterType="com.abc3355.abc_wms_system.Product.model.dto.InventoryReqDto">
+        INSERT INTO store_status (date, amount, product_no)
+        VALUES (now(), #{amount}, #{productNo})
+    </insert>
+
+
+    <delete id="deleteStoreStatus">
+        delete from store_status where product_no = #{productNo}
+    </delete>
+
+
+
+<!--    <select id="findByMenuCode" resultType="menuDTO">-->
+<!--        select-->
+<!--        *-->
+<!--        from-->
+<!--        tbl_menu-->
+<!--        where-->
+<!--        menu_code = #{menuCode}-->
+<!--    </select>-->
+<!--    <select id="findByCategoryCode" resultType="menuDTO">-->
+<!--        select-->
+<!--        *-->
+<!--        from-->
+<!--        tbl_menu-->
+<!--        where-->
+<!--        category_code = #{categoryCode}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash; 작성한 속성명은 필드이름이 아니다. private 필드라 직접 접근 불가 &ndash;&gt;-->
+<!--    &lt;!&ndash; 실제로는 getter를 사용. getter의 get을 제외하고, 소문자로 시작하는 이름을 작성한 것이다. &ndash;&gt;-->
+<!--    &lt;!&ndash; property 접근 방식. (OGNL 표준) &ndash;&gt;-->
+<!--    &lt;!&ndash; useGeneratedKeys=true를 통해 auto_increment값을 가져온다. 전달된 객체 menuDto#menuCode에 대입 &ndash;&gt;-->
+<!--    <insert id="insertMenu" useGeneratedKeys="true" keyProperty="menuCode">-->
+<!--        insert into-->
+<!--        tbl_menu-->
+<!--        values (-->
+<!--        null, #{menuName}, #{menuPrice}, #{categoryCode}, #{orderableStatus}-->
+<!--        )-->
+<!--    </insert>-->
+
+
+<!--    <delete id="deleteMenu">-->
+<!--        delete from-->
+<!--        tbl_menu-->
+<!--        where-->
+<!--        menu_code = #{menuCode}-->
+<!--    </delete>-->
+<!--    <select id="findAllCategory" resultType="categoryDTO">-->
+<!--        select-->
+<!--        *-->
+<!--        from-->
+<!--        tbl_category-->
+<!--        where-->
+<!--        ref_category_code is not null-->
+<!--    </select>-->
+<!--    <select id="findMenuOrderable" resultType="menuDTO">-->
+<!--        select-->
+<!--        *-->
+<!--        from-->
+<!--        tbl_menu-->
+<!--        where-->
+<!--        orderable_status = 'Y'-->
+<!--    </select>-->
+<!--    <select id="findMenuOrderableByCategoryCode" resultType="menuDTO">-->
+<!--        select-->
+<!--        *-->
+<!--        from-->
+<!--        tbl_menu-->
+<!--        where-->
+<!--        category_code = #{categoryCode}-->
+<!--        and orderable_status = 'Y'-->
+<!--    </select>-->
+
+
+</mapper>
