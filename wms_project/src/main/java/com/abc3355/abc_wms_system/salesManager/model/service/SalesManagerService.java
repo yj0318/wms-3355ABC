@@ -2,7 +2,7 @@ package com.abc3355.abc_wms_system.salesManager.model.service;
 
 import com.abc3355.abc_wms_system.salesManager.model.dao.SaleManagerSqlMapper;
 import com.abc3355.abc_wms_system.salesManager.model.dto.BranchDTO;
-import com.abc3355.abc_wms_system.salesManager.model.dto.OrderProductDTO;
+import com.abc3355.abc_wms_system.common.model.dto.OrderProductDTO;
 import com.abc3355.abc_wms_system.salesManager.model.dto.SelectBranchAndDateDTO;
 import org.apache.ibatis.session.SqlSession;
 

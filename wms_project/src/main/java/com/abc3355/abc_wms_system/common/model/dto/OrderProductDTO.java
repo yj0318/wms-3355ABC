@@ -1,4 +1,4 @@
-package com.abc3355.abc_wms_system.salesManager.model.dto;
+package com.abc3355.abc_wms_system.common.model.dto;
 
 
 import lombok.*;
