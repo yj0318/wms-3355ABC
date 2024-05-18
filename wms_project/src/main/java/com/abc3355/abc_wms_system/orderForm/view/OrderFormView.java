@@ -1,8 +1,7 @@
 package com.abc3355.abc_wms_system.orderForm.view;
-
 import com.abc3355.abc_wms_system.orderForm.controller.OrderFormController;
 import com.abc3355.abc_wms_system.orderForm.model.dto.BranchOrderFormDTO;
-
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
@@ -34,8 +33,8 @@ public class OrderFormView {
         int orderNo = sc.nextInt();
         System.out.print("수량을 입력하세요 :");
         int  orderAmount = sc.nextInt();
-
-        return new BranchOrderFormDTO(orderNo,orderAmount);
+        LocalDate orderDate = LocalDate.now();
+        return new BranchOrderFormDTO(orderNo,orderAmount,orderDate);
     }
 
 
