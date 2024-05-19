@@ -14,6 +14,7 @@ public class SearchMenuView {
                 1. 전체 상품 조회
                 2. 상세 상품 조회
                 3. 품절 상품 확인
+                4. 상품 검색
                 0. 이전 메뉴로
                 ==================
                 입력 : """;
@@ -23,12 +24,20 @@ public class SearchMenuView {
             switch (select) {
                 case "1" : searchController.searchAllProduct(); break;
                 case "2" : detailSearchMenu(); break;
-//                case "3" : searchController.searchZeroProduct(); break;
+                case "3" : searchController.searchZeroProduct(); break;
+//                case "4" : searchProductName();
                 case "0" : return;
                 default:
                     System.out.println("올바른 숫자를 입력하세요. ");
             }
         }
+    }
+
+    private String searchProductName() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("검색할 상품명을 입력하세요 : ");
+        String name = sc.next();
+        return name;
     }
 
     private void detailSearchMenu() {

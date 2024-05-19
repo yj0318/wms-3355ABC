@@ -2,6 +2,7 @@ package com.abc3355.abc_wms_system.searchProduct.model.service;
 
 import com.abc3355.abc_wms_system.searchProduct.model.dao.ColorMapper;
 import com.abc3355.abc_wms_system.searchProduct.model.dao.SearchMapper;
+import com.abc3355.abc_wms_system.searchProduct.model.dao.ZeroProductMapper;
 import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
 import org.apache.ibatis.session.SqlSession;
 
@@ -29,4 +30,11 @@ public class SearchService {
         return productList;
     }
 
+    public List<SearchProductDTO> searchZeroProduct() {
+        SqlSession sqlSession = getSqlSession();
+        ZeroProductMapper zeroProductMapper = sqlSession.getMapper(ZeroProductMapper.class);
+        List<SearchProductDTO> zeroList = zeroProductMapper.searchZeroProduct();
+        sqlSession.close();
+        return zeroList;
+    }
 }
