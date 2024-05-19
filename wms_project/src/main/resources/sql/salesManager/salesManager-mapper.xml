@@ -13,6 +13,16 @@
         <result property="orderDate" column="ORDER_DATE"/>
     </resultMap>
 
+    <resultMap id="allOrderResultMap" type="com.abc3355.abc_wms_system.salesManager.model.dto.OrderDTO">
+        <id property="orderNo" column="ORDER_NO"/>
+        <result property="orderDate" column="ORDER_DATE"/>
+        <result property="userNo" column="USER_NO"/>
+        <result property="userName" column="WH_NAME"/>
+        <result property="orderPrice" column="ORDER_PRICE"/>
+        <result property="orderStatusName" column="ORDER_STATUS_NAME"/>
+        <result property="orderDetail" column="ORDER_DETAILS"/>
+    </resultMap>
+
     <resultMap id="branchResultMap" type="com.abc3355.abc_wms_system.salesManager.model.dto.BranchDTO">
         <id property= "branchNo" column="WH_ID"/>
         <result property="branchName" column="WH_NAME"/>
@@ -21,14 +31,14 @@
     <!-- 가맹점별 주문 조회  -->
     <select id="selectByBranchAndDate" resultMap="orderResultMap">
         SELECT
-        A.ORDER_NO
-        , A.USER_NO
-        , A.ORDER_PRICE
-        , A.ORDER_STATUS_NO
-        , A.ORDER_DETAIL
-        , A.ORDER_DATE
-        FROM ORDER_PRODUCT a
-        WHERE A.USER_NO = #{ no }
+        ORDER_NO
+        , USER_NO
+        , ORDER_PRICE
+        , ORDER_STATUS_NO
+        , ORDER_DETAIL
+        , ORDER_DATE
+        FROM order_product a
+        WHERE USER_NO = #{ no }
         <if test="startDate != null and endDate != null">
             <!-- String 값을 date 포맷에 맞춤 -->
             AND ORDER_DATE BETWEEN date_format(#{startDate},'%Y-%m-%d %H:%i:%s') AND date_format(#{endDate},'%Y-%m-%d %H:%i:%s')
@@ -40,6 +50,28 @@
     <select id="getAllBranch" resultMap="branchResultMap">
         SELECT
         WH_ID , WH_NAME
-        FROM WAREHOUSE_INF
+        FROM warehouse_inf
+    </select>
+
+    <!--  출고완료, 주문 확정 주문만 조회 -->
+    <select id="selectAllOrder" resultMap="allOrderResultMap">
+        SELECT
+        a.ORDER_NO
+        , a.USER_NO
+        , wh.WH_NAME
+        , a.ORDER_PRICE
+        , os.ORDER_STATUS_NAME
+        , a.ORDER_DETAIL
+        , a.ORDER_DATE
+        , GROUP_CONCAT(CONCAT_WS(' | ',
+        CONCAT('상세주문번호 : ', OD_NO)
+        ,CONCAT('상품 : ', c.PRODUCT_NAME)
+        ,CONCAT('수량 : ', OD_AMOUNT))) AS ORDER_DETAILS
+        FROM order_product a JOIN order_details b ON a.ORDER_NO = b.ORDER_NO
+        JOIN product c ON b.PRODUCT_NO = c.PRODUCT_NO
+        JOIN order_status os on os.ORDER_STATUS_NO = a.ORDER_STATUS_NO
+        JOIN warehouse_inf wh ON a.ORDER_NO = wh.WH_ID
+        WHERE a.ORDER_STATUS_NO IN (2,3)
+        GROUP BY a.ORDER_NO
     </select>
 </mapper>
