@@ -53,6 +53,35 @@ public class LoginView {
         } while (true);
     }
 
+    /* 본사 로그인 화면 */
+    private Map<String, String> headLoginFirstMenu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("본사 로그인");
+        System.out.print("ID: ");
+        String userId = sc.nextLine();
+        System.out.print("PW: ");
+        String userPassword = sc.nextLine();
+        Map<String, String> loginMatchHead = new HashMap<>();
+        loginMatchHead.put("userId", userId);
+        loginMatchHead.put("userPassword", userPassword);
+        return loginMatchHead;
+    }
+
+    /* 가맹점 로그인 화면 */
+    private Map<String, String> branchLoginFirstMenu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("가맹점 로그인");
+        System.out.print("ID : ");
+        String userId = sc.nextLine();
+        System.out.print("PW: ");
+        String userPassword = sc.nextLine();
+        Map<String, String> loginMatch = new HashMap<>();
+        loginMatch.put("userId", userId);
+        loginMatch.put("userPassword", userPassword);
+        return loginMatch;
+    }
+
+    /* 본사 메뉴 */
     private void headMainMenu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("< 본사 > 메뉴");
@@ -82,47 +111,7 @@ public class LoginView {
         }
     }
 
-    private void branchControl() {
-        UserAndWarehouseDTO newUserAndWarehouse = inputBranch();
-        addUserController.createNewBranch(newUserAndWarehouse);
-    }
-
-    private UserAndWarehouseDTO inputBranch() {
-        Scanner sc = new Scanner(System.in);
-        UserAndWarehouseDTO userAndWarehouse = new UserAndWarehouseDTO();
-        System.out.println("현재 등록된 가맹점");
-        addUserController.showAllBranch();
-        System.out.println("추가할 가맹점 정보를 입력하세요.");
-        System.out.print("가맹점 ID: ");
-        userAndWarehouse.setUserId(sc.nextLine());
-        System.out.print("가맹점 Password: ");
-        userAndWarehouse.setUserPassword(sc.nextLine());
-        System.out.print("가맹점 여부: ");
-        userAndWarehouse.setUserType(sc.nextLine());
-
-        System.out.println("창고 정보를 입력하세요.");
-        System.out.print("창고 이름: ");
-        userAndWarehouse.setWhName(sc.nextLine());
-        System.out.print("창고 주소: ");
-        userAndWarehouse.setWhAddress(sc.nextLine());
-
-        return userAndWarehouse;
-    }
-
-
-    private Map<String, String> headLoginFirstMenu() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("본사 로그인");
-        System.out.print("ID: ");
-        String userId = sc.nextLine();
-        System.out.print("PW: ");
-        String userPassword = sc.nextLine();
-        Map<String, String> loginMatchHead = new HashMap<>();
-        loginMatchHead.put("userId", userId);
-        loginMatchHead.put("userPassword", userPassword);
-        return loginMatchHead;
-    }
-
+    /* 가맹점 메뉴 */
     private void branchMainMenu(String whId) {
         Scanner sc = new Scanner(System.in);
         System.out.println("< " + whId + " 지점> 메뉴");
@@ -146,17 +135,33 @@ public class LoginView {
         }
     }
 
-    private Map<String, String> branchLoginFirstMenu() {
+    /* 가맹점 추가 기능 */
+    private UserAndWarehouseDTO inputBranch() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("가맹점 로그인");
-        System.out.print("ID : ");
-        String userId = sc.nextLine();
-        System.out.print("PW: ");
-        String userPassword = sc.nextLine();
-        Map<String, String> loginMatch = new HashMap<>();
-        loginMatch.put("userId", userId);
-        loginMatch.put("userPassword", userPassword);
-        return loginMatch;
+        UserAndWarehouseDTO userAndWarehouse = new UserAndWarehouseDTO();
+        System.out.println("현재 등록된 가맹점");
+        addUserController.showAllBranch();
+        System.out.println("추가할 가맹점 정보를 입력하세요.");
+        System.out.print("가맹점 ID: ");
+        userAndWarehouse.setUserId(sc.nextLine());
+        System.out.print("가맹점 Password: ");
+        userAndWarehouse.setUserPassword(sc.nextLine());
+        System.out.print("지점 종류: ");
+        userAndWarehouse.setUserType(sc.nextLine());
+
+        System.out.println("창고 정보를 입력하세요.");
+        System.out.print("창고 이름: ");
+        userAndWarehouse.setWhName(sc.nextLine());
+        System.out.print("창고 주소: ");
+        userAndWarehouse.setWhAddress(sc.nextLine());
+
+        return userAndWarehouse;
+    }
+
+
+    private void branchControl() {
+        UserAndWarehouseDTO newUserAndWarehouse = inputBranch();
+        addUserController.createNewBranch(newUserAndWarehouse);
     }
 
 
