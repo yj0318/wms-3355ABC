@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface LoginMapper {
     UserDTO getUserMatch(@Param("userId") String userId, @Param("userPassword") String userPassword);
+
+    UserDTO getUserMatchHead(@Param("userId") String userId, @Param("userPassword") String userPassword);
 }

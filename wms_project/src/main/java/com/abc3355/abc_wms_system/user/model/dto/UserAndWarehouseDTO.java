@@ -7,11 +7,12 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class UserDTO {
+public class UserAndWarehouseDTO {
     private int userNo;
     private String userId;
     private String userPassword;
     private String userType;
     private int whId;
-
+    private String whName;
+    private String whAddress;
 }
