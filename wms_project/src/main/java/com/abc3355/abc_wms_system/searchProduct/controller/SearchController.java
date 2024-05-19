@@ -43,4 +43,15 @@ public class SearchController {
             System.out.println("품절된 상품이 없습니다.");
         }
     }
+
+    public void searchProductName(String name) {
+        List<SearchProductDTO> product = searchService.searchProductName(name);
+        if (product != null) {
+            for (SearchProductDTO searchProductDTO : product) {
+                resultView.searchByName(product);
+            }
+        }else {
+            System.out.println("알맞은 일므의 상품이 없습니다. ");
+        }
+    }
 }
