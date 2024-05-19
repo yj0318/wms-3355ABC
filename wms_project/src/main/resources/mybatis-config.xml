@@ -30,5 +30,8 @@
         <mapper resource="sql/product/inventorypp-mapper.xml"/>
         <mapper resource="sql/product/storestatus-mapper.xml"/>
         <mapper resource="sql/searchProduct/search-mapper.xml"/>
+        <mapper resource="sql/searchProduct/color-mapper.xml"/>
+        <mapper resource="sql/searchProduct/zeroproduct-mapper.xml"/>
+        <mapper resource="sql/searchProduct/name-mapper.xml"/>
     </mappers>
 </configuration>
