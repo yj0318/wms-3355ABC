@@ -1,6 +1,7 @@
 package com.abc3355.abc_wms_system.searchProduct.model.service;
 
 import com.abc3355.abc_wms_system.searchProduct.model.dao.ColorMapper;
+import com.abc3355.abc_wms_system.searchProduct.model.dao.NameMapper;
 import com.abc3355.abc_wms_system.searchProduct.model.dao.SearchMapper;
 import com.abc3355.abc_wms_system.searchProduct.model.dao.ZeroProductMapper;
 import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
@@ -36,5 +37,13 @@ public class SearchService {
         List<SearchProductDTO> zeroList = zeroProductMapper.searchZeroProduct();
         sqlSession.close();
         return zeroList;
+    }
+
+    public List<SearchProductDTO> searchProductName(String name) {
+        SqlSession sqlSession = getSqlSession();
+        NameMapper nameMapper = sqlSession.getMapper(NameMapper.class);
+        List<SearchProductDTO> nameList = nameMapper.searchByName(name);
+        sqlSession.close();
+        return nameList;
     }
 }
