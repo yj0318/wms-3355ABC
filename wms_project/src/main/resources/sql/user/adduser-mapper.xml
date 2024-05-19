@@ -3,6 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.abc3355.abc_wms_system.user.model.dao.UserInsert.AddUserMapper">
+    <insert id="insertWarehouse" parameterType="com.abc3355.abc_wms_system.user.model.dto.UserAndWarehouseDTO" useGeneratedKeys="true" keyProperty="whId">
+        INSERT INTO warehouse_inf (WH_NAME, WH_ADDRESS)
+        VALUES (#{ whName }, #{ whAddress })
+    </insert>
 
+    <insert id="insertUser" parameterType="com.abc3355.abc_wms_system.user.model.dto.UserAndWarehouseDTO">
+        INSERT INTO user (USER_ID, USER_PASSWORD, USER_TYPE, WH_ID)
+        VALUES (#{userId}, #{userPassword}, #{userType}, #{whId})
+    </insert>
 
+    <select id="findAll" resultType="WarehouseInfoDTO">
+        SELECT
+         w.wh_name
+        FROM
+        warehouse_inf w
+            JOIN user u ON w.WH_ID = u.WH_ID
+        WHERE u.USER_TYPE = 'branch'
+        ORDER BY
+            w.wh_id
+    </select>
 </mapper>
