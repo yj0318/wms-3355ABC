@@ -1,3 +1,4 @@
+/*
 package com.abc3355.abc_wms_system.orderForm.model.dto;
 
 
@@ -10,7 +11,5 @@ import lombok.*;
 //@ToString
 public class HeadDTO {
 
-
-
-
 }
+*/

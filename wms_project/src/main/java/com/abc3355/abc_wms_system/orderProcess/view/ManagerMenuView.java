@@ -93,9 +93,9 @@ public class ManagerMenuView {
         int orderNumber = inputOrderNumber(orderList);
         String action = inputAction();
         if(action.equals("1")) {
-            orderProcessController.processOrderShipment(orderNumber);
+            //orderProcessController.processOrderShipment(orderNumber);
         } else {
-            orderProcessController.processOrderCancel(orderNumber);
+            //orderProcessController.processOrderCancel(orderNumber);
         }
     }
     public int inputOrderNumber(List<OrderListResDTO> orderList) {
