@@ -2,4 +2,44 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.abc3355.abc_wms_system.Product.model.dao.ProductMapper">
+<mapper namespace="com.abc3355.abc_wms_system.salesManager.model.dao.SaleManagerSqlMapper">
+
+    <resultMap id="orderResultMap" type="orderProductDTO">
+        <id property= "orderNo" column="ORDER_NO"/>
+        <result property="userNO" column="USER_NO"/>
+        <result property="orderPrice" column="ORDER_PRICE"/>
+        <result property="orderStatus_no" column="ORDER_STATUS_NO"/>
+        <result property="orderDetail" column="ORDER_DETAIL"/>
+        <result property="orderDate" column="ORDER_DATE"/>
+    </resultMap>
+
+    <resultMap id="branchResultMap" type="com.abc3355.abc_wms_system.salesManager.model.dto.BranchDTO">
+        <id property= "branchNo" column="WH_ID"/>
+        <result property="branchName" column="WH_NAME"/>
+    </resultMap>
+
+    <!-- 가맹점별 주문 조회  -->
+    <select id="selectByBranchAndDate" resultMap="orderResultMap">
+        SELECT
+        A.ORDER_NO
+        , A.USER_NO
+        , A.ORDER_PRICE
+        , A.ORDER_STATUS_NO
+        , A.ORDER_DETAIL
+        , A.ORDER_DATE
+        FROM ORDER_PRODUCT a
+        WHERE A.USER_NO = #{ no }
+        <if test="startDate != null and endDate != null">
+            <!-- String 값을 date 포맷에 맞춤 -->
+            AND ORDER_DATE BETWEEN date_format(#{startDate},'%Y-%m-%d %H:%i:%s') AND date_format(#{endDate},'%Y-%m-%d %H:%i:%s')
+        </if>
+
+    </select>
+
+    <!--  전체 가맹점 번호와 이름 조회 -->
+    <select id="getAllBranch" resultMap="branchResultMap">
+        SELECT
+        WH_ID , WH_NAME
+        FROM WAREHOUSE_INF
+    </select>
+</mapper>

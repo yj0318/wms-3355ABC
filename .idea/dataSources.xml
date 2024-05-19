@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="shoedb" uuid="271e8f11-b214-4690-a3a5-7da150d52dc2">
+    <data-source source="LOCAL" name="shoedb" uuid="01a00164-b862-47a4-809b-ceaec06ca918">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://dokalab.asuscomm.com:50133/shoedb</jdbc-url>
+      <jdbc-url>jdbc:mysql://mysql.coffit.today:3306/shoedb</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />

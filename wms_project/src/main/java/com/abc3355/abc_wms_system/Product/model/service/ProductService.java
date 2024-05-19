@@ -24,7 +24,7 @@ public class ProductService {
 
         try{
             // 상품 저장
-            int result = productMapper.saveProduct(productSaveReqDto);
+            productMapper.saveProduct(productSaveReqDto);
 
             // 재고 저장
             inventoryMapperPP.saveInventoryByNewProduct(productSaveReqDto);
@@ -33,7 +33,7 @@ public class ProductService {
             storeStatusMapper.saveRecordByNewProduct(productSaveReqDto);
 
             sqlSession.commit();
-            return result;
+            return productSaveReqDto.getProductNo();
         } catch (Exception e){
             sqlSession.rollback();
             throw new RuntimeException(e);
@@ -46,11 +46,10 @@ public class ProductService {
     /**
      * 기존 상품 수정
      */
-    public int updateProduct(int productNo, ProductUpdateReqDto productUpdateReqDto) {
+    public int updateProduct(ProductUpdateReqDto productUpdateReqDto) {
         SqlSession sqlSession = getSqlSession();
 
         ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
-        productUpdateReqDto.setProductNo(productNo);
 
         try{
             int result = productMapper.updateProduct(productUpdateReqDto);
