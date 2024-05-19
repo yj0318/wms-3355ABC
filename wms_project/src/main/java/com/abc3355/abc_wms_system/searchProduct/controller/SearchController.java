@@ -21,16 +21,13 @@ public class SearchController {
             }
     }
 
-    public void searchProductByColor(int color) {
+    public void searchProductByColor(String color) {
         List<SearchProductDTO> list = searchService.searchProductByColor(color);
         if (list != null) {
-            for (SearchProductDTO searchProductDTO : list) {
                 resultView.searchByColor(list);
+            }if (list == null || list.size() == 0) {
+                System.out.println("색상을 다시 입력해주세요.");
             }
-        }else {
-            System.out.println("알맞은 색상의 상품 코드를 입력해주세요");
-            return;
-        }
     }
 
     public void searchZeroProduct() {
@@ -40,7 +37,7 @@ public class SearchController {
                 resultView.searchZeroProduct(product);
             }
         }else {
-            System.out.println("품절된 상품이 없습니다.");
+            System.out.println("ERROR");
         }
     }
 
@@ -51,7 +48,27 @@ public class SearchController {
                 resultView.searchByName(product);
             }
         }else {
-            System.out.println("알맞은 일므의 상품이 없습니다. ");
+            System.out.println("ERROR");
+        }
+    }
+
+    public void searchProductBySize(int size) {
+        List<SearchProductDTO> product = searchService.searchProductSize(size);
+        if (product != null) {
+                resultView.searchBySize(product);
+            }if (product == null) {
+            System.out.println("사이즈를 다시 입력해주세요");
+        }else {
+            System.out.println("ERROR");
+        }
+    }
+
+    public void searchProductByCategory(String category) {
+        List<SearchProductDTO> product = searchService.searchProductCategory(category);
+        if (product != null) {
+            resultView.searchByCategory(product);
+        } else if (product == null || product.size() == 0) {
+            System.out.println("카테고리를 다시 입력해주세요.");
         }
     }
 }

@@ -9,4 +9,5 @@ public interface SearchMapper {
 
     List<SearchProductDTO> searchAllProduct();
 
+    List<SearchProductDTO> searchByCategory(String category);
 }

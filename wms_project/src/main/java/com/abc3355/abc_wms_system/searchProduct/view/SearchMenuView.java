@@ -56,8 +56,8 @@ public class SearchMenuView {
             String select = sc.next();
             switch (select) {
                 case "1" : searchController.searchProductByColor(inputColor()); break;
-//                case "2" : detailSearchMenu(); break;
-//                case "3" : searchController.searchZeroProduct(); break;
+                case "2" : searchController.searchProductBySize(inputSize()); break;
+                case "3" : searchController.searchProductByCategory(inputCategory()); break;
                 case "0" : return;
                 default:
                     System.out.println("올바른 숫자를 입력하세요. ");
@@ -65,23 +65,25 @@ public class SearchMenuView {
         }
     }
 
-    private int inputColor() {
+    private String inputCategory() {
         Scanner sc = new Scanner(System.in);
-        String colorCode = """
-                === 색상코드 ===
-                1.BLACK
-                2.GREEN
-                3.GREY
-                4.NAVY
-                5.ORANGE
-                6.RED
-                7.SKYBLUE
-                8.WHITE
-                9.YELLOW               
-                ===============
-                검색할 색상코드를 입력해주세요 :""";
-        System.out.print(colorCode);
-        int color = sc.nextInt();
+        System.out.print("검색할 카테고리를 입력하세요(한글):");
+        String category = sc.next();
+        return category;
+    }
+
+    private int inputSize() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("검색할 사이즈를 입력해주세요(210~290까지 10단위): ");
+        int size = sc.nextInt();
+        return size;
+    }
+
+    private String inputColor() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("검색할 색상을 입력해주세요(영문): ");
+        String color = sc.nextLine();
+        color = color.toUpperCase();
         return color;
     }
 

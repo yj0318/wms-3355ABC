@@ -4,5 +4,69 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.abc3355.abc_wms_system.orderProcess.model.dao.OrderProcessMapper">
 
+<!-- 전체 주문 조회 -->
+<select id="selectAllOrders" resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    FROM order_product a
+        LEFT JOIN user b ON a.USER_NO = b.USER_NO
+        JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
+        JOIN warehouse_inf d ON b.WH_ID = d.WH_ID
+    ORDER BY a.ORDER_DATE
+</select>
+
+<!-- 가맹점별 조회 -->
+<select id="selectOrdersByName" parameterType="String"
+        resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    FROM order_product a
+        LEFT JOIN user b ON a.USER_NO = b.USER_NO
+        JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
+        JOIN warehouse_inf d ON b.WH_ID = d.WH_ID
+    WHERE d.WH_NAME = #{name}
+    ORDER BY a.ORDER_DATE
+</select>
+
+<!-- 주문 타입별 조회 -->
+<select id="selectOrdersByStatus" parameterType="String"
+        resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    FROM order_product a
+        LEFT JOIN user b ON a.USER_NO = b.USER_NO
+        JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
+        JOIN warehouse_inf d ON b.WH_ID = d.WH_ID
+    WHERE c.order_status_name = #{status}
+    ORDER BY a.ORDER_DATE
+</select>
+
+<!-- 전체 조회 (가맹점) -->
+<select id="selectMyOrders" parameterType="String"
+        resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    FROM order_product a
+        LEFT JOIN user b ON a.USER_NO = b.USER_NO
+        JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
+        JOIN warehouse_inf d ON b.WH_ID = d.WH_ID
+    WHERE b.USER_ID = #{userId}
+    ORDER BY a.ORDER_DATE
+</select>
+
+<!-- 상태별 조회 (가맹점) -->
+<select id="selectMyOrdersByStatus" parameterType="Map"
+        resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    FROM order_product a
+    LEFT JOIN user b ON a.USER_NO = b.USER_NO
+    JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
+    JOIN warehouse_inf d ON b.WH_ID = d.WH_ID
+    WHERE b.USER_ID = #{userId}
+    AND a.ORDER_STATUS_NO = #{status}
+    ORDER BY a.ORDER_DATE
+</select>
+
+<!-- 상세 주문 조회 -->
+<select id="selectOrderDetails" parameterType="int"
+        resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderDetailResDTO">
+    SELECT * FROM order_detail WHERE ORDER_NO = #{orderNo}
+</select>
 
 </mapper>
