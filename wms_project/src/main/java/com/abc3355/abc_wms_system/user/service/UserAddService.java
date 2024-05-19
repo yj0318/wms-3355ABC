@@ -2,7 +2,10 @@ package com.abc3355.abc_wms_system.user.service;
 
 import com.abc3355.abc_wms_system.user.model.dao.UserInsert.AddUserMapper;
 import com.abc3355.abc_wms_system.user.model.dto.UserAndWarehouseDTO;
+import com.abc3355.abc_wms_system.user.model.dto.WarehouseInfoDTO;
 import org.apache.ibatis.session.SqlSession;
+
+import java.util.List;
 
 import static com.abc3355.abc_wms_system.common.MyBatisTemplate.getSqlSession;
 
@@ -25,5 +28,13 @@ public class UserAddService {
         } finally {
             sqlSession.close();
         }
+    }
+
+    public List<WarehouseInfoDTO> findAll() {
+        SqlSession sqlSession = getSqlSession();
+        AddUserMapper addUserMapper = sqlSession.getMapper(AddUserMapper.class);
+        List<WarehouseInfoDTO> list = addUserMapper.findAll();
+        sqlSession.close();
+        return list;
     }
 }

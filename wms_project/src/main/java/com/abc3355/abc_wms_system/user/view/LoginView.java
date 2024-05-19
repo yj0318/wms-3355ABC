@@ -1,5 +1,6 @@
 package com.abc3355.abc_wms_system.user.view;
 
+import com.abc3355.abc_wms_system.salesManager.View.SalesManagerView;
 import com.abc3355.abc_wms_system.user.controller.AddUserController;
 import com.abc3355.abc_wms_system.user.controller.LoginController;
 import com.abc3355.abc_wms_system.user.model.dto.UserAndWarehouseDTO;
@@ -59,15 +60,15 @@ public class LoginView {
             System.out.println("3. 상품관리");
             System.out.println("4. 매출관리");
             System.out.println("5. 가맹점관리");
-            System.out.println("9. 종료");
+            System.out.println("9. 이전 메뉴");
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
-
+            sc.nextLine();
             switch (menu){
                 case 1: break;
                 case 2: break;
                 case 3: break;
-                case 4: break;
+                case 4: SalesManagerView.SalesManagerMain(); break;
                 case 5:
                     branchControl();
                     break;
@@ -88,6 +89,7 @@ public class LoginView {
         Scanner sc = new Scanner(System.in);
         UserAndWarehouseDTO userAndWarehouse = new UserAndWarehouseDTO();
         System.out.println("현재 등록된 가맹점");
+        addUserController.showAllBranch();
         System.out.println("추가할 가맹점 정보를 입력하세요.");
         System.out.print("가맹점 ID: ");
         userAndWarehouse.setUserId(sc.nextLine());
@@ -126,13 +128,16 @@ public class LoginView {
             System.out.println("1. 상품조회");
             System.out.println("2. 주문서 작성");
             System.out.println("3. 재고 조회");
+            System.out.println("4. 이전 메뉴");
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
-
+            sc.nextLine();
             switch (menu){
                 case 1: break;
                 case 2: break;
                 case 3: break;
+                case 4:
+                    return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
             }
