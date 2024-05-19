@@ -16,4 +16,11 @@ public class LoginService {
                 return loginMapper.getUserMatch(userId, userPassword);
             }
     }
+
+    public UserDTO loginServiceHead(String userId, String userPassword) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper loginMapper = sqlSession.getMapper(LoginMapper.class);
+            return loginMapper.getUserMatchHead(userId, userPassword);
+        }
+    }
 }
