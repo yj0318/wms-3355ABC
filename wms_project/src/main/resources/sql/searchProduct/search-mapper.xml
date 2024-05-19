@@ -25,4 +25,16 @@
         FROM product A
         JOIN category B ON (A.CATEGORY_NO = B.CATEGORY_NO)
     </select>
+
+    <select id="searchByCategory" resultMap="searchAllProductResultMap">
+        SELECT A.PRODUCT_NO
+        , A.PRODUCT_NAME
+        , A.PRODUCT_PRICE
+        , A.IS_EXPIRE
+        , A.CATEGORY_NO
+        , B.CATEGORY_NAME
+        FROM product A
+        JOIN category B ON (A.CATEGORY_NO = B.CATEGORY_NO)
+        WHERE B.CATEGORY_NAME LIKE CONCAT (#{category})
+    </select>
 </mapper>

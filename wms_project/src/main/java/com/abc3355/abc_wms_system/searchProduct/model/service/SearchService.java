@@ -1,9 +1,6 @@
 package com.abc3355.abc_wms_system.searchProduct.model.service;
 
-import com.abc3355.abc_wms_system.searchProduct.model.dao.ColorMapper;
-import com.abc3355.abc_wms_system.searchProduct.model.dao.NameMapper;
-import com.abc3355.abc_wms_system.searchProduct.model.dao.SearchMapper;
-import com.abc3355.abc_wms_system.searchProduct.model.dao.ZeroProductMapper;
+import com.abc3355.abc_wms_system.searchProduct.model.dao.*;
 import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
 import org.apache.ibatis.session.SqlSession;
 
@@ -23,7 +20,7 @@ public class SearchService {
         return list;
     }
 
-    public List<SearchProductDTO> searchProductByColor(int colors) {
+    public List<SearchProductDTO> searchProductByColor(String colors) {
         SqlSession sqlSession = getSqlSession();
         ColorMapper colorMapper = sqlSession.getMapper(ColorMapper.class);
         List<SearchProductDTO> productList = colorMapper.searchProductByColor(colors);
@@ -45,5 +42,21 @@ public class SearchService {
         List<SearchProductDTO> nameList = nameMapper.searchByName(name);
         sqlSession.close();
         return nameList;
+    }
+
+    public List<SearchProductDTO> searchProductSize(int size) {
+        SqlSession sqlSession = getSqlSession();
+        SizeMapper sizeMapper = sqlSession.getMapper(SizeMapper.class);
+        List<SearchProductDTO> sizeList = sizeMapper.searchBySize(size);
+        sqlSession.close();
+        return sizeList;
+    }
+
+    public List<SearchProductDTO> searchProductCategory(String category) {
+        SqlSession sqlSession = getSqlSession();
+        SearchMapper categoryMapper = sqlSession.getMapper(SearchMapper.class);
+        List<SearchProductDTO> categoryList = categoryMapper.searchByCategory(category);
+        sqlSession.close();
+        return categoryList;
     }
 }
