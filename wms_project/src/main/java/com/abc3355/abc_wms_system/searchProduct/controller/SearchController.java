@@ -20,4 +20,16 @@ public class SearchController {
                 System.out.println("ERROR");
             }
     }
+
+    public void searchProductByColor(int color) {
+        List<SearchProductDTO> list = searchService.searchProductByColor(color);
+        if (list != null) {
+            for (SearchProductDTO searchProductDTO : list) {
+                resultView.searchByColor(list);
+            }
+        }else {
+            System.out.println("ERROR");
+        }
+    }
+
 }

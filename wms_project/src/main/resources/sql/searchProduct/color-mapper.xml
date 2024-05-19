@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc3355.abc_wms_system.searchProduct.model.dao.ColorMapper">
+
+    <resultMap id="searchByColorMap" type="com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO">
+        <id property="productNo" column="PRODUCT_NO"/>
+        <result property="productName" column="PRODUCT_NAME"/>
+        <result property="productPrice" column="PRODUCT_PRICE"/>
+        <result property="isExpire" column="IS_EXPIRE"/>
+        <collection property="colorDTO" ofType="com.abc3355.abc_wms_system.searchProduct.model.dto.SearchColorDTO">
+            <id property="colorNo" column="COLOR_NO"/>
+            <result property="colorName" column="COLOR_NAME"/>
+        </collection>
+    </resultMap>
+
+    <select id="searchProductByColor" parameterType="int" resultMap="searchByColorMap">
+        SELECT A.PRODUCT_NO
+                , A.PRODUCT_NAME
+                , A.PRODUCT_PRICE
+                , A.IS_EXPIRE
+                , A.COLOR_NO
+                , B.COLOR_NAME
+        FROM product A
+        JOIN color B ON (A.COLOR_NO = B.COLOR_NO)
+        WHERE A.COLOR_NO = #{ color }
+    </select>
+
+</mapper>
