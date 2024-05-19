@@ -15,7 +15,8 @@ public class ProductUpdateReqDto {
     private int sizeNo;
     private int categoryNo;
 
-    public ProductUpdateReqDto(String productName, int productPrice, String isExpire, int colorNo, int sizeNo, int categoryNo) {
+    public ProductUpdateReqDto(int productNo, String productName, int productPrice, String isExpire, int colorNo, int sizeNo, int categoryNo) {
+        this.productNo = productNo;
         this.productName = productName;
         this.productPrice = productPrice;
         this.isExpire = isExpire;
@@ -24,7 +25,4 @@ public class ProductUpdateReqDto {
         this.categoryNo = categoryNo;
     }
 
-    public void setProductNo(int productNo) {
-        this.productNo = productNo;
-    }
 }

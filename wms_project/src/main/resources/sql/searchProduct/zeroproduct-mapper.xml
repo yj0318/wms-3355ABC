@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc3355.abc_wms_system.searchProduct.model.dao.ZeroProductMapper">
+
+    <resultMap id="zeroProductResultMap" type="com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO">
+        <id property="productNo" column="PRODUCT_NO"/>
+        <result property="productName" column="PRODUCT_NAME"/>
+        <result property="productPrice" column="PRODUCT_PRICE"/>
+        <result property="isExpire" column="IS_EXPIRE"/>
+        <collection property="inventoryDTO" ofType="com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO">
+            <id property="productNo" column="PRODUCT_NO"/>
+            <result property="whId" column="WH_ID"/>
+            <result property="inventoryAmount" column="INVENTORY_AMOUNT"/>
+        </collection>
+    </resultMap>
+
+    <select id="searchZeroProduct" resultMap="zeroProductResultMap">
+        SELECT A.PRODUCT_NO
+                , A.PRODUCT_NAME
+                , A.PRODUCT_PRICE
+                , A.IS_EXPIRE
+                , B.WH_ID
+                , B.INVENTORY_AMOUNT
+        FROM product A
+        JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
+        WHERE B.INVENTORY_AMOUNT = 0
+
+    </select>
+</mapper>
