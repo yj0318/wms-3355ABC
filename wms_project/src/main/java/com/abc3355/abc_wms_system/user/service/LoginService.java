@@ -10,12 +10,10 @@ import static com.abc3355.abc_wms_system.common.MyBatisTemplate.getSqlSession;
 
 public class LoginService {
     private LoginMapper loginMapper;
-
-
-    public UserDTO loginService(String userId, String userPassword) {
-        SqlSession sqlSession = getSqlSession();
-        LoginMapper loginMapper = sqlSession.getMapper(LoginMapper.class);
-        sqlSession.close();
-        return loginMapper.getUserMatch(userId, userPassword);
+        public UserDTO loginService(String userId, String userPassword) {
+            try (SqlSession sqlSession = getSqlSession()) {
+                LoginMapper loginMapper = sqlSession.getMapper(LoginMapper.class);
+                return loginMapper.getUserMatch(userId, userPassword);
+            }
     }
 }
