@@ -1,5 +1,6 @@
 package com.abc3355.abc_wms_system.user.view;
 
+import com.abc3355.abc_wms_system.orderProcess.view.ManagerMenuView;
 import com.abc3355.abc_wms_system.salesManager.View.SalesManagerView;
 import com.abc3355.abc_wms_system.user.controller.AddUserController;
 import com.abc3355.abc_wms_system.user.controller.LoginController;
@@ -12,6 +13,7 @@ import java.util.*;
 public class LoginView {
     private LoginController loginController = new LoginController();
     private AddUserController addUserController = new AddUserController();
+    private ManagerMenuView managerMenuView = new ManagerMenuView();
 
     public void loginFirstMenu() {
         Scanner sc = new Scanner(System.in);
