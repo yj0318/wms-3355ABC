@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53c94116-ec2c-4349-a4fd-287cfaff5b4f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/NameMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/name-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/SizeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/size-mapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/ColorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/ColorMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/SearchMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/SearchMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/service/SearchService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/view/SearchMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/view/SearchMenuView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/view/SearchResultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/view/SearchResultView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/color-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/color-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/search-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/search-mapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +178,7 @@
       <workItem from="1716020818144" duration="191000" />
       <workItem from="1716021092004" duration="32000" />
       <workItem from="1716091658013" duration="8836000" />
-      <workItem from="1716101045381" duration="1010000" />
+      <workItem from="1716101045381" duration="5166000" />
     </task>
     <servers />
   </component>
