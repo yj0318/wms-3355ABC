@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc3355.abc_wms_system.user.model.dao.UserInsert.LoginMapper">
+    <select id="getUserMatch" parameterType="map" resultType="com.abc3355.abc_wms_system.user.model.dto.UserDTO">
+        SELECT u.USER_NO AS userNo, u.USER_ID AS userId, u.USER_PASSWORD AS userPassword,
+        u.USER_TYPE AS userType, w.WH_NAME AS whName
+        FROM user u
+            JOIN warehouse_inf w ON u.WH_ID = w.WH_ID
+        WHERE u.USER_ID = #{ userId } AND u.USER_PASSWORD = #{ userPassword } AND USER_TYPE = 'branch'
+    </select>
+    <select id="getUserMatchHead" parameterType="map" resultType="com.abc3355.abc_wms_system.user.model.dto.UserDTO">
+        SELECT USER_NO, USER_ID, USER_PASSWORD, USER_TYPE, WH_ID
+        FROM user
+        WHERE USER_ID = #{ userId } AND USER_PASSWORD = #{ userPassword } AND USER_TYPE = 'head'
+    </select>
+</mapper>

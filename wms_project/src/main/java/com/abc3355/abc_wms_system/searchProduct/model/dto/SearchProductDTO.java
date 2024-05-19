@@ -19,4 +19,6 @@ public class SearchProductDTO {
     private int categoryNo;
     private SearchCategoryDTO categoryDTO;
     private SearchColorDTO colorDTO;
+    private SearchSizeDTO sizeDTO;
+    private InventoryDTO inventoryDTO;
 }
