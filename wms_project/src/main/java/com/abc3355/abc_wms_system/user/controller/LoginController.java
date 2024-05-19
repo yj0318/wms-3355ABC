@@ -1,27 +1,20 @@
 package com.abc3355.abc_wms_system.user.controller;
 
-import com.abc3355.abc_wms_system.user.model.dao.UserInsert.LoginMapper;
 import com.abc3355.abc_wms_system.user.model.dto.UserDTO;
-import com.abc3355.abc_wms_system.user.service.loginService;
+import com.abc3355.abc_wms_system.user.service.LoginService;
 
-import java.util.List;
+import java.util.Map;
 
 public class LoginController {
-    private final loginService loginService;
+    private final LoginService loginService;
     public LoginController(){
-        loginService = new loginService();
+        loginService = new LoginService();
 
     }
-    private LoginMapper loginMapper;
 
-    public List<UserDTO> selectAllUser(){
-        List<UserDTO> userDTOList = loginService.selectAllUser();
-        return userDTOList;
+    public UserDTO branchLoginSecondMenu(Map<String, String> loginMatch) {
+        String userId = loginMatch.get("userId");
+        String userPassword = loginMatch.get("userPassword");
+        return loginService.loginService(userId, userPassword);
     }
-
-
-    private void branchLoginMenu() {
-        System.out.println("로그인 성공");
-    }
-
 }

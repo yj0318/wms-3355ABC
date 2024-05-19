@@ -8,16 +8,14 @@ import java.util.List;
 
 import static com.abc3355.abc_wms_system.common.MyBatisTemplate.getSqlSession;
 
-public class loginService {
+public class LoginService {
     private LoginMapper loginMapper;
 
-    public List<UserDTO> selectAllUser(){
+
+    public UserDTO loginService(String userId, String userPassword) {
         SqlSession sqlSession = getSqlSession();
-
-        loginMapper = sqlSession.getMapper(LoginMapper.class);
-        List<UserDTO> userDTOList = loginMapper.selectAllUser();
-
+        LoginMapper loginMapper = sqlSession.getMapper(LoginMapper.class);
         sqlSession.close();
-        return userDTOList;
+        return loginMapper.getUserMatch(userId, userPassword);
     }
 }
