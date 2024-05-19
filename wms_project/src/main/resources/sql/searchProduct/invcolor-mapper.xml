@@ -6,18 +6,12 @@
 
     <resultMap id="invetorycolorResultMap" type="com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO">
         <id property="productNo" column="PRODUCT_NO"/>
-        <result property="inventoryAmount" column="INVENTORY_AMOUNT"/>
-        <result property="whId" column="WH_ID"/>
-        <collection property="productDTO" ofType="com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO">
-            <id property="productNo" column="PRODUCT_NO"/>
-            <result property="productName" column="PRODUCT_NAME"/>
-            <result property="productPrice" column="PRODUCT_PRICE"/>
-            <result property="isExpire" column="IS_EXPIRE"/>
-            <result property="colorNo" column="COLOR_NO"/>
-        </collection>
-        <collection property="colorDTO" javaType="ArrayList" ofType="com.abc3355.abc_wms_system.searchProduct.model.dto.SearchColorDTO">
-            <id property="colorName" column="COLOR_NAME"/>
-        </collection>
+        <result property="productName" column="PRODUCT_NAME"/>
+        <result property="productPrice" column="PRODUCT_PRICE"/>
+        <result property="isExpire" column="IS_EXPIRE"/>
+        <result property="categoryNo" column="CATEGORY_NO"/>
+        <result property="colorNo" column="COLOR_NO"/>
+        <result property="colorName" column="COLOR_NAME"/>
     </resultMap>
 
 

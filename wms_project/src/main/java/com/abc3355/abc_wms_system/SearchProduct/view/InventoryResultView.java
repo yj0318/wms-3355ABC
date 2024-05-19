@@ -10,13 +10,13 @@ public class InventoryResultView {
         System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n", "상품코드", "상품명", "재고" , "가격", "단종유무", "카테고리");
         System.out.println("===================================================================");
         for (InventoryDTO inventoryDTO : list) {
-            System.out.printf("%d\t%s\t%d\t%d\t%s\t%d\n",
+            System.out.printf("%d\t%s\t%d\t%d\t%s\t%s\n",
                     inventoryDTO.getProductNo(),
-                    inventoryDTO.getProductDTO().getProductName(),
+                    inventoryDTO.getProductName(),
                     inventoryDTO.getInventoryAmount(),
-                    inventoryDTO.getProductDTO().getProductPrice(),
-                    inventoryDTO.getProductDTO().getIsExpire(),
-                    inventoryDTO.getProductDTO().getCategoryNo()
+                    inventoryDTO.getProductPrice(),
+                    inventoryDTO.getIsExpire(),
+                    inventoryDTO.getCategoryName()
             );
         }
     }
@@ -28,10 +28,10 @@ public class InventoryResultView {
         for (InventoryDTO inventoryDTO : list) {
             System.out.printf("%d\t%s\t%d\t%s\t%s\n",
                     inventoryDTO.getProductNo(),
-                    inventoryDTO.getProductDTO().getProductName(),
+                    inventoryDTO.getProductName(),
                     inventoryDTO.getInventoryAmount(),
-                    inventoryDTO.getProductDTO().getIsExpire(),
-                    inventoryDTO.getColorDTO().getColorName()
+                    inventoryDTO.getIsExpire(),
+                    inventoryDTO.getColorName()
             );
         }
     }
@@ -43,9 +43,9 @@ public class InventoryResultView {
         for (InventoryDTO inventoryDTO : inventory) {
             System.out.printf("%d\t%s\t%d\t%s\t%d\n",
                     inventoryDTO.getProductNo(),
-                    inventoryDTO.getProductDTO().getProductName(),
-                    inventoryDTO.getProductDTO().getProductPrice(),
-                    inventoryDTO.getProductDTO().getIsExpire(),
+                    inventoryDTO.getProductName(),
+                    inventoryDTO.getProductPrice(),
+                    inventoryDTO.getIsExpire(),
                     inventoryDTO.getInventoryAmount()
             );
         }
@@ -58,10 +58,40 @@ public class InventoryResultView {
         for (InventoryDTO inventoryDTO : invenList) {
             System.out.printf("%d\t%s\t%d\t%s\t%d\n",
                    inventoryDTO.getProductNo(),
-                   inventoryDTO.getProductDTO().getProductName(),
-                   inventoryDTO.getProductDTO().getProductPrice(),
-                   inventoryDTO.getProductDTO().getIsExpire(),
+                   inventoryDTO.getProductName(),
+                   inventoryDTO.getProductPrice(),
+                   inventoryDTO.getIsExpire(),
                    inventoryDTO.getInventoryAmount()
+            );
+        }
+    }
+
+    public void showInventorySize(List<InventoryDTO> list) {
+        System.out.println("===================================================================");
+        System.out.printf("%s\t%s\t%s\t%s\t%s\n", "상품코드", "상품명", "가격", "단종유무", "사이즈");
+        System.out.println("===================================================================");
+        for (InventoryDTO inventoryDTO : list) {
+            System.out.printf("%d\t%s\t%d\t%s\t%s\n",
+                    inventoryDTO.getProductNo(),
+                    inventoryDTO.getProductName(),
+                    inventoryDTO.getInventoryAmount(),
+                    inventoryDTO.getIsExpire(),
+                    inventoryDTO.getSizeNo()
+            );
+        }
+    }
+
+    public void showInventoryCategory(List<InventoryDTO> list) {
+        System.out.println("===================================================================");
+        System.out.printf("%s\t%s\t%s\t%s\t%s\n", "상품코드", "상품명", "가격", "단종유무", "카테고리명");
+        System.out.println("===================================================================");
+        for (InventoryDTO inventoryDTO : list) {
+            System.out.printf("%d\t%s\t%d\t%s\t%s\n",
+                    inventoryDTO.getProductNo(),
+                    inventoryDTO.getProductName(),
+                    inventoryDTO.getInventoryAmount(),
+                    inventoryDTO.getIsExpire(),
+                    inventoryDTO.getCategoryName()
             );
         }
     }

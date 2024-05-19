@@ -55,13 +55,27 @@ public class InventorySearchView {
             String select = sc.next();
             switch (select) {
                 case "1" : searchController.searchInvenByColor(inputColor()); break;
-//                case "2" : searchController.searchInvenBySize(inputSize()); break;
-//                case "3" : searchController.searchInvenByCategory(inputCategory()); break;
+                case "2" : searchController.searchInvenBySize(inputSize()); break;
+                case "3" : searchController.searchInvenByCategory(inputCategory()); break;
                 case "0" : return;
                 default:
                     System.out.println("올바른 숫자를 입력하세요. ");
             }
         }
+    }
+
+    private String inputCategory() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("검색할 카테고리를 입력하세요(한글):");
+        String category = sc.next();
+        return category;
+    }
+
+    private int inputSize() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("검색할 사이즈를 입력해주세요(210~290까지 10단위): ");
+        int size = sc.nextInt();
+        return size;
     }
 
     private String inputColor() {

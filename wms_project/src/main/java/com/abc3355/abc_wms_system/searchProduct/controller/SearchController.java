@@ -93,7 +93,7 @@ public class SearchController {
         List<InventoryDTO> inventory = searchService.searchZeroInventory();
         if (inventory != null) {
                 invResultView.showZeroInventory(inventory);
-        }else if (inventory == null) {
+        }else {
             System.out.println("품절된 상품이 없습니다.");
         }
     }
@@ -102,8 +102,26 @@ public class SearchController {
         List<InventoryDTO> list = searchService.searchInventoryName(name);
         if (list != null) {
             invResultView.showInvenotryName(list);
-        }else if (list == null) {
+        }else {
             System.out.println("알맞은 상품이 없습니다.");
+        }
+    }
+
+    public void searchInvenBySize(int size) {
+        List<InventoryDTO> list = searchService.searchInvenBySize(size);
+        if (list != null) {
+            invResultView.showInventorySize(list);
+        }else {
+            System.out.println("알맞은 사이즈가 없습니다.");
+        }
+    }
+
+    public void searchInvenByCategory(String category) {
+        List<InventoryDTO> list = searchService.searchInvenByCategory(category);
+        if (list != null) {
+            invResultView.showInventoryCategory(list);
+        }else {
+            System.out.println("알맞은 사이즈가 없습니다.");
         }
     }
 }

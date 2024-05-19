@@ -18,5 +18,13 @@ public class InventoryDTO {
     private SearchColorDTO colorDTO;
     private SearchSizeDTO sizeDTO;
     private SearchCategoryDTO categoryDTO;
-
+    private String productName;
+    private int productPrice;
+    private String isExpire;
+    private int categoryNo;
+    private String categoryName;
+    private int colorNo;
+    private String colorName;
+    private int sizeNo;
+    private int sizeMm;
 }

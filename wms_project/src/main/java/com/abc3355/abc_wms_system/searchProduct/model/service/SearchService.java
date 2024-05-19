@@ -90,4 +90,20 @@ public class SearchService {
         sqlSession.close();
         return names;
     }
+
+    public List<InventoryDTO> searchInvenBySize(int size) {
+        SqlSession sqlSession = getSqlSession();
+        InvDetailMapper invDetailMapper = sqlSession.getMapper(InvDetailMapper.class);
+        List<InventoryDTO> siezs = invDetailMapper.searchInventorySize(size);
+        sqlSession.close();
+        return siezs;
+    }
+
+    public List<InventoryDTO> searchInvenByCategory(String category) {
+        SqlSession sqlSession = getSqlSession();
+        InvDetailMapper invDetailMapper = sqlSession.getMapper(InvDetailMapper.class);
+        List<InventoryDTO> categorys = invDetailMapper.searchInventoryCategory(category);
+        sqlSession.close();
+        return categorys;
+    }
 }
