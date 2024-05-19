@@ -5,60 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53c94116-ec2c-4349-a4fd-287cfaff5b4f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/Product/dao/SearchMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/controller/OrderProcessController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dto/OrderDetailResDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dto/OrderListResDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dto/OrderUpdateReqDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dto/StockAmountResDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/opTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/BranchesMenuView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/ManagerMenuView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/ResultView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/View/PrintResultView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/model/dto/OrderDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/model/dto/OrderDetailDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/controller/AddUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dao/UserInsert/AddUserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dto/UserAndWarehouseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/view/WarehouseNameView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/user/adduser-mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/abc3355/abc_wms_system/orderProcess/mapper/OrderProcessMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules/wms_project.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/shoedb.qdgqyg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9919b428-b810-4c75-bf56-b376732596b4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9919b428-b810-4c75-bf56-b376732596b4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderForm/model/dto/HeadDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderForm/model/dto/HeadDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/controller/OrderPrcoessController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dao/OrderProcessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dao/OrderProcessMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/service/OrderProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/service/OrderProcessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/OrderProcessView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/View/PrintResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/View/SalesManagerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/View/SalesManagerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/controller/SalesManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/controller/SalesManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/model/dao/SaleManagerSqlMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/model/dao/SaleManagerSqlMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/model/service/SalesManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/model/service/SalesManagerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/smTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/salesManager/smTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dao/UserInsert/LoginMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dao/UserInsert/LoginMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/run/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/run/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/service/UserAddService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/service/UserAddService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/view/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/orderProcess/order-process-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/orderProcess/order-process-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/salesManager/salesManager-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/salesManager/salesManager-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/user/login-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/user/login-mapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +66,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging feature/searchProduct",
+    "git-widget-placeholder": "feature/searchProduct",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/kimmingyu/Desktop/dev/wms-3355ABC/wms_project/src/main/resources/sql/searchProduct",
     "node.js.detected.package.eslint": "true",
@@ -138,6 +87,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/sql/searchProduct" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.abc3355.abc_wms_system.searchProduct.view" />
       <recent name="com.abc3355.abc_wms_system.searchProduct.model.dao" />
     </key>
   </component>

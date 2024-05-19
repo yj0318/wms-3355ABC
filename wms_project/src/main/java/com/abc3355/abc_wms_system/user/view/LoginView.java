@@ -1,5 +1,7 @@
 package com.abc3355.abc_wms_system.user.view;
 
+import com.abc3355.abc_wms_system.searchProduct.view.InventorySearchView;
+import com.abc3355.abc_wms_system.searchProduct.view.SearchMenuView;
 import com.abc3355.abc_wms_system.user.controller.LoginController;
 import com.abc3355.abc_wms_system.user.model.dto.UserDTO;
 
@@ -50,9 +52,9 @@ public class LoginView {
             int menu = sc.nextInt();
 
             switch (menu){
-                case 1: break;
+                case 1: new SearchMenuView().searchMenu(); break;
                 case 2: break;
-                case 3: break;
+                case 3:  new InventorySearchView().searchMenu(); break;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
             }
