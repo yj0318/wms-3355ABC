@@ -15,7 +15,7 @@
         </collection>
     </resultMap>
 
-    <select id="searchProductByColor" parameterType="int" resultMap="searchByColorMap">
+    <select id="searchProductByColor" resultMap="searchByColorMap">
         SELECT A.PRODUCT_NO
                 , A.PRODUCT_NAME
                 , A.PRODUCT_PRICE
@@ -24,7 +24,7 @@
                 , B.COLOR_NAME
         FROM product A
         JOIN color B ON (A.COLOR_NO = B.COLOR_NO)
-        WHERE A.COLOR_NO = #{ color }
+        WHERE B.COLOR_NAME LIKE CONCAT (#{name})
     </select>
 
 </mapper>
