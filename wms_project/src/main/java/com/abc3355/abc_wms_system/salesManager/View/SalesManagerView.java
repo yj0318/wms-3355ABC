@@ -15,20 +15,21 @@ public class SalesManagerView {
 
         Scanner sc = new Scanner(System.in);
         SalesManagerController smController = new SalesManagerController();
+        SalesManagerService smService = new SalesManagerService();
 
         do {
             System.out.println("=========== 매출관리 메뉴 ============");
             System.out.println("1. 가맹점별 주문량 조회");
-            System.out.println("2. 전체 주문 내역 조회");
-            System.out.println("3. 전체 상품별 출고량 조회");
+            System.out.println("2. 출고 주문 전체 조회");
+            System.out.println("3. 상품별 출고량 조회");
             System.out.println("9. 이전 메뉴로");
             System.out.print("메뉴 번호를 입력하세요 : ");
             int no = sc.nextInt();
 
             switch(no) {
                 case 1 : smController.selectByBranchAndDate(inputCode());break;
-                case 2 : break;
-                case 3 : break;
+                case 2 : smController.selectAllOrder();break;
+//                case 3 : smService.selectAllProduct(); break;
                 case 9 : return;
                 default:
                     System.out.println("잘못된 값입니다. 다시 입력해주세요.");
@@ -43,7 +44,7 @@ public class SalesManagerView {
 
         Scanner sc = new Scanner(System.in);
         SalesManagerService smService = new SalesManagerService();
-        PrintResult printResult = new PrintResult();
+        PrintResultView printResultView = new PrintResultView();
 
         Map<String, String> parameter = new HashMap<>();
 
@@ -52,7 +53,7 @@ public class SalesManagerView {
 
 
             System.out.println("=========== 조회할 가맹점 선택 ============");
-            printResult.printBranchList(branch);         // 가맹점 리스트 노출
+            printResultView.printBranchList(branch);         // 가맹점 리스트 노출
             System.out.print("가맹점 번호를 입력하세요 : ");
             int no = sc.nextInt();
             sc.nextLine();
