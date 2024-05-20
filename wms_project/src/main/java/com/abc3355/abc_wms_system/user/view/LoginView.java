@@ -2,6 +2,7 @@ package com.abc3355.abc_wms_system.user.view;
 
 import com.abc3355.abc_wms_system.orderProcess.view.ManagerMenuView;
 import com.abc3355.abc_wms_system.salesManager.View.SalesManagerView;
+import com.abc3355.abc_wms_system.searchProduct.view.InventorySearchView;
 import com.abc3355.abc_wms_system.searchProduct.view.SearchMenuView;
 import com.abc3355.abc_wms_system.user.controller.AddUserController;
 import com.abc3355.abc_wms_system.user.controller.LoginController;
@@ -105,7 +106,7 @@ public class LoginView {
             sc.nextLine();
             switch (menu){
                 case 1: break;
-                case 2: break;
+                case 2: new InventorySearchView().searchMenu(); break;
                 case 3: break;
                 case 4: SalesManagerView.SalesManagerMain(); break;
                 case 5:
@@ -134,7 +135,7 @@ public class LoginView {
             switch (menu){
                 case 1: new SearchMenuView().searchMenu(); break;
                 case 2: break;
-                case 3: break;
+                case 3:  SalesManagerView.SalesManagerMain(); break;
                 case 4:
                     return;
                 default:
