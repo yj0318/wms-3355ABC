@@ -13,10 +13,13 @@ import java.util.*;
 public class LoginView {
 
     public static UserDTO user;
+    private static Map<String, String> loginMatch;
+
+    /*Controller선언 부분*/
     private LoginController loginController = new LoginController();
     private AddUserController addUserController = new AddUserController();
     private ManagerMenuView managerMenuView = new ManagerMenuView();
-    private static Map<String, String> loginMatch;
+
 
 
     public void loginFirstMenu() {
