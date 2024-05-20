@@ -69,8 +69,8 @@ public class SearchController {
         }
     }
 
-    public void searchAllInventory() {
-        List<InventorySearchDTO> list = searchService.searchAllInventory();
+    public void searchAllInventory(int user) {
+        List<InventorySearchDTO> list = searchService.searchAllInventory(user);
         if (list != null) {
             invResultView.showAllInventory(list);
         } else {
@@ -78,8 +78,8 @@ public class SearchController {
         }
     }
 
-    public void searchInvenByColor(String color) {
-        List<InventorySearchDTO> list = searchService.searchInvenByColor(color);
+    public void searchInvenByColor(int user, String color) {
+        List<InventorySearchDTO> list = searchService.searchInvenByColor(user, color);
         if (list != null) {
             invResultView.searchByColor(list);
         }else {
@@ -87,8 +87,8 @@ public class SearchController {
         }
     }
 
-    public void searchZeroInventory() {
-        List<InventorySearchDTO> inventory = searchService.searchZeroInventory();
+    public void searchZeroInventory(int user) {
+        List<InventorySearchDTO> inventory = searchService.searchZeroInventory(user);
         if (inventory != null) {
                 invResultView.showZeroInventory(inventory);
         }else {
@@ -96,8 +96,8 @@ public class SearchController {
         }
     }
 
-    public void searchInventoryName(String name) {
-        List<InventorySearchDTO> list = searchService.searchInventoryName(name);
+    public void searchInventoryName(int user, String name) {
+        List<InventorySearchDTO> list = searchService.searchInventoryName(user,name);
         if (list != null) {
             invResultView.showInvenotryName(list);
         }else {
@@ -105,8 +105,8 @@ public class SearchController {
         }
     }
 
-    public void searchInvenBySize(int size) {
-        List<InventorySearchDTO> list = searchService.searchInvenBySize(size);
+    public void searchInvenBySize(int user, int size) {
+        List<InventorySearchDTO> list = searchService.searchInvenBySize(user, size);
         if (list != null) {
             invResultView.showInventorySize(list);
         }else {
@@ -114,8 +114,8 @@ public class SearchController {
         }
     }
 
-    public void searchInvenByCategory(String category) {
-        List<InventorySearchDTO> list = searchService.searchInvenByCategory(category);
+    public void searchInvenByCategory(int user, String category) {
+        List<InventorySearchDTO> list = searchService.searchInvenByCategory(user, category);
         if (list != null) {
             invResultView.showInventoryCategory(list);
         }else {

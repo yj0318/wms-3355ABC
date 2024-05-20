@@ -22,4 +22,6 @@ public class InventorySearchDTO {
     private String colorName;
     private int sizeNo;
     private int sizeMm;
+    private int userNo;
+    private String userId;
 }
