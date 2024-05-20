@@ -2,6 +2,7 @@ package com.abc3355.abc_wms_system.orderProcess.controller;
 
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderDetailResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
+import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.service.OrderProcessService;
 import com.abc3355.abc_wms_system.orderProcess.view.ResultView;
 
@@ -9,12 +10,13 @@ import java.util.List;
 
 public class OrderProcessController {
     OrderProcessService orderProcessService = new OrderProcessService();
+    ResultView resultView = new ResultView();
     /***
      * 본사 전체 조회
      */
     public void searchAllOrders() {
         List<OrderListResDTO> orderList = orderProcessService.searchAllOrders();
-        ResultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
+        resultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
     }
     /***
      * 본사 가맹점별 조회
@@ -22,7 +24,7 @@ public class OrderProcessController {
      */
     public void searchOrdersByName(String name) {
         List<OrderListResDTO> orderList = orderProcessService.searchOrdersByName(name);
-        ResultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
+        resultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
     }
     /***
      * 본사 주문상태별 조회
@@ -30,7 +32,7 @@ public class OrderProcessController {
      */
     public void searchOrdersByStatus(String status) {
         List<OrderListResDTO> orderList = orderProcessService.searchOrdersByStatus(status);
-        ResultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
+        resultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
     }
     /***
      * 가맹점 전체 조회
@@ -38,7 +40,7 @@ public class OrderProcessController {
      */
     public void searchMyOrders(String userId) {
         List<OrderListResDTO> orderList = orderProcessService.searchMyOrders(userId);
-        ResultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
+        resultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
     }
     /***
      * 가맹점 상태별 조회
@@ -47,22 +49,75 @@ public class OrderProcessController {
      */
     public void searchMyOrdersByStatus(String userId, int status) {
         List<OrderListResDTO> orderList = orderProcessService.searchMyOrdersByStatus(userId, status);
-        ResultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
+        resultView.dislplayOrderList(orderList, "입력하신 정보에 맞는 데이터가 없습니다!");
     }
 
-    // ---------------------------------------------------------------------------- //
+    // -------------------------------------------------------------------------------------------- //
     /***
      * 본사 처리할 수 있는 주문 출력 & 가져오기
      * @return
      */
-    public List<OrderListResDTO> printAndGetOrdersByStatus() {
-        String status = "주문 처리중";
+    public List<OrderListResDTO> printAndGetOrdersByStatus(String status) {
         List<OrderListResDTO> orderList = orderProcessService.searchOrdersByStatus(status);
-        ResultView.dislplayOrderList(orderList, "처리 가능한 주문이 없습니다!");
+        resultView.dislplayOrderList(orderList, "처리 가능한 주문이 없습니다!");
         return orderList;
     }
 
+    /***
+     * 위 메소드 오버로딩해서 해당 가맹점만 출력 & 가져오기
+     * @param userId
+     * @param status
+     * @return
+     */
+    public List<OrderListResDTO> printAndGetOrdersByStatus(String userId, int status) {
+        List<OrderListResDTO> orderList = orderProcessService.searchMyOrdersByStatus(userId, status);
+        resultView.dislplayOrderList(orderList, "처리 가능한 주문이 없습니다!");
+        return orderList;
+    }
+
+    /***
+     * 상세 주문 조회
+     * @param orderNo
+     */
     public void searchOrderDetails(int orderNo) {
         List<OrderDetailResDTO> orderDetailList = orderProcessService.searchOrderDetails(orderNo);
     }
+
+    /***
+     * 주문 출고
+     * @param orderUpdateReqDTO
+     */
+    public void processOrderShipment(OrderUpdateReqDTO orderUpdateReqDTO) {
+        if(orderProcessService.processOrderShipment(orderUpdateReqDTO)) {
+            resultView.displaySuccessMessage("orderShipment");
+        } else {
+            resultView.displayErrorMessage("orderShipment");
+        }
+    }
+
+    /***
+     * 주문 취소
+     * @param orderUpdateReqDTO
+     */
+    public void cancelOrder (OrderUpdateReqDTO orderUpdateReqDTO) {
+        if(orderProcessService.cancelOrder(orderUpdateReqDTO)) {
+            resultView.displaySuccessMessage("cancelOrder");
+        } else {
+            resultView.displayErrorMessage("cancelOrder");
+        }
+    }
+
+    /***
+     * 주문 확정
+     * @param orderUpdateReqDto
+     */
+    public void confirmOrder(OrderUpdateReqDTO orderUpdateReqDto) {
+        if(orderProcessService.confirmOrder(orderUpdateReqDto)) {
+            resultView.displaySuccessMessage("confirmOrder");
+        } else {
+            resultView.displayErrorMessage("confirmOrder");
+        }
+    }
+    // ------------------------------------------------------------------------------------ //
+
 }

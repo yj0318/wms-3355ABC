@@ -2,6 +2,7 @@ package com.abc3355.abc_wms_system.orderProcess.view;
 
 import com.abc3355.abc_wms_system.orderProcess.controller.OrderProcessController;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
+import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
 
 import java.util.List;
 import java.util.Scanner;
@@ -32,6 +33,7 @@ public class ManagerMenuView {
             }
         }
     }
+
     public void searchMenu() {
         String menu = """
                 ========================
@@ -55,10 +57,12 @@ public class ManagerMenuView {
             }
         }
     }
+
     public String inputBranchesName() {
         System.out.print("가맹점명을 입력해주세요 (입력 형식 : xx점) : ");
         return sc.nextLine();
     }
+
     public String inputBranchesStatus() {
         while (true) {
             System.out.print("""
@@ -84,22 +88,29 @@ public class ManagerMenuView {
             }
         }
     }
+
     public void processMenu() {
         System.out.print("""
                 ======== 처리가능 주문 목록 ========
                 """);
-        List<OrderListResDTO> orderList = orderProcessController.printAndGetOrdersByStatus();
+        List<OrderListResDTO> orderList = orderProcessController.printAndGetOrdersByStatus("주문 처리중");
         if(orderList.isEmpty()) return;
-        int orderNumber = inputOrderNumber(orderList);
+
+        OrderUpdateReqDTO orderUpdateReqDto = new OrderUpdateReqDTO(inputOrderNumber(orderList));
         String action = inputAction();
+
         if(action.equals("1")) {
-            //orderProcessController.processOrderShipment(orderNumber);
+            orderProcessController.processOrderShipment(orderUpdateReqDto);
         } else {
-            //orderProcessController.processOrderCancel(orderNumber);
+            // 이 부분에 String 취소 사유 작성해서 보내는 로직 필요하다.
+            System.out.print("취소 사유 작성해주세요 : ");
+            String message = sc.nextLine();
+            orderProcessController.cancelOrder(orderUpdateReqDto);
         }
     }
+
     public int inputOrderNumber(List<OrderListResDTO> orderList) {
-        while (true) {
+        while(true) {
             System.out.print("처리할 주문 번호를 입력해 주세요 : ");
             try {
                 String input = sc.nextLine();
@@ -109,7 +120,7 @@ public class ManagerMenuView {
                 }
                 System.out.println("잘못 입력하셨습니다! 처리 가능한 주문 번호를 입력해주세요.");
             } catch (NumberFormatException e) {
-                System.out.println("잘못 입력하셨습니다! 숫자를 입력해주세요!");
+                System.out.println("잘못 입력하셨습니다! 숫자를 입력해주세요!!");
             }
         }
     }
