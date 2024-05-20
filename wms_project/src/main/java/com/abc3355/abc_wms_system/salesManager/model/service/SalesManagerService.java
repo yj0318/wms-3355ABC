@@ -3,7 +3,6 @@ package com.abc3355.abc_wms_system.salesManager.model.service;
 import com.abc3355.abc_wms_system.salesManager.View.PrintResultView;
 import com.abc3355.abc_wms_system.salesManager.model.dao.SaleManagerSqlMapper;
 import com.abc3355.abc_wms_system.salesManager.model.dto.*;
-import com.abc3355.abc_wms_system.common.model.dto.OrderProductDTO;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;

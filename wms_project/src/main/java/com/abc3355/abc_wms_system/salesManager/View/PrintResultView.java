@@ -1,8 +1,6 @@
 package com.abc3355.abc_wms_system.salesManager.View;
 
-import com.abc3355.abc_wms_system.common.model.dto.OrderProductDTO;
 import com.abc3355.abc_wms_system.salesManager.model.dto.*;
-import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
 
 import java.util.List;
 
