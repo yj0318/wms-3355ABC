@@ -8,7 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class InsertNoAndAmountDTO {
-    private int no;
+    private int userNo;
+    private int productNo;
     private int amount;
+    private int totalOrderPrice;
     private int orderNo;
 }

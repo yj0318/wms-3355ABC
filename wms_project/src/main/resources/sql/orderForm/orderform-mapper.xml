@@ -5,18 +5,25 @@
 <mapper namespace="com.abc3355.abc_wms_system.orderForm.model.dao.OrderFormMapper">
 
 
-<!--    <resultMap id="priceResultMap" type="com.abc3355.abc_wms_system.orderForm.model.dto.OrderAllInfoDTO">-->
-<!--    <id property="order_price" column="TOTAL"/>-->
-<!--    </resultMap>-->
-
     <select id="getTotalOrderPrice" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO" resultType="_int">
         SELECT
         PRODUCT_PRICE * #{ amount } TOTAL
         FROM product
-        WHERE PRODUCT_NO = #{ no }
+        WHERE PRODUCT_NO = #{ productNo }
     </select>
 
-    <insert id="insertOrderByTotalPrice">
+
+    <resultMap id="inventoryResultMap" type="com.abc3355.abc_wms_system.orderForm.model.dto.InventoryConditionDTO">
+        <id property="productId" column="PRODUCT_NO"/>
+        <result property="productName" column="PRODUCT_NAME"/>
+        <result property="productName" column ="PRODUCT_NAME"/>
+        <result property="inventoryAmount" column ="INVENTORY_AMOUNT"/>
+        <result property="productPrice" column ="PRODUCT_PRICE"/>
+        <result property="ColorName" column ="COLOR_NAME"/>
+        <result property="sizeMm" column ="SIZE_MM"/>
+    </resultMap>
+
+    <insert id="insertOrderProduct">
         INSERT INTO order_product(
         USER_NO
         ,ORDER_PRICE
@@ -25,7 +32,7 @@
         ,ORDER_DATE
         )
         VALUES(
-        1,
+        #{ userNo },
         #{ totalOrderPrice },
         1,
         NULL,
@@ -34,20 +41,12 @@
     </insert>
 
     <select id="getLastOrderNo" resultType="_int">
-        SELECT
-        ORDER_NO
-        FROM
-        order_product
-        ORDER BY
-        ORDER_NO DESC
-        LIMIT
-        1;
+        SELECT AUTO_INCREMENT
+        FROM information_schema.tables
+        WHERE table_name = 'order_product';
     </select>
 
-
-
-
-    <insert id="insertOrderDetailAmount">
+    <insert id="insertOrderDetail">
         INSERT INTO order_details
         (
         OD_AMOUNT
@@ -57,13 +56,60 @@
         VALUES(
             #{ amount },
             #{ orderNo },
-            #{ no }
+            #{ productNo }
         )
     </insert>
 
+    <select id="inventoryOrderForm" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.ProductInputDTO" resultMap="inventoryResultMap">
+        SELECT  A.PRODUCT_NO
+        , A.PRODUCT_NAME
+        , B.INVENTORY_AMOUNT
+        , A.PRODUCT_PRICE
+        , D.COLOR_NAME
+        , E.SIZE_MM
+        , B.WH_ID
+        , A.IS_EXPIRE
+        FROM product A
+        JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
+        JOIN category C ON (A.CATEGORY_NO = C.CATEGORY_NO)
+        JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
+        JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
+        WHERE B.WH_ID = 1
+        AND A.PRODUCT_NAME LIKE CONCAT ('%',#{name},'%')
+        AND A.IS_EXPIRE LIKE 'N'
+    </select>
 
 
 
+    <select id="getProductNo" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.ProductInputDTO" resultType="_int">
+        SELECT
+        A.PRODUCT_NO
+        FROM product A
+        JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
+        JOIN category C ON (A.CATEGORY_NO = C.CATEGORY_NO)
+        JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
+        JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
+        JOIN user F ON (B.WH_ID = F.WH_ID)
+        WHERE A.PRODUCT_NAME LIKE CONCAT('%', #{ productName }, '%')
+        AND D.COLOR_NAME LIKE CONCAT('%', #{ color }, '%')
+        AND E.SIZE_MM = #{ size }
+        LIMIT 1;
+    </select>
+
+    <select id="getMaxAmount" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.ProductInputDTO" resultType="_int">
+        SELECT
+        B.INVENTORY_AMOUNT
+        FROM product A
+        JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
+        JOIN category C ON (A.CATEGORY_NO = C.CATEGORY_NO)
+        JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
+        JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
+        JOIN user F ON (B.WH_ID = F.WH_ID)
+        WHERE A.PRODUCT_NAME LIKE CONCAT('%', #{ productName }, '%')
+        AND D.COLOR_NAME LIKE CONCAT('%', #{ color }, '%')
+        AND E.SIZE_MM = #{ size }
+        LIMIT 1;
+    </select>
 
 
 
