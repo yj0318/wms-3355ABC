@@ -21,7 +21,6 @@ public class LoginView {
     private ManagerMenuView managerMenuView = new ManagerMenuView();
 
 
-
     public void loginFirstMenu() {
         Scanner sc = new Scanner(System.in);
         do {
@@ -35,7 +34,7 @@ public class LoginView {
                 case 1 :
                     loginMatch = headLoginFirstMenu();
                     user = loginController.headLoginSecondMenu(loginMatch);
-                    if (user.getUserType().equals("head")) {
+                    if (user != null && user.getUserType().equals("head")) {
                         System.out.println("본사 로그인 성공");
                         headMainMenu();
                     } else {
@@ -45,14 +44,14 @@ public class LoginView {
                 case 2:
                     loginMatch = branchLoginFirstMenu();
                     user = loginController.branchLoginSecondMenu(loginMatch);
-                    if (user.getUserType().equals("branch")) {
+                    if (user != null && user.getUserType().equals("branch")) {
                         System.out.println("가맹점 로그인 성공");
                         branchMainMenu(user.getUserId());
                     } else {
                         System.out.println("가맹점 로그인 실패");
                     }
                     break;
-                case 9:
+                case 0:
                     return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
@@ -155,7 +154,6 @@ public class LoginView {
         userAndWarehouse.setUserPassword(sc.nextLine());
         System.out.print("지점 종류: ");
         userAndWarehouse.setUserType(sc.nextLine());
-
         System.out.println("창고 정보를 입력하세요.");
         System.out.print("창고 이름: ");
         userAndWarehouse.setWhName(sc.nextLine());
@@ -170,7 +168,7 @@ public class LoginView {
     private void branchControl() {
         Scanner sc = new Scanner(System.in);
         System.out.println("1. 가맹점 추가");
-        System.out.println("2. 가맹점 삭제");
+        System.out.println("2. 이전 메뉴");
         System.out.print("관리할 메뉴 선택: ");
         int num = sc.nextInt();
         sc.nextLine();
@@ -181,11 +179,9 @@ public class LoginView {
                 addUserController.createNewBranch(newUserAndWarehouse);
                 break;
             case 2:
-                break;
+                return;
+            default:
+                System.out.println("잘못 입력하셨습니다.");
         }
-
-
     }
-
-
 }
