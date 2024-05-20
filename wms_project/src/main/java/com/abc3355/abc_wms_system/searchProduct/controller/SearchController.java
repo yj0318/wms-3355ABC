@@ -2,6 +2,7 @@ package com.abc3355.abc_wms_system.searchProduct.controller;
 
 import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
 import com.abc3355.abc_wms_system.searchProduct.model.service.SearchService;
+import com.abc3355.abc_wms_system.searchProduct.view.InventoryResultView;
 import com.abc3355.abc_wms_system.searchProduct.view.SearchResultView;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class SearchController {
 
     private SearchResultView resultView = new SearchResultView();
     private SearchService searchService = new SearchService();
+    private InventoryResultView invResultView = new InventoryResultView();
 
     public void searchAllProduct() {
             List<SearchProductDTO> list = searchService.searchAllProduct();
@@ -33,9 +35,7 @@ public class SearchController {
     public void searchZeroProduct() {
         List<SearchProductDTO> product = searchService.searchZeroProduct();
         if (product != null) {
-            for (SearchProductDTO searchProductDTO : product) {
                 resultView.searchZeroProduct(product);
-            }
         }else {
             System.out.println("ERROR");
         }
@@ -44,9 +44,7 @@ public class SearchController {
     public void searchProductName(String name) {
         List<SearchProductDTO> product = searchService.searchProductName(name);
         if (product != null) {
-            for (SearchProductDTO searchProductDTO : product) {
                 resultView.searchByName(product);
-            }
         }else {
             System.out.println("ERROR");
         }
@@ -67,8 +65,62 @@ public class SearchController {
         List<SearchProductDTO> product = searchService.searchProductCategory(category);
         if (product != null) {
             resultView.searchByCategory(product);
-        } else if (product == null || product.size() == 0) {
+        } else if (product == null) {
             System.out.println("카테고리를 다시 입력해주세요.");
+        }
+    }
+
+    public void searchAllInventory() {
+        List<InventoryDTO> list = searchService.searchAllInventory();
+        if (list != null) {
+            invResultView.showAllInventory(list);
+        } else {
+            System.out.println("상품이 없습니다.");
+        }
+    }
+
+    public void searchInvenByColor(String color) {
+        List<InventoryDTO> list = searchService.searchInvenByColor(color);
+        if (list != null) {
+            invResultView.searchByColor(list);
+        }if (list == null) {
+            System.out.println("색상을 다시 입력해주세요.");
+        }
+    }
+
+    public void searchZeroInventory() {
+        List<InventoryDTO> inventory = searchService.searchZeroInventory();
+        if (inventory != null) {
+                invResultView.showZeroInventory(inventory);
+        }else {
+            System.out.println("품절된 상품이 없습니다.");
+        }
+    }
+
+    public void searchInventoryName(String name) {
+        List<InventoryDTO> list = searchService.searchInventoryName(name);
+        if (list != null) {
+            invResultView.showInvenotryName(list);
+        }else {
+            System.out.println("알맞은 상품이 없습니다.");
+        }
+    }
+
+    public void searchInvenBySize(int size) {
+        List<InventoryDTO> list = searchService.searchInvenBySize(size);
+        if (list != null) {
+            invResultView.showInventorySize(list);
+        }else {
+            System.out.println("알맞은 사이즈가 없습니다.");
+        }
+    }
+
+    public void searchInvenByCategory(String category) {
+        List<InventoryDTO> list = searchService.searchInvenByCategory(category);
+        if (list != null) {
+            invResultView.showInventoryCategory(list);
+        }else {
+            System.out.println("알맞은 사이즈가 없습니다.");
         }
     }
 }

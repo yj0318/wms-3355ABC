@@ -5,52 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53c94116-ec2c-4349-a4fd-287cfaff5b4f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/NameMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/name-mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/controller/AddUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/InvColorMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/InvDetailMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/InvNameMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/InvZeroMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/InventoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/shoedb.qdgqyg.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dao/UserInsert/LoginMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dao/UserInsert/LoginMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/model/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dto/InventoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dto/InventoryDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/view/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/user/login-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/user/login-mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dto/OrderDetailResDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dto/OrderUpdateReqDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dto/StockAmountResDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/opTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/abc3355/abc_wms_system/orderProcess/mapper/OrderProcessMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/Product/dao/SearchMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/Product/dao/SearchMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderForm/model/dto/HeadDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderForm/model/dto/HeadDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/controller/OrderProcessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/controller/OrderProcessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dao/OrderProcessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/dao/OrderProcessMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/service/OrderProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/model/service/OrderProcessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/BranchesMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/BranchesMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/ManagerMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/ManagerMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/ResultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/orderProcess/view/ResultView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/orderProcess/order-process-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/orderProcess/order-process-mapper.xml" afterDir="false" />
-
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/SizeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/size-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/ColorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/ColorMapper.java" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/SearchMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/SearchMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/view/SearchMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/view/SearchMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/view/SearchResultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/view/SearchResultView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/color-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/color-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/search-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/search-mapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,12 +31,7 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="wms_project" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -106,55 +65,31 @@
     "Gradle.wms_project [:Application.main()].executor": "Run",
     "Gradle.wms_project [:MainTest.main()].executor": "Run",
     "Gradle.wms_project [:PTest.main()].executor": "Run",
-    "Gradle.wms_project [:Test.main()].executor": "Run",
-    "Gradle.wms_project [:opTest.main()].executor": "Run",
-    "Gradle.wms_project [:smTest.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature/orderprocess",
+    "git-widget-placeholder": "Merging feature/searchProduct",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/dev/04_mybatis/chap06-junit-lecture-source",
+    "last_opened_file_path": "/Users/kimmingyu/Desktop/dev/wms-3355ABC/wms_project/src/main/resources/sql/searchProduct",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
-
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.wms_project [:Application.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.wms_project [:PTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging feature/orderForm&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mysql"
     ]
   }
-
 }]]></component>
-  <component name="RunManager" selected="Application.Application">
-
-}</component>
-
-  <component name="RunManager" selected="Application.Application">
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/sql/searchProduct" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.abc3355.abc_wms_system.searchProduct.view" />
       <recent name="com.abc3355.abc_wms_system.searchProduct.model.dao" />
     </key>
   </component>
@@ -165,6 +100,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.abc3355.abc_wms_system.run.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.abc3355.abc_wms_system.searchProduct.MainTest" />
+      <module name="wms_project.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.abc3355.abc_wms_system.searchProduct.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -185,23 +133,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="smTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.abc3355.abc_wms_system.salesManager.smTest" />
-      <module name="wms_project.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.abc3355.abc_wms_system.salesManager.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-
-        <item itemvalue="Application.smTest" />
         <item itemvalue="Application.MainTest" />
         <item itemvalue="Application.Application" />
         <item itemvalue="Application.PTest" />
@@ -211,8 +144,6 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
-        <option value="jdk-17.0.10-temurin-17.0.10-4caba194b151-b3785831" />
         <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
         <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
@@ -240,14 +171,10 @@
       <workItem from="1716020648496" duration="81000" />
       <workItem from="1716020818144" duration="191000" />
       <workItem from="1716021092004" duration="32000" />
-
       <workItem from="1716091658013" duration="8836000" />
       <workItem from="1716101045381" duration="5166000" />
-
-      <workItem from="1716027312214" duration="31112000" />
-      <workItem from="1716093599829" duration="13982000" />
-      <workItem from="1716091658013" duration="8836000" />
-      <workItem from="1716101045381" duration="5166000" />
+      <workItem from="1716134620019" duration="2864000" />
+      <workItem from="1716165110855" duration="39000" />
     </task>
     <servers />
   </component>
