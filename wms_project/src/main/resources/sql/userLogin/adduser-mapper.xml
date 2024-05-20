@@ -32,5 +32,4 @@
         DELETE FROM warehouse_inf
         WHERE WH_ID = #{ no }
     </delete>
-    
 </mapper>
