@@ -8,6 +8,6 @@
         u.USER_TYPE AS userType, w.WH_NAME AS whName
         FROM user u
             JOIN warehouse_inf w ON u.WH_ID = w.WH_ID
-        WHERE u.USER_ID = #{ userId } AND u.USER_PASSWORD = #{ userPassword }
+        WHERE u.USER_ID = #{ userId } AND u.USER_PASSWORD = #{ userPassword } AND DELETE_STATUS = 'N'
     </select>
 </mapper>
