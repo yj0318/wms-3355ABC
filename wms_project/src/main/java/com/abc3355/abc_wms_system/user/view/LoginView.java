@@ -17,6 +17,7 @@ public class LoginView {
     public static UserDTO user;
     private static Map<String, String> loginMatch;
     private UserAndWarehouseDTO newUserAndWarehouse;
+    private UserAndWarehouseDTO deleteUserAndWarehouse;
 
     /*Controller선언 부분*/
     private LoginController loginController = new LoginController();
@@ -171,7 +172,8 @@ public class LoginView {
     private void branchControl() {
         Scanner sc = new Scanner(System.in);
         System.out.println("1. 가맹점 추가");
-        System.out.println("2. 이전 메뉴");
+        System.out.println("2. 가맹점 삭제");
+        System.out.println("3. 이전 메뉴");
         System.out.print("관리할 메뉴 선택: ");
         int num = sc.nextInt();
         sc.nextLine();
@@ -181,10 +183,24 @@ public class LoginView {
                 newUserAndWarehouse = inputBranch();
                 addUserController.createNewBranch(newUserAndWarehouse);
                 break;
-            case 2:
+            case 2: addUserController.deleteBranch(deleteBranch());
+            case 3:
                 return;
             default:
                 System.out.println("잘못 입력하셨습니다.");
         }
+    }
+
+    private Map<String, String> deleteBranch() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("현재 등록된 가맹점");
+        addUserController.showAllBranch();
+        System.out.print("삭제할 가맹점 번호: ");
+        String no = sc.nextLine();
+
+        Map<String, String> delete = new HashMap<>();
+        delete.put("no", no);
+
+        return delete;
     }
 }

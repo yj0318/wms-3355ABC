@@ -11,4 +11,8 @@ public interface AddUserMapper {
     void insertUser(UserAndWarehouseDTO userAndWarehouse);
 
     List<WarehouseInfoDTO> findAll();
+
+    int deleteUser(int no);
+
+    int deleteWarehouse(int no);
 }
