@@ -12,7 +12,7 @@ public class PrintResultView {
         System.out.printf("%s\t%s\n", "가맹점번호", "가맹점명");
         System.out.println("======================================");
         for (BranchDTO branch : list) {
-            System.out.printf("%d\t%s\n",
+            System.out.printf("%5d\t%5s\n",
                     branch.getBranchNo(),
                     branch.getBranchName()
             );
