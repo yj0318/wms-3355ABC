@@ -21,11 +21,9 @@
                 , A.PRODUCT_NAME
                 , A.PRODUCT_PRICE
                 , A.IS_EXPIRE
-                , B.WH_ID
                 , B.INVENTORY_AMOUNT
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
         WHERE B.INVENTORY_AMOUNT = 0
-
     </select>
 </mapper>
