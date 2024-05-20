@@ -1,6 +1,7 @@
 package com.abc3355.abc_wms_system.user.view;
 
 import com.abc3355.abc_wms_system.Product.view.ProductView;
+import com.abc3355.abc_wms_system.orderForm.view.OrderFormView;
 import com.abc3355.abc_wms_system.orderProcess.view.ManagerMenuView;
 import com.abc3355.abc_wms_system.salesManager.View.SalesManagerView;
 import com.abc3355.abc_wms_system.searchProduct.view.InventorySearchView;
@@ -112,11 +113,7 @@ public class LoginView {
                 case 1: managerMenuView.mainMenu(); break;
                 case 2: new InventorySearchView().searchMenu(); break;
                 case 3:
-                    try {
-                        productView.mainMenu();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    try { new ProductView().mainMenu();} catch (IOException e) { throw new RuntimeException(e);}
                     break;
                 case 4: SalesManagerView.SalesManagerMain(); break;
                 case 5: branchControl(); break;
@@ -142,9 +139,9 @@ public class LoginView {
             sc.nextLine();
             switch (menu){
                 case 1: new SearchMenuView().searchMenu(); break;
-                case 2: break;
+                case 2: new OrderFormView().orderFormMain();break;
                 case 3: new InventorySearchView().searchMenu(); break;
-                case 0:
+                case 4:
                     return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
