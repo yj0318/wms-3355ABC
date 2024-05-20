@@ -19,18 +19,23 @@
         FROM
         warehouse_inf w
             JOIN user u ON w.WH_ID = u.WH_ID
-        WHERE u.USER_TYPE = 'branch'
+        WHERE u.USER_TYPE = 'branch' AND DELETE_STATUS = 'N'
         ORDER BY
             w.wh_id
     </select>
 
-    <delete id="deleteUser">
+
+    <update id="deleteUser">
+        UPDATE user
+        SET DELETE_STATUS = 'Y'
+        WHERE USER_NO = #{ no }
+    </update>
+    <!--<delete id="deleteUser">
         DELETE FROM user
         WHERE USER_NO = #{ no }
-    </delete>
-    <delete id="deleteWarehouse">
+    </delete>-->
+    <!--<delete id="deleteWarehouse">
         DELETE FROM warehouse_inf
         WHERE WH_ID = #{ no }
-    </delete>
-    
+    </delete>-->
 </mapper>

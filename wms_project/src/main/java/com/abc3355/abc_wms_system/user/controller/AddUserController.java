@@ -19,6 +19,7 @@ public class AddUserController {
 
     public void createNewBranch(UserAndWarehouseDTO userAndWarehouse) {
         userAddService.createNewBranch(userAndWarehouse);
+        
     }
 
     public void showAllBranch() {

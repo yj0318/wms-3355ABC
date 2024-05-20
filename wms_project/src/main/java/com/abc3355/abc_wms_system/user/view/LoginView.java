@@ -26,6 +26,7 @@ public class LoginView {
     private LoginController loginController = new LoginController();
     private AddUserController addUserController = new AddUserController();
     private ManagerMenuView managerMenuView = new ManagerMenuView();
+    private ProductView productView = new ProductView();
 
 
     public void loginFirstMenu() {
@@ -104,21 +105,19 @@ public class LoginView {
             System.out.println("3. 상품관리");
             System.out.println("4. 매출관리");
             System.out.println("5. 가맹점관리");
-            System.out.println("9. 로그아웃");
+            System.out.println("0. 로그아웃");
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
             sc.nextLine();
             switch (menu){
-                case 1: break;
+                case 1: managerMenuView.mainMenu(); break;
                 case 2: new InventorySearchView().searchMenu(); break;
                 case 3:
                     try { new ProductView().mainMenu();} catch (IOException e) { throw new RuntimeException(e);}
                     break;
                 case 4: SalesManagerView.SalesManagerMain(); break;
-                case 5:
-                    branchControl();
-                    break;
-                case 9:
+                case 5: branchControl(); break;
+                case 0:
                     return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
@@ -134,7 +133,7 @@ public class LoginView {
             System.out.println("1. 상품조회");
             System.out.println("2. 주문서 작성");
             System.out.println("3. 재고 조회");
-            System.out.println("4. 로그아웃");
+            System.out.println("0. 로그아웃");
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
             sc.nextLine();
@@ -176,20 +175,22 @@ public class LoginView {
     /* 가맹점 관리 메소드 */
     private void branchControl() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("1. 가맹점 추가");
-        System.out.println("2. 가맹점 삭제");
-        System.out.println("3. 이전 메뉴");
+        System.out.println("1. 가맹점 조회");
+        System.out.println("2. 가맹점 추가");
+        System.out.println("3. 가맹점 삭제");
+        System.out.println("0. 이전 메뉴");
         System.out.print("관리할 메뉴 선택: ");
         int num = sc.nextInt();
         sc.nextLine();
 
         switch (num){
-            case 1:
+            case 1: addUserController.showAllBranch();
+            case 2:
                 newUserAndWarehouse = inputBranch();
                 addUserController.createNewBranch(newUserAndWarehouse);
                 break;
-            case 2: addUserController.deleteBranch(deleteBranch());
-            case 3:
+            case 3: addUserController.deleteBranch(deleteBranch());
+            case 0:
                 return;
             default:
                 System.out.println("잘못 입력하셨습니다.");
