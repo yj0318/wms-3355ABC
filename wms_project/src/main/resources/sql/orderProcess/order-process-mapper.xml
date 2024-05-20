@@ -66,7 +66,68 @@
 <!-- 상세 주문 조회 -->
 <select id="selectOrderDetails" parameterType="int"
         resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderDetailResDTO">
-    SELECT * FROM order_detail WHERE ORDER_NO = #{orderNo}
+    SELECT * FROM order_details WHERE ORDER_NO = #{orderNo}
 </select>
+
+<!-- 주문 상태 변경 -->
+<update id="updateOrderStatus" parameterType="int">
+    UPDATE order_product
+    SET ORDER_STATUS_NO = #{orderStatusNo}
+    WHERE ORDER_NO = #{orderNo}
+</update>
+
+<!-- 본사 재고 수량 확인 -->
+<select id="getStockAmount" parameterType="int" resultType="java.lang.Integer">
+    SELECT INVENTORY_AMOUNT
+    FROM inventory
+    WHERE PRODUCT_NO = #{productNo}
+    AND WH_ID = 1
+</select>
+
+<!-- 본사 재고량 변경 (-) -->
+<update id="updateHQInventoryAmount" parameterType="map">
+<!--    <foreach collection="orderDetails" item="detail" separator=";">-->
+<!--        UPDATE inventory-->
+<!--        SET INVENTORY_AMOUNT = INVENTORY_AMOUNT - #{detail.odAmount}-->
+<!--        WHERE PRODUCT_NO = #{detail.productNo}-->
+<!--    </foreach>-->
+<!--        AND WH_ID = (SELECT a.WH_ID-->
+<!--        FROM user a JOIN order_product b ON a.USER_NO = b.USER_NO-->
+<!--        WHERE b.ORDER_NO = #{orderNo}-->
+<!--        )-->
+    UPDATE inventory
+    SET INVENTORY_AMOUNT = INVENTORY_AMOUNT - #{odAmount}
+    WHERE PRODUCT_NO = #{productNo}
+    AND WH_ID = 1
+</update>
+
+<!-- 가맹점 창고에 이미 해당 상품의 정보가 담겨져 있는지 확인 -->
+<select id="selectInventoryData" parameterType="map" resultType="int">
+    SELECT COUNT(*)
+    FROM inventory
+    WHERE PRODUCT_NO = #{productNo}
+    AND WH_ID = (SELECT a.WH_ID
+    FROM user a JOIN order_product b ON a.USER_NO = b.USER_NO
+    WHERE b.ORDER_NO = #{orderNo})
+</select>
+
+<!-- 가맹점 재고량 변경 (+) -->
+<update id="updateBranchesInventoryAmount" parameterType="map">
+    UPDATE inventory
+    SET INVENTORY_AMOUNT = INVENTORY_AMOUNT + #{odAmount}
+    WHERE PRODUCT_NO = #{productNo}
+    AND WH_ID = (SELECT a.WH_ID
+    FROM user a JOIN order_product b ON a.USER_NO = b.USER_NO
+    WHERE b.ORDER_NO = #{orderNo}
+    )
+</update>
+
+<!-- 가맹점 재고 정보 추가 -->
+<insert id="insertBranchesInventoryAmount" parameterType="map">
+    INSERT INTO inventory (INVENTORY_AMOUNT, WH_ID, PRODUCT_NO)
+    VALUES (#{odAmount}, (SELECT a.WH_ID
+    FROM user a JOIN order_product b ON a.USER_NO = b.USER_NO
+    WHERE b.ORDER_NO = #{orderNo}), #{productNo});
+</insert>
 
 </mapper>

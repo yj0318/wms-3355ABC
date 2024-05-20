@@ -1,20 +1,22 @@
 package com.abc3355.abc_wms_system.searchProduct.model.dao;
 
-import com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO;
+import com.abc3355.abc_wms_system.searchProduct.model.dto.InventorySearchDTO;
 
 import java.util.List;
 
 public interface InvSearchMapper {
 
-    List<InventoryDTO> showAllInventory();
 
-    List<InventoryDTO> searchInvenByColor(String color);
+    List<InventorySearchDTO> showAllInventory();
 
-    List<InventoryDTO> searchInventorySize(int size);
+    List<InventorySearchDTO> searchInvenByColor(String color);
 
-    List<InventoryDTO> searchInventoryCategory(String category);
+    List<InventorySearchDTO> searchInventorySize(int size);
 
-    List<InventoryDTO> searchZeroInventory();
+    List<InventorySearchDTO> searchInventoryCategory(String category);
 
-    List<InventoryDTO> searchInventoryName(String name);
+    List<InventorySearchDTO> searchZeroInventory();
+
+    List<InventorySearchDTO> searchInventoryName(String name);
+
 }
