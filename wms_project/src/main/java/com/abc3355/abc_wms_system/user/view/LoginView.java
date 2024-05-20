@@ -11,9 +11,13 @@ import com.abc3355.abc_wms_system.user.model.dto.WarehouseInfoDTO;
 import java.util.*;
 
 public class LoginView {
+
+    public static UserDTO userHead;
+    public static UserDTO user;
     private LoginController loginController = new LoginController();
     private AddUserController addUserController = new AddUserController();
     private ManagerMenuView managerMenuView = new ManagerMenuView();
+
 
     public void loginFirstMenu() {
         Scanner sc = new Scanner(System.in);
@@ -27,7 +31,7 @@ public class LoginView {
             switch (no) {
                 case 1 :
                     Map<String, String> loginMatchHead = headLoginFirstMenu();
-                    UserDTO userHead = loginController.headLoginSecondMenu(loginMatchHead);
+                    userHead = loginController.headLoginSecondMenu(loginMatchHead);
                     if (userHead != null) {
                         System.out.println("본사 로그인 성공");
                         headMainMenu();
@@ -37,7 +41,7 @@ public class LoginView {
                     break;
                 case 2:
                     Map<String, String> loginMatch = branchLoginFirstMenu();
-                    UserDTO user = loginController.branchLoginSecondMenu(loginMatch);
+                    user = loginController.branchLoginSecondMenu(loginMatch);
                     if (user != null) {
                         System.out.println("가맹점 로그인 성공");
                         branchMainMenu(user.getUserId());
