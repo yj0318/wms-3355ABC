@@ -97,7 +97,7 @@ public class LoginView {
             System.out.println("3. 상품관리");
             System.out.println("4. 매출관리");
             System.out.println("5. 가맹점관리");
-            System.out.println("9. 이전 메뉴");
+            System.out.println("9. 로그아웃");
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
             sc.nextLine();
@@ -125,7 +125,7 @@ public class LoginView {
             System.out.println("1. 상품조회");
             System.out.println("2. 주문서 작성");
             System.out.println("3. 재고 조회");
-            System.out.println("4. 이전 메뉴");
+            System.out.println("4. 로그아웃");
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
             sc.nextLine();
