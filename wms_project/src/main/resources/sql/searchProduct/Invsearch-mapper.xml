@@ -33,12 +33,14 @@
         , D.COLOR_NAME
         , A.SIZE_NO
         , E.SIZE_MM
+        , B.WH_ID
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
         JOIN category C ON (A.CATEGORY_NO = C.CATEGORY_NO)
         JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
         JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
-        WHERE B.WH_ID = 1
+        JOIN user F ON (B.WH_ID = F.WH_ID)
+        WHERE F.USER_NO = #{user}
     </select>
 
     <select id="searchInvenByColor" resultMap="invSearchResultMap">
@@ -52,11 +54,13 @@
         , A.COLOR_NO
         , C.COLOR_NO
         , C.COLOR_NAME
+        , B.WH_ID
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
         JOIN color C ON (A.COLOR_NO = C.COLOR_NO)
-        WHERE B.WH_ID = 1
-        AND C.COLOR_NAME LIKE CONCAT (#{color})
+        JOIN user D ON (B.WH_ID = D.WH_ID)
+        WHERE D.USER_NO = #{param1}
+        AND C.COLOR_NAME LIKE CONCAT (#{param2})
     </select>
 
     <select id="searchInventorySize" resultMap="invSearchResultMap">
@@ -70,11 +74,13 @@
         , A.SIZE_NO
         , C.SIZE_NO
         , C.SIZE_MM
+        , B.WH_ID
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
         JOIN size C ON (A.SIZE_NO = C.SIZE_NO)
-        WHERE B.WH_ID = 1
-        AND C.SIZE_MM = (#{size})
+        JOIN user D ON (B.WH_ID = D.WH_ID)
+        WHERE D.USER_NO = #{param1}
+        AND C.SIZE_MM = (#{param2})
     </select>
 
     <select id="searchInventoryCategory" resultMap="invSearchResultMap">
@@ -87,11 +93,13 @@
         , A.CATEGORY_NO
         , C.CATEGORY_NO
         , C.CATEGORY_NAME
+        , B.WH_ID
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
         JOIN category C ON (A.CATEGORY_NO = C.CATEGORY_NO)
-        WHERE B.WH_ID = 1
-        AND C.CATEGORY_NAME LIKE CONCAT(#{category})
+        JOIN user D ON (B.WH_ID = D.WH_ID)
+        WHERE D.USER_NO = #{param1}
+        AND C.CATEGORY_NAME LIKE CONCAT(#{param2})
     </select>
 
     <select id="searchZeroInventory" resultMap="invSearchResultMap">
@@ -102,9 +110,11 @@
         , A.PRODUCT_PRICE
         , A.IS_EXPIRE
         , A.CATEGORY_NO
+        , B.WH_ID
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
-        WHERE B.WH_ID = 1
+        JOIN user D ON (B.WH_ID = D.WH_ID)
+        WHERE D.USER_NO = #{user}
         AND B.INVENTORY_AMOUNT = 0
     </select>
 
@@ -116,10 +126,12 @@
         , A.PRODUCT_PRICE
         , A.IS_EXPIRE
         , A.CATEGORY_NO
+        , B.WH_ID
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
-        WHERE B.WH_ID = 1
-        AND A.PRODUCT_NAME LIKE CONCAT ('%',#{name},'%')
+        JOIN user D ON (B.WH_ID = D.WH_ID)
+        WHERE D.USER_NO = #{param1}
+        AND A.PRODUCT_NAME LIKE CONCAT ('%',#{param2},'%')
     </select>
 
 </mapper>
