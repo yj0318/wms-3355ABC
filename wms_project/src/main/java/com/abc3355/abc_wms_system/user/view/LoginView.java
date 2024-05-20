@@ -159,9 +159,25 @@ public class LoginView {
     }
 
 
+    /* 가맹점 관리 메소드 */
     private void branchControl() {
-        UserAndWarehouseDTO newUserAndWarehouse = inputBranch();
-        addUserController.createNewBranch(newUserAndWarehouse);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. 가맹점 추가");
+        System.out.println("2. 가맹점 삭제");
+        System.out.print("관리할 메뉴 선택: ");
+        int num = sc.nextInt();
+        sc.nextLine();
+
+        switch (num){
+            case 1:
+                UserAndWarehouseDTO newUserAndWarehouse = inputBranch();
+                addUserController.createNewBranch(newUserAndWarehouse);
+                break;
+            case 2:
+                break;
+        }
+
+
     }
 
 

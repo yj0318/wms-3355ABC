@@ -2,6 +2,7 @@ package com.abc3355.abc_wms_system.user.service;
 
 import com.abc3355.abc_wms_system.user.model.dao.UserInsert.LoginMapper;
 import com.abc3355.abc_wms_system.user.model.dto.UserDTO;
+import com.abc3355.abc_wms_system.user.model.dto.WarehouseInfoDTO;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
