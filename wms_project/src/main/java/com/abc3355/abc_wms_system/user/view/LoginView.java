@@ -1,5 +1,7 @@
 package com.abc3355.abc_wms_system.user.view;
 
+import com.abc3355.abc_wms_system.Product.view.ProductView;
+import com.abc3355.abc_wms_system.orderForm.view.OrderFormView;
 import com.abc3355.abc_wms_system.orderProcess.view.ManagerMenuView;
 import com.abc3355.abc_wms_system.salesManager.View.SalesManagerView;
 import com.abc3355.abc_wms_system.searchProduct.view.InventorySearchView;
@@ -10,6 +12,7 @@ import com.abc3355.abc_wms_system.user.model.dto.UserAndWarehouseDTO;
 import com.abc3355.abc_wms_system.user.model.dto.UserDTO;
 import com.abc3355.abc_wms_system.user.model.dto.WarehouseInfoDTO;
 
+import java.io.IOException;
 import java.util.*;
 
 public class LoginView {
@@ -108,7 +111,9 @@ public class LoginView {
             switch (menu){
                 case 1: break;
                 case 2: new InventorySearchView().searchMenu(); break;
-                case 3: break;
+                case 3:
+                    try { new ProductView().mainMenu();} catch (IOException e) { throw new RuntimeException(e);}
+                    break;
                 case 4: SalesManagerView.SalesManagerMain(); break;
                 case 5:
                     branchControl();
@@ -135,8 +140,8 @@ public class LoginView {
             sc.nextLine();
             switch (menu){
                 case 1: new SearchMenuView().searchMenu(); break;
-                case 2: break;
-                case 3:  SalesManagerView.SalesManagerMain(); break;
+                case 2: new OrderFormView().orderFormMain();break;
+                case 3: new InventorySearchView().searchMenu(); break;
                 case 4:
                     return;
                 default:
