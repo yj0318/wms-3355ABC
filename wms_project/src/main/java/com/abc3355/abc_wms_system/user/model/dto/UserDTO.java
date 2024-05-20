@@ -12,5 +12,6 @@ public class UserDTO {
     private String userId;
     private String userPassword;
     private String userType;
+    private String deleteStatus;
     private int whId;
 }
