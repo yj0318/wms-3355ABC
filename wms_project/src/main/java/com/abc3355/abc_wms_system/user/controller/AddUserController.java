@@ -20,7 +20,6 @@ public class AddUserController {
         userAddService.createNewBranch(userAndWarehouse);
     }
 
-
     public void showAllBranch() {
         try {
             List<WarehouseInfoDTO> list = userAddService.findAll();
