@@ -28,8 +28,16 @@
         , A.PRODUCT_PRICE
         , A.IS_EXPIRE
         , A.CATEGORY_NO
+        , C.CATEGORY_NAME
+        , A.COLOR_NO
+        , D.COLOR_NAME
+        , A.SIZE_NO
+        , E.SIZE_MM
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
+        JOIN category C ON (A.CATEGORY_NO = C.CATEGORY_NO)
+        JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
+        JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
         WHERE B.WH_ID = 1
     </select>
 

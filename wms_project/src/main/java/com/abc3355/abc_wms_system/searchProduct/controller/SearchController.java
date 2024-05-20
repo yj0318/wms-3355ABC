@@ -28,7 +28,7 @@ public class SearchController {
         List<ProductSearchDTO> list = searchService.searchProductByColor(color);
         if (list != null) {
                 resultView.searchByColor(list);
-            }if (list == null) {
+            }else {
                 System.out.println("색상을 다시 입력해주세요.");
             }
     }
@@ -38,7 +38,7 @@ public class SearchController {
         if (product != null) {
                 resultView.searchZeroProduct(product);
         }else {
-            System.out.println("ERROR");
+            System.out.println("품절된 상품이 없습니다.");
         }
     }
 
@@ -47,7 +47,7 @@ public class SearchController {
         if (product != null) {
                 resultView.searchByName(product);
         }else {
-            System.out.println("ERROR");
+            System.out.println("검색한 상품이 존재하지 않습니다.");
         }
     }
 
@@ -55,10 +55,8 @@ public class SearchController {
         List<ProductSearchDTO> product = searchService.searchProductSize(size);
         if (product != null) {
                 resultView.searchBySize(product);
-            }if (product == null) {
+            }else {
             System.out.println("사이즈를 다시 입력해주세요");
-        }else {
-            System.out.println("ERROR");
         }
     }
 
@@ -66,7 +64,7 @@ public class SearchController {
         List<ProductSearchDTO> product = searchService.searchProductCategory(category);
         if (product != null) {
             resultView.searchByCategory(product);
-        } else if (product == null) {
+        } else {
             System.out.println("카테고리를 다시 입력해주세요.");
         }
     }
@@ -84,7 +82,7 @@ public class SearchController {
         List<InventorySearchDTO> list = searchService.searchInvenByColor(color);
         if (list != null) {
             invResultView.searchByColor(list);
-        }if (list == null) {
+        }else {
             System.out.println("색상을 다시 입력해주세요.");
         }
     }
@@ -112,7 +110,7 @@ public class SearchController {
         if (list != null) {
             invResultView.showInventorySize(list);
         }else {
-            System.out.println("알맞은 사이즈가 없습니다.");
+            System.out.println("알맞은 사이즈를 입력하세요.");
         }
     }
 
@@ -121,7 +119,7 @@ public class SearchController {
         if (list != null) {
             invResultView.showInventoryCategory(list);
         }else {
-            System.out.println("알맞은 사이즈가 없습니다.");
+            System.out.println("알맞은 카테고리를 입력하세요.");
         }
     }
 }
