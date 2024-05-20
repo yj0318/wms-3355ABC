@@ -21,7 +21,7 @@ public class LoginService {
     public UserDTO loginServiceHead(String userId, String userPassword) {
         try (SqlSession sqlSession = getSqlSession()) {
             LoginMapper loginMapper = sqlSession.getMapper(LoginMapper.class);
-            return loginMapper.getUserMatchHead(userId, userPassword);
+            return loginMapper.getUserMatch(userId, userPassword);
         }
     }
 }

@@ -12,11 +12,11 @@ import java.util.*;
 
 public class LoginView {
 
-    public static UserDTO userHead;
     public static UserDTO user;
     private LoginController loginController = new LoginController();
     private AddUserController addUserController = new AddUserController();
     private ManagerMenuView managerMenuView = new ManagerMenuView();
+    private static Map<String, String> loginMatch;
 
 
     public void loginFirstMenu() {
@@ -30,19 +30,19 @@ public class LoginView {
             sc.nextLine();
             switch (no) {
                 case 1 :
-                    Map<String, String> loginMatchHead = headLoginFirstMenu();
-                    userHead = loginController.headLoginSecondMenu(loginMatchHead);
-                    if (userHead != null) {
+                    loginMatch = headLoginFirstMenu();
+                    user = loginController.headLoginSecondMenu(loginMatch);
+                    if (user.getUserType().equals("head")) {
                         System.out.println("본사 로그인 성공");
                         headMainMenu();
                     } else {
-                        System.out.println("가맹점 로그인 실패");
+                        System.out.println("본사 로그인 실패");
                     }
                     break;
                 case 2:
-                    Map<String, String> loginMatch = branchLoginFirstMenu();
+                    loginMatch = branchLoginFirstMenu();
                     user = loginController.branchLoginSecondMenu(loginMatch);
-                    if (user != null) {
+                    if (user.getUserType().equals("branch")) {
                         System.out.println("가맹점 로그인 성공");
                         branchMainMenu(user.getUserId());
                     } else {
@@ -65,10 +65,10 @@ public class LoginView {
         String userId = sc.nextLine();
         System.out.print("PW: ");
         String userPassword = sc.nextLine();
-        Map<String, String> loginMatchHead = new HashMap<>();
-        loginMatchHead.put("userId", userId);
-        loginMatchHead.put("userPassword", userPassword);
-        return loginMatchHead;
+        Map<String, String> loginMatch = new HashMap<>();
+        loginMatch.put("userId", userId);
+        loginMatch.put("userPassword", userPassword);
+        return loginMatch;
     }
 
     /* 가맹점 로그인 화면 */

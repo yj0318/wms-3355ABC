@@ -13,9 +13,9 @@ public class LoginController {
 
     }
 
-    public UserDTO headLoginSecondMenu(Map<String, String> loginMatchHead) {
-        String userId = loginMatchHead.get("userId");
-        String userPassword = loginMatchHead.get("userPassword");
+    public UserDTO headLoginSecondMenu(Map<String, String> loginMatch) {
+        String userId = loginMatch.get("userId");
+        String userPassword = loginMatch.get("userPassword");
         return loginService.loginServiceHead(userId, userPassword);
     }
 
