@@ -14,6 +14,7 @@ public class LoginView {
 
     public static UserDTO user;
     private static Map<String, String> loginMatch;
+    private UserAndWarehouseDTO newUserAndWarehouse;
 
     /*Controller선언 부분*/
     private LoginController loginController = new LoginController();
@@ -175,7 +176,7 @@ public class LoginView {
 
         switch (num){
             case 1:
-                UserAndWarehouseDTO newUserAndWarehouse = inputBranch();
+                newUserAndWarehouse = inputBranch();
                 addUserController.createNewBranch(newUserAndWarehouse);
                 break;
             case 2:
