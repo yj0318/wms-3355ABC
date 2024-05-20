@@ -7,8 +7,10 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @ToString
-public class InputNoAndAmountDTO {
-    private int no;
+public class InsertNoAndAmountDTO {
+    private int userNo;
+    private int productNo;
     private int amount;
+    private int totalOrderPrice;
     private int orderNo;
 }
