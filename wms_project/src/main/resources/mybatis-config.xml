@@ -35,5 +35,10 @@
         <mapper resource="sql/searchProduct/zeroproduct-mapper.xml"/>
         <mapper resource="sql/searchProduct/name-mapper.xml"/>
         <mapper resource="sql/searchProduct/size-mapper.xml"/>
+        <mapper resource="sql/searchProduct/inventory-mapper.xml"/>
+        <mapper resource="sql/searchProduct/invcolor-mapper.xml"/>
+        <mapper resource="sql/searchProduct/invzero-mapper.xml"/>
+        <mapper resource="sql/searchProduct/invname-mapper.xml"/>
+        <mapper resource="sql/searchProduct/invdetail-mapper.xml"/>
     </mappers>
 </configuration>
