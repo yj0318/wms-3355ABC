@@ -11,9 +11,16 @@ import com.abc3355.abc_wms_system.user.model.dto.WarehouseInfoDTO;
 import java.util.*;
 
 public class LoginView {
+
+    public static UserDTO user;
+    private static Map<String, String> loginMatch;
+
+    /*Controller선언 부분*/
     private LoginController loginController = new LoginController();
     private AddUserController addUserController = new AddUserController();
     private ManagerMenuView managerMenuView = new ManagerMenuView();
+
+
 
     public void loginFirstMenu() {
         Scanner sc = new Scanner(System.in);
@@ -26,19 +33,19 @@ public class LoginView {
             sc.nextLine();
             switch (no) {
                 case 1 :
-                    Map<String, String> loginMatchHead = headLoginFirstMenu();
-                    UserDTO userHead = loginController.headLoginSecondMenu(loginMatchHead);
-                    if (userHead != null) {
+                    loginMatch = headLoginFirstMenu();
+                    user = loginController.headLoginSecondMenu(loginMatch);
+                    if (user.getUserType().equals("head")) {
                         System.out.println("본사 로그인 성공");
                         headMainMenu();
                     } else {
-                        System.out.println("가맹점 로그인 실패");
+                        System.out.println("본사 로그인 실패");
                     }
                     break;
                 case 2:
-                    Map<String, String> loginMatch = branchLoginFirstMenu();
-                    UserDTO user = loginController.branchLoginSecondMenu(loginMatch);
-                    if (user != null) {
+                    loginMatch = branchLoginFirstMenu();
+                    user = loginController.branchLoginSecondMenu(loginMatch);
+                    if (user.getUserType().equals("branch")) {
                         System.out.println("가맹점 로그인 성공");
                         branchMainMenu(user.getUserId());
                     } else {
@@ -61,10 +68,10 @@ public class LoginView {
         String userId = sc.nextLine();
         System.out.print("PW: ");
         String userPassword = sc.nextLine();
-        Map<String, String> loginMatchHead = new HashMap<>();
-        loginMatchHead.put("userId", userId);
-        loginMatchHead.put("userPassword", userPassword);
-        return loginMatchHead;
+        Map<String, String> loginMatch = new HashMap<>();
+        loginMatch.put("userId", userId);
+        loginMatch.put("userPassword", userPassword);
+        return loginMatch;
     }
 
     /* 가맹점 로그인 화면 */
@@ -159,9 +166,25 @@ public class LoginView {
     }
 
 
+    /* 가맹점 관리 메소드 */
     private void branchControl() {
-        UserAndWarehouseDTO newUserAndWarehouse = inputBranch();
-        addUserController.createNewBranch(newUserAndWarehouse);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. 가맹점 추가");
+        System.out.println("2. 가맹점 삭제");
+        System.out.print("관리할 메뉴 선택: ");
+        int num = sc.nextInt();
+        sc.nextLine();
+
+        switch (num){
+            case 1:
+                UserAndWarehouseDTO newUserAndWarehouse = inputBranch();
+                addUserController.createNewBranch(newUserAndWarehouse);
+                break;
+            case 2:
+                break;
+        }
+
+
     }
 
 

@@ -4,6 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="53c94116-ec2c-4349-a4fd-287cfaff5b4f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
     <list default="true" id="53c94116-ec2c-4349-a4fd-287cfaff5b4f" name="Changes" comment="conflict solved">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dto/InventoryDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
@@ -13,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2/storage_v2/_src_/schema/shoedb.qdgqyg.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/user/view/LoginView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/view/InventoryResultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/view/InventoryResultView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/dao/InvColorMapper.java" beforeDir="false" />
@@ -80,6 +87,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "feature/users",
     "git-widget-placeholder": "feature/searchProduct",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/kimmingyu/Desktop/dev/wms-3355ABC/wms_project",
@@ -157,8 +165,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-17.0.10-temurin-17.0.10-4caba194b151-b3785831" />
       </set>
     </attachedChunks>
   </component>
@@ -188,6 +195,7 @@
       <workItem from="1716101045381" duration="5166000" />
       <workItem from="1716134620019" duration="2864000" />
       <workItem from="1716165110855" duration="39000" />
+      <workItem from="1716170187350" duration="4543000" />
       <workItem from="1716167524212" duration="3841000" />
     </task>
     <servers />
