@@ -1,41 +1,48 @@
 package com.abc3355.abc_wms_system.orderForm.view;
+
 import com.abc3355.abc_wms_system.orderForm.controller.OrderFormController;
-import com.abc3355.abc_wms_system.orderForm.model.dto.BranchOrderFormDTO;
-import java.time.LocalDate;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 
-
-public class OrderFormView {
+public class OrderFormView{
     private OrderFormController orderFormController = new OrderFormController();
-    private Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
-    public void orderFormMain(){
-        String order = """
-                ========================
-                상품을 입력하시겠습니까?(Y/N)
-                ========================
-                """;
-        String input = sc.nextLine();
-        if(input.toUpperCase().equals("Y")){
-           orderFormController.insertOrder(orderFormView());
-        }else {
-            System.out.println("입력하지 않습니다.");
-        }
+
+    public void orderFormMain() {
+
+        do {
+            System.out.print("주문하시겠습니까(Y/N) ? ");
+            String input = sc.nextLine();
+
+            if (input.toUpperCase().equals("Y")) {
+
+                System.out.println("=================");
+                System.out.println("주문을 신청받겠습니다.");
+                System.out.println("=================");
+                orderFormController.insertOrderByNo(newOrderByNo()); //상품번호,수량를 입력받습니다.
+
+            } else {
+                System.out.println("주문신청이 취소되었습니다.");
+            }
+        } while (true);
     }
 
 
+    private Map<String, String> newOrderByNo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("상품번호을 입력하세요 :");
+        String no = sc.nextLine();
+        System.out.println("수량을 입력하세요 :");
+        String amount = sc.nextLine();
 
-
-    private BranchOrderFormDTO orderFormView(){
-
-        System.out.print("상품번호를 입력하세요 :");
-        int orderNo = sc.nextInt();
-        System.out.print("수량을 입력하세요 :");
-        int  orderAmount = sc.nextInt();
-        LocalDate orderDate = LocalDate.now();
-        return new BranchOrderFormDTO(orderNo,orderAmount,orderDate);
+        Map<String,String> parameter = new HashMap<>();
+        parameter.put("no",no);
+        parameter.put("amount",amount);
+        return parameter;
     }
-
 
 }
