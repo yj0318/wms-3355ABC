@@ -1,5 +1,6 @@
 package com.abc3355.abc_wms_system.searchProduct.controller;
 
+import com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO;
 import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
 import com.abc3355.abc_wms_system.searchProduct.model.service.SearchService;
 import com.abc3355.abc_wms_system.searchProduct.view.InventoryResultView;
@@ -27,7 +28,7 @@ public class SearchController {
         List<SearchProductDTO> list = searchService.searchProductByColor(color);
         if (list != null) {
                 resultView.searchByColor(list);
-            }if (list == null || list.size() == 0) {
+            }if (list == null) {
                 System.out.println("색상을 다시 입력해주세요.");
             }
     }
