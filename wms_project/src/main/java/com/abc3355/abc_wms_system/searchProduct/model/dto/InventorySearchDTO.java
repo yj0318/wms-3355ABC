@@ -7,7 +7,8 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class InventoryDTO {
+public class InventorySearchDTO {
+
     private int inventoryNo;
     private int inventoryAmount;
     private int whId;
@@ -21,7 +22,4 @@ public class InventoryDTO {
     private String colorName;
     private int sizeNo;
     private int sizeMm;
-    private SearchColorDTO colorDTO;
-    private SearchSizeDTO sizeDTO;
-    private SearchCategoryDTO categoryDTO;
 }

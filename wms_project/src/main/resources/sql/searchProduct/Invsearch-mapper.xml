@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.abc3355.abc_wms_system.searchProduct.model.dao.InvSearchMapper">
 
-    <resultMap id="invetorySearchResultMap" type="com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO">
+    <resultMap id="invSearchResultMap" type="com.abc3355.abc_wms_system.searchProduct.model.dto.InventorySearchDTO">
         <id property="productNo" column="PRODUCT_NO"/>
         <result property="productName" column="PRODUCT_NAME"/>
         <result property="inventoryAmount" column="INVENTORY_AMOUNT"/>
@@ -16,9 +16,11 @@
         <result property="categoryName" column="CATEGORY_NAME"/>
         <result property="sizeNo" column="SIZE_NO"/>
         <result property="sizeMm" column="SIZE_MM"/>
+        <result property="whId" column="WH_ID"/>
     </resultMap>
 
-    <select id="showAllInventory" resultMap="invetorySearchResultMap">
+
+    <select id="showAllInventory" resultMap="invSearchResultMap">
         SELECT A.PRODUCT_NO
         , B.PRODUCT_NO
         , A.PRODUCT_NAME
@@ -28,20 +30,18 @@
         , A.CATEGORY_NO
         , C.CATEGORY_NAME
         , A.COLOR_NO
-        , D.COLOR_NO
         , D.COLOR_NAME
         , A.SIZE_NO
-        , E.SIZE_NO
         , E.SIZE_MM
         FROM product A
-        LEFT JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
-        LEFT JOIN category C ON (A.CATEGORY_NO = C.CATEGORY_NO)
-        LEFT JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
-        LEFT JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
+        JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
+        JOIN category C ON (A.CATEGORY_NO = C.CATEGORY_NO)
+        JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
+        JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
         WHERE B.WH_ID = 1
     </select>
 
-    <select id="searchInvenByColor" resultMap="invetorySearchResultMap">
+    <select id="searchInvenByColor" resultMap="invSearchResultMap">
         SELECT A.PRODUCT_NO
         , B.PRODUCT_NO
         , A.PRODUCT_NAME
@@ -59,17 +59,17 @@
         AND C.COLOR_NAME LIKE CONCAT (#{color})
     </select>
 
-    <select id="searchInventorySize" resultMap="invetorySearchResultMap">
+    <select id="searchInventorySize" resultMap="invSearchResultMap">
         SELECT A.PRODUCT_NO
-                , B.PRODUCT_NO
-                , A.PRODUCT_NAME
-                , B.INVENTORY_AMOUNT
-                , A.PRODUCT_PRICE
-                , A.IS_EXPIRE
-                , A.CATEGORY_NO
-                , A.SIZE_NO
-                , C.SIZE_NO
-                , C.SIZE_MM
+        , B.PRODUCT_NO
+        , A.PRODUCT_NAME
+        , B.INVENTORY_AMOUNT
+        , A.PRODUCT_PRICE
+        , A.IS_EXPIRE
+        , A.CATEGORY_NO
+        , A.SIZE_NO
+        , C.SIZE_NO
+        , C.SIZE_MM
         FROM product A
         JOIN inventory B ON (A.PRODUCT_NO = B.PRODUCT_NO)
         JOIN size C ON (A.SIZE_NO = C.SIZE_NO)
@@ -77,7 +77,7 @@
         AND C.SIZE_MM = (#{size})
     </select>
 
-    <select id="searchInventoryCategory" resultMap="invetorySearchResultMap">
+    <select id="searchInventoryCategory" resultMap="invSearchResultMap">
         SELECT A.PRODUCT_NO
         , B.PRODUCT_NO
         , A.PRODUCT_NAME
@@ -94,7 +94,7 @@
         AND C.CATEGORY_NAME LIKE CONCAT(#{category})
     </select>
 
-    <select id="searchZeroInventory" resultMap="invetorySearchResultMap">
+    <select id="searchZeroInventory" resultMap="invSearchResultMap">
         SELECT A.PRODUCT_NO
         , B.PRODUCT_NO
         , A.PRODUCT_NAME
@@ -108,7 +108,7 @@
         AND B.INVENTORY_AMOUNT = 0
     </select>
 
-    <select id="searchInventoryName" resultMap="invetorySearchResultMap">
+    <select id="searchInventoryName" resultMap="invSearchResultMap">
         SELECT A.PRODUCT_NO
         , B.PRODUCT_NO
         , A.PRODUCT_NAME
