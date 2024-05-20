@@ -1,7 +1,6 @@
 package com.abc3355.abc_wms_system.searchProduct.model.service;
 
 import com.abc3355.abc_wms_system.searchProduct.model.dao.*;
-import com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO;
 import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
 import org.apache.ibatis.session.SqlSession;
 

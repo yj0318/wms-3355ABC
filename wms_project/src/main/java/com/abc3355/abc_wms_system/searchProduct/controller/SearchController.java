@@ -1,6 +1,5 @@
 package com.abc3355.abc_wms_system.searchProduct.controller;
 
-import com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO;
 import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
 import com.abc3355.abc_wms_system.searchProduct.model.service.SearchService;
 import com.abc3355.abc_wms_system.searchProduct.view.InventoryResultView;
