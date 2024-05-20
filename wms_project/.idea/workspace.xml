@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53c94116-ec2c-4349-a4fd-287cfaff5b4f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dao/InvDetailMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/invdetail-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dto/InventoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/model/dto/InventoryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/view/InventoryResultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/view/InventoryResultView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/view/InventorySearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/SearchProduct/view/InventorySearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/abc3355/abc_wms_system/searchProduct/model/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/invcolor-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/searchProduct/invcolor-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/271e8f11-b214-4690-a3a5-7da150d52dc2.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +22,7 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="wms_project" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
