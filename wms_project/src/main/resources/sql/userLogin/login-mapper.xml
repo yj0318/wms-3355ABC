@@ -8,11 +8,6 @@
         u.USER_TYPE AS userType, w.WH_NAME AS whName
         FROM user u
             JOIN warehouse_inf w ON u.WH_ID = w.WH_ID
-        WHERE u.USER_ID = #{ userId } AND u.USER_PASSWORD = #{ userPassword } AND USER_TYPE = 'branch'
-    </select>
-    <select id="getUserMatchHead" parameterType="map" resultType="com.abc3355.abc_wms_system.user.model.dto.UserDTO">
-        SELECT USER_NO, USER_ID, USER_PASSWORD, USER_TYPE, WH_ID
-        FROM user
-        WHERE USER_ID = #{ userId } AND USER_PASSWORD = #{ userPassword } AND USER_TYPE = 'head'
+        WHERE u.USER_ID = #{ userId } AND u.USER_PASSWORD = #{ userPassword }
     </select>
 </mapper>
