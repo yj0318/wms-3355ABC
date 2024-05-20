@@ -7,6 +7,4 @@ public class Application {
         LoginView loginView = new LoginView();
         loginView.loginFirstMenu();
     }
-
-
 }

@@ -24,7 +24,7 @@
                 , B.COLOR_NAME
         FROM product A
         JOIN color B ON (A.COLOR_NO = B.COLOR_NO)
-        WHERE B.COLOR_NAME LIKE CONCAT (#{name})
+        WHERE B.COLOR_NAME LIKE CONCAT (#{color})
     </select>
 
 </mapper>
