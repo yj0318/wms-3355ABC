@@ -7,7 +7,7 @@ public class opTest {
     public static void main(String[] args) {
         ManagerMenuView managerMenuView = new ManagerMenuView();
         managerMenuView.mainMenu();
-//        BranchesMenuView branchesMenuView = new BranchesMenuView();
+        BranchesMenuView branchesMenuView = new BranchesMenuView();
 //        branchesMenuView.mainMenu();
     }
 }
