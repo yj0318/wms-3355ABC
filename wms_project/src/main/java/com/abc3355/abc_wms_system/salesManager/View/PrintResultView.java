@@ -1,24 +1,44 @@
 package com.abc3355.abc_wms_system.salesManager.View;
 
-import com.abc3355.abc_wms_system.salesManager.model.dto.BranchDTO;
-import com.abc3355.abc_wms_system.salesManager.model.dto.OrderDTO;
-import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
+import com.abc3355.abc_wms_system.salesManager.model.dto.*;
 
 import java.util.List;
 
 public class PrintResultView {
 
-    public void printBranchList(List<BranchDTO> branchList) {
+    public void printBranchList(List<BranchDTO> list) {
 
-        for(BranchDTO branch : branchList) {
-            System.out.println(branch);
+        System.out.println("======================================");
+        System.out.printf("%s\t%s\n", "가맹점번호", "가맹점명");
+        System.out.println("======================================");
+        for (BranchDTO branch : list) {
+            System.out.printf("%d\t%s\n",
+                    branch.getBranchNo(),
+                    branch.getBranchName()
+            );
+        }
+    }
+
+    public void printOrder(List<SelectBranchOrderDTO> list) {
+        System.out.println("==================================================================================================");
+        System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n", "주문번호", "가맹점번호", "가맹점명", "주문총액", "주문상태", "상세주문내용");
+        System.out.println("==================================================================================================");
+        for (SelectBranchOrderDTO order : list) {
+            System.out.printf("%d\t%d\t%s\t%d\t%s\t%s\n",
+                    order.getOrderNo(),
+                    order.getUserNO(),
+                    order.getUserName(),
+                    order.getOrderPrice(),
+                    order.getOrderStatusName(),
+                    order.getOrderDate()
+            );
         }
     }
 
 
     public void printAllOrder(List<OrderDTO> list) {
         System.out.println("==================================================================================================");
-        System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n", "주문번호", "사용자번호", "사용자명", "주문총액", "주문상태", "상세주문내용");
+        System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\n", "주문번호", "주문날짜", "가맹점번호", "가맹점명", "주문총액", "주문상태", "상세주문내용");
         System.out.println("==================================================================================================");
         for (OrderDTO order : list) {
             System.out.printf("%d\t%s\t%d\t%s\t%d\t%s\t%s\n",
@@ -33,23 +53,36 @@ public class PrintResultView {
         }
     }
 
+    public void printProductList(List<ProductDTO> list) {
+        System.out.println("==================================================================================================");
+        System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n", "상품번호", "상품명", "단종여부", "색상", "사이즈", "카테고리");
+        System.out.println("==================================================================================================");
+        for (ProductDTO product : list) {
+            System.out.printf("%d\t%s\t%d\t%s\t%s\t%s\t%s\n",
+                    product.getProductNo(),
+                    product.getProductName(),
+                    product.getProductPrice(),
+                    product.getIsExpire(),
+                    product.getColorName(),
+                    product.getSizeName(),
+                    product.getCategoryName()
+            );
+        }
+    }
 
-    // 성공과 실패에 대한 내용
-//    public void printErrorMessage(String errorCode) {
-//
-//        String errorMessage = "";
-//        switch (errorCode) {
-//            case "errorText":
-//                errorMessage = "❌잘못된 값을 입력했습니다❌ 다시 입력해주세요. ";
-//                break;
-//            case "orderList":
-//                errorMessage = "❌주문 조회를 실패했습니다 ❌";
-//                break;
-//            case "amountList":
-//                errorMessage = "❌출고량 조회를 실패했습니다 ❌";
-//                break;
-//        }
-//        System.out.println(errorMessage);
-//    }
+    public void printProductSale(List<SelectProductSaleDTO> list) {
+        System.out.println("==================================================================================================");
+        System.out.printf("%s\t%s\t%s\t%s\t%s\n", "상품번호", "상품명", "상품단가", "총 출고 수량", "총액");
+        System.out.println("==================================================================================================");
+        for (SelectProductSaleDTO product : list) {
+            System.out.printf("%d\t%s\t%d\t%d\t%d\n",
+                    product.getProductNo(),
+                    product.getProductName(),
+                    product.getProductPrice(),
+                    product.getAmount(),
+                    product.getTotalPrice()
+            );
+        }
+    }
 
 }
