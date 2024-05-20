@@ -8,6 +8,7 @@ import com.abc3355.abc_wms_system.user.view.WarehouseNameView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AddUserController {
     private final UserAddService userAddService;
@@ -26,6 +27,16 @@ public class AddUserController {
             WarehouseNameView.displayUserList(list);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void deleteBranch(Map<String, String> delete) {
+        int no = Integer.parseInt(delete.get("no"));
+
+        if(userAddService.deleteBranch(no)){
+            System.out.println("삭제했습니다.");
+        } else {
+            System.out.println("삭제 실패했습니다.");
         }
     }
 }
