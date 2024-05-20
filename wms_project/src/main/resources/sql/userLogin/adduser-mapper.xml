@@ -15,7 +15,7 @@
 
     <select id="findAll" resultType="WarehouseInfoDTO">
         SELECT
-         w.wh_name
+         w.wh_id,w.wh_name
         FROM
         warehouse_inf w
             JOIN user u ON w.WH_ID = u.WH_ID
@@ -23,4 +23,14 @@
         ORDER BY
             w.wh_id
     </select>
+
+    <delete id="deleteUser">
+        DELETE FROM user
+        WHERE USER_NO = #{ no }
+    </delete>
+    <delete id="deleteWarehouse">
+        DELETE FROM warehouse_inf
+        WHERE WH_ID = #{ no }
+    </delete>
+    
 </mapper>

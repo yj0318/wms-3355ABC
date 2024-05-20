@@ -11,7 +11,7 @@ public class WarehouseNameView {
         }
         else {
             for(WarehouseInfoDTO warehouseInfoDTO : list) {
-                System.out.println(warehouseInfoDTO.getWhName());
+                System.out.println(warehouseInfoDTO.getWhId() + "  " + warehouseInfoDTO.getWhName());
             }
         }
     }
