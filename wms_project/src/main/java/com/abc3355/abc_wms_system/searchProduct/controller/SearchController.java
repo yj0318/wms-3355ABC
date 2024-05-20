@@ -1,7 +1,7 @@
 package com.abc3355.abc_wms_system.searchProduct.controller;
 
-import com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO;
-import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
+import com.abc3355.abc_wms_system.searchProduct.model.dto.InventorySearchDTO;
+import com.abc3355.abc_wms_system.searchProduct.model.dto.ProductSearchDTO;
 import com.abc3355.abc_wms_system.searchProduct.model.service.SearchService;
 import com.abc3355.abc_wms_system.searchProduct.view.InventoryResultView;
 import com.abc3355.abc_wms_system.searchProduct.view.SearchResultView;
@@ -15,7 +15,7 @@ public class SearchController {
     private InventoryResultView invResultView = new InventoryResultView();
 
     public void searchAllProduct() {
-            List<SearchProductDTO> list = searchService.searchAllProduct();
+            List<ProductSearchDTO> list = searchService.searchAllProduct();
 
             if (list != null) {
                 resultView.searchProductList(list);
@@ -25,7 +25,7 @@ public class SearchController {
     }
 
     public void searchProductByColor(String color) {
-        List<SearchProductDTO> list = searchService.searchProductByColor(color);
+        List<ProductSearchDTO> list = searchService.searchProductByColor(color);
         if (list != null) {
                 resultView.searchByColor(list);
             }if (list == null) {
@@ -34,7 +34,7 @@ public class SearchController {
     }
 
     public void searchZeroProduct() {
-        List<SearchProductDTO> product = searchService.searchZeroProduct();
+        List<ProductSearchDTO> product = searchService.searchZeroProduct();
         if (product != null) {
                 resultView.searchZeroProduct(product);
         }else {
@@ -43,7 +43,7 @@ public class SearchController {
     }
 
     public void searchProductName(String name) {
-        List<SearchProductDTO> product = searchService.searchProductName(name);
+        List<ProductSearchDTO> product = searchService.searchProductName(name);
         if (product != null) {
                 resultView.searchByName(product);
         }else {
@@ -52,7 +52,7 @@ public class SearchController {
     }
 
     public void searchProductBySize(int size) {
-        List<SearchProductDTO> product = searchService.searchProductSize(size);
+        List<ProductSearchDTO> product = searchService.searchProductSize(size);
         if (product != null) {
                 resultView.searchBySize(product);
             }if (product == null) {
@@ -63,7 +63,7 @@ public class SearchController {
     }
 
     public void searchProductByCategory(String category) {
-        List<SearchProductDTO> product = searchService.searchProductCategory(category);
+        List<ProductSearchDTO> product = searchService.searchProductCategory(category);
         if (product != null) {
             resultView.searchByCategory(product);
         } else if (product == null) {
@@ -72,7 +72,7 @@ public class SearchController {
     }
 
     public void searchAllInventory() {
-        List<InventoryDTO> list = searchService.searchAllInventory();
+        List<InventorySearchDTO> list = searchService.searchAllInventory();
         if (list != null) {
             invResultView.showAllInventory(list);
         } else {
@@ -81,7 +81,7 @@ public class SearchController {
     }
 
     public void searchInvenByColor(String color) {
-        List<InventoryDTO> list = searchService.searchInvenByColor(color);
+        List<InventorySearchDTO> list = searchService.searchInvenByColor(color);
         if (list != null) {
             invResultView.searchByColor(list);
         }if (list == null) {
@@ -90,7 +90,7 @@ public class SearchController {
     }
 
     public void searchZeroInventory() {
-        List<InventoryDTO> inventory = searchService.searchZeroInventory();
+        List<InventorySearchDTO> inventory = searchService.searchZeroInventory();
         if (inventory != null) {
                 invResultView.showZeroInventory(inventory);
         }else {
@@ -99,7 +99,7 @@ public class SearchController {
     }
 
     public void searchInventoryName(String name) {
-        List<InventoryDTO> list = searchService.searchInventoryName(name);
+        List<InventorySearchDTO> list = searchService.searchInventoryName(name);
         if (list != null) {
             invResultView.showInvenotryName(list);
         }else {
@@ -108,7 +108,7 @@ public class SearchController {
     }
 
     public void searchInvenBySize(int size) {
-        List<InventoryDTO> list = searchService.searchInvenBySize(size);
+        List<InventorySearchDTO> list = searchService.searchInvenBySize(size);
         if (list != null) {
             invResultView.showInventorySize(list);
         }else {
@@ -117,7 +117,7 @@ public class SearchController {
     }
 
     public void searchInvenByCategory(String category) {
-        List<InventoryDTO> list = searchService.searchInvenByCategory(category);
+        List<InventorySearchDTO> list = searchService.searchInvenByCategory(category);
         if (list != null) {
             invResultView.showInventoryCategory(list);
         }else {
