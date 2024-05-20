@@ -1,5 +1,6 @@
 package com.abc3355.abc_wms_system.user.view;
 
+import com.abc3355.abc_wms_system.orderProcess.view.BranchesMenuView;
 import com.abc3355.abc_wms_system.orderProcess.view.ManagerMenuView;
 import com.abc3355.abc_wms_system.salesManager.View.SalesManagerView;
 import com.abc3355.abc_wms_system.user.controller.AddUserController;
@@ -21,6 +22,7 @@ public class LoginView {
     private LoginController loginController = new LoginController();
     private AddUserController addUserController = new AddUserController();
     private ManagerMenuView managerMenuView = new ManagerMenuView();
+    private BranchesMenuView branchesMenuView = new BranchesMenuView();
 
 
     public void loginFirstMenu() {
@@ -104,7 +106,7 @@ public class LoginView {
             int menu = sc.nextInt();
             sc.nextLine();
             switch (menu){
-                case 1: break;
+                case 1: managerMenuView.mainMenu();break;
                 case 2: break;
                 case 3: break;
                 case 4: SalesManagerView.SalesManagerMain(); break;
@@ -126,16 +128,19 @@ public class LoginView {
         while (true){
             System.out.println("1. 상품조회");
             System.out.println("2. 주문서 작성");
-            System.out.println("3. 재고 조회");
-            System.out.println("4. 로그아웃");
+            System.out.println("3. 주문 관리");
+            System.out.println("4. 재고 조회");
+            System.out.println("5. 로그아웃");
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
             sc.nextLine();
             switch (menu){
                 case 1: break;
                 case 2: break;
-                case 3: break;
+                case 3: branchesMenuView.mainMenu(); break;
                 case 4:
+                    break;
+                case 5:
                     return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
