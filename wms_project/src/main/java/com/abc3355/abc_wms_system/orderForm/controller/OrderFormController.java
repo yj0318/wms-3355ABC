@@ -1,6 +1,6 @@
 package com.abc3355.abc_wms_system.orderForm.controller;
 
-import com.abc3355.abc_wms_system.orderForm.model.dto.InputNoAndAmountDTO;
+import com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO;
 import com.abc3355.abc_wms_system.orderForm.model.service.OrderFormService;
 import com.abc3355.abc_wms_system.orderForm.view.PrintResult;
 
@@ -17,13 +17,13 @@ public class OrderFormController {
         int no = Integer.parseInt(parameter.get("no"));
         int amount = Integer.parseInt(parameter.get("amount"));
 
-        InputNoAndAmountDTO input = new InputNoAndAmountDTO();
+        InsertNoAndAmountDTO input = new InsertNoAndAmountDTO();
         input.setNo(no);
         input.setAmount(amount);
 
         int totalOrderPrice = orderFormService.getTotalOrderPrice(input);
         int orderNo = orderFormService.getLastOrderNo();
-
+//        int noInt = getProductNo(parameter);   // 민규님, [(type Map<String,String>) name,color,size] 드릴테니 int no를 돌려주세요.
 
         input.setOrderNo(orderNo);
 

@@ -37,6 +37,7 @@
         <mapper resource="sql/searchProduct/size-mapper.xml"/>
         <mapper resource="sql/salesManager/salesManager-mapper.xml"/>
         <mapper resource="sql/searchProduct/invsearch-mapper.xml"/>
+        <mapper resource="sql/searchProduct/productsearch-mapper.xml"/>
         <mapper resource="sql/orderForm/orderform-mapper.xml"/>
     </mappers>
 </configuration>

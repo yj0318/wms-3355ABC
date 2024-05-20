@@ -1,7 +1,7 @@
 package com.abc3355.abc_wms_system.orderForm.model.service;
 
 import com.abc3355.abc_wms_system.orderForm.model.dao.OrderFormMapper;
-import com.abc3355.abc_wms_system.orderForm.model.dto.InputNoAndAmountDTO;
+import com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO;
 import org.apache.ibatis.session.SqlSession;
 
 import static com.abc3355.abc_wms_system.common.MyBatisTemplate.getSqlSession;
@@ -27,7 +27,7 @@ public class OrderFormService {
 
     }
 
-    public Boolean insertOrderDetailAmount(InputNoAndAmountDTO input) {
+    public Boolean insertOrderDetailAmount(InsertNoAndAmountDTO input) {
         SqlSession sqlSession = getSqlSession();
         orderFormMapper = sqlSession.getMapper(OrderFormMapper.class);
 
@@ -44,7 +44,7 @@ public class OrderFormService {
 
     }
 
-    public int getTotalOrderPrice(InputNoAndAmountDTO input){
+    public int getTotalOrderPrice(InsertNoAndAmountDTO input){
         SqlSession sqlSession = getSqlSession();
         orderFormMapper = sqlSession.getMapper(OrderFormMapper.class);
 
