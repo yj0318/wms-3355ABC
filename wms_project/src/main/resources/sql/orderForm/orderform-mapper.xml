@@ -5,13 +5,66 @@
 <mapper namespace="com.abc3355.abc_wms_system.orderForm.model.dao.OrderFormMapper">
 
 
-        <insert id="insertOrder" useGeneratedKeys="true" keyProperty="menuCode">
-            insert into
-            order_details
-            values (
-            null, #{menuName}, #{menuPrice}, #{categoryCode}, #{orderableStatus}
-            )
-        </insert>
+<!--    <resultMap id="priceResultMap" type="com.abc3355.abc_wms_system.orderForm.model.dto.OrderAllInfoDTO">-->
+<!--    <id property="order_price" column="TOTAL"/>-->
+<!--    </resultMap>-->
+
+    <select id="getTotalOrderPrice" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputNoAndAmountDTO" resultType="_int">
+        SELECT
+        PRODUCT_PRICE * #{ amount } TOTAL
+        FROM product
+        WHERE PRODUCT_NO = #{ no }
+    </select>
+
+    <insert id="insertOrderByTotalPrice">
+        INSERT INTO order_product(
+        USER_NO
+        ,ORDER_PRICE
+        ,ORDER_STATUS_NO
+        ,ORDER_DETAIL
+        ,ORDER_DATE
+        )
+        VALUES(
+        1,
+        #{ totalOrderPrice },
+        1,
+        NULL,
+        NOW()
+        )
+    </insert>
+
+    <select id="getLastOrderNo" resultType="_int">
+        SELECT
+        ORDER_NO
+        FROM
+        order_product
+        ORDER BY
+        ORDER_NO DESC
+        LIMIT
+        1;
+    </select>
+
+
+
+
+    <insert id="insertOrderDetailAmount">
+        INSERT INTO order_details
+        (
+        OD_AMOUNT
+        ,ORDER_NO
+        ,PRODUCT_NO
+        )
+        VALUES(
+            #{ amount },
+            #{ orderNo },
+            #{ no }
+        )
+    </insert>
+
+
+
+
+
 
 
 </mapper>
