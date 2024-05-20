@@ -6,15 +6,15 @@ import java.util.List;
 
 public interface InvSearchMapper {
 
-    List<InventorySearchDTO> showAllInventory();
+    List<InventorySearchDTO> showAllInventory(int user);
 
-    List<InventorySearchDTO> searchInvenByColor(String color);
+    List<InventorySearchDTO> searchInvenByColor(int user,String color);
 
-    List<InventorySearchDTO> searchInventorySize(int size);
+    List<InventorySearchDTO> searchInventorySize(int user, int size);
 
-    List<InventorySearchDTO> searchInventoryCategory(String category);
+    List<InventorySearchDTO> searchInventoryCategory(int user, String category);
 
-    List<InventorySearchDTO> searchZeroInventory();
+    List<InventorySearchDTO> searchZeroInventory(int user);
 
-    List<InventorySearchDTO> searchInventoryName(String name);
+    List<InventorySearchDTO> searchInventoryName(int user, String name);
 }

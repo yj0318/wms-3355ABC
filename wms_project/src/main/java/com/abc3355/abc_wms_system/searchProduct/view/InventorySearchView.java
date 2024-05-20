@@ -1,6 +1,7 @@
 package com.abc3355.abc_wms_system.searchProduct.view;
 
 import com.abc3355.abc_wms_system.searchProduct.controller.SearchController;
+import com.abc3355.abc_wms_system.user.view.LoginView;
 
 import java.util.Scanner;
 
@@ -23,10 +24,10 @@ public class InventorySearchView {
             System.out.print(menu);
             String select = sc.next();
             switch (select) {
-                case "1" : searchController.searchAllInventory(); break;
+                case "1" : searchController.searchAllInventory(userNum()); break;
                 case "2" : detailInventoryMenu(); break;
-                case "3" : searchController.searchZeroInventory(); break;
-                case "4" : searchController.searchInventoryName(inputName()); break;
+                case "3" : searchController.searchZeroInventory(userNum()); break;
+                case "4" : searchController.searchInventoryName(userNum(),inputName()); break;
                 case "0" : return;
                 default:
                     System.out.println("올바른 숫자를 입력하세요. ");
@@ -55,9 +56,9 @@ public class InventorySearchView {
             System.out.print(menu);
             String select = sc.next();
             switch (select) {
-                case "1" : searchController.searchInvenByColor(inputColor()); break;
-                case "2" : searchController.searchInvenBySize(inputSize()); break;
-                case "3" : searchController.searchInvenByCategory(inputCategory()); break;
+                case "1" : searchController.searchInvenByColor(userNum(),inputColor()); break;
+                case "2" : searchController.searchInvenBySize(userNum(),inputSize()); break;
+                case "3" : searchController.searchInvenByCategory(userNum(), inputCategory()); break;
                 case "0" : return;
                 default:
                     System.out.println("올바른 숫자를 입력하세요. ");
@@ -85,5 +86,9 @@ public class InventorySearchView {
         String color = sc.nextLine();
         color = color.toUpperCase();
         return color;
+    }
+
+    private int userNum() {
+        return LoginView.user.getUserNo();
     }
 }
