@@ -1,11 +1,8 @@
 package com.abc3355.abc_wms_system.orderForm.view;
 
 import com.abc3355.abc_wms_system.orderForm.controller.OrderFormController;
-import com.abc3355.abc_wms_system.orderForm.model.dto.InputDataDTO;
 
 import java.util.*;
-
-import static com.abc3355.abc_wms_system.user.view.LoginView.user;
 
 
 public class OrderFormView {
@@ -15,24 +12,23 @@ public class OrderFormView {
 
     public void orderFormMain() {
 
-        do {
-            System.out.print("주문하시겠습니까(Y/N) ? ");
+            System.out.print("주문하시겠습니까(Y 그외 취소) ? ");
             String input = sc.nextLine();
 
             if (input.toUpperCase().equals("Y")) {
-//                orderFormController.insertOrderByNo(inputNewOrder()); //상품번호,수량를 입력받습니다.
-                do{
-                if(inputNewOrder() != null) {
-                    orderFormController.insertOrderByNo(inputNewOrder()); // 입력한 상품 한 줄이 테이블에 insert됨
-                }
-                    System.out.println("상품을 추가 주문하시겠습니까(Y/N) ? ");
+
+            do{
+                    if(inputNewOrder().get("amount") != null) {
+                    orderFormController.insertOrderByNo(inputNewOrder()); // 입력한 상품 한 줄이 테이블에 insert 하는 컨트롤러
+                    }
+                    System.out.println("상품을 추가 주문하시겠습니까(취소:N) ? ");
                     if (input.toUpperCase().equals("N")) {
-                        break; }
+                        break;
+                    }
                 } while (true);
             } else {
                 System.out.println("주문신청이 취소되었습니다.");
             }
-        } while (true);
     }
 
 
@@ -82,14 +78,14 @@ public class OrderFormView {
         do {
             System.out.println("수량을 입력하세요 :");
             String amount = sc.nextLine();
+            parameter.put("amount","amount");
 
             /* 민규님, 수량을 줄테니 재고랑 비교해서 '참이면 1, 거짓이면 0' 돌려주세요. */
-            int result = orderFormController.checkInvAmount(amount);
+            int result = orderFormController.checkInvAmount(parameter);
 
             if (result == 0) {
                 System.out.println("해당 수량은 주문 불가합니다. 다시 입력해주세요.");
             } else {
-                parameter.put("amount","amount");
                 break;
             }
         } while (true);
