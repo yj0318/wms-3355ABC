@@ -4,7 +4,7 @@ import com.abc3355.abc_wms_system.searchProduct.model.dto.InventorySearchDTO;
 
 import java.util.List;
 
-public class InventoryResultView {
+public class                   InventoryResultView {
     public void showAllInventory(List<InventorySearchDTO> list) {
         System.out.println("=================================================================================================");
         System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", "상품코드", "상품명", "재고현황" , "가격", "단종유무", "카테고리", "색상", "사이즈(mm)","창고번호");
