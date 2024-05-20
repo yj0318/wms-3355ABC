@@ -9,6 +9,8 @@ public class MainTest {
 //        new SearchMenuView().searchMenu();
         new InventorySearchView().searchMenu();
         //진짜캐시삭제함
+        //진짜캐시삭제함
+        //진짜캐시삭제함
 
     }
 }
