@@ -1,4 +1,4 @@
-package com.abc3355.abc_wms_system.user.run;
+package com.abc3355.abc_wms_system.run;
 
 import com.abc3355.abc_wms_system.user.view.LoginView;
 
@@ -7,7 +7,4 @@ public class Application {
         LoginView loginView = new LoginView();
         loginView.loginFirstMenu();
     }
-
-
-
 }

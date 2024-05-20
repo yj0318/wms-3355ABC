@@ -24,7 +24,8 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="sql/user/login-mapper.xml"/>
+        <mapper resource="sql/userLogin/login-mapper.xml"/>
+        <mapper resource="sql/userLogin/adduser-mapper.xml"/>
         <mapper resource="sql/product/product-mapper.xml"/>
         <mapper resource="sql/product/inventorypp-mapper.xml"/>
         <mapper resource="sql/product/storestatus-mapper.xml"/>
@@ -34,5 +35,7 @@
         <mapper resource="sql/searchProduct/zeroproduct-mapper.xml"/>
         <mapper resource="sql/searchProduct/name-mapper.xml"/>
         <mapper resource="sql/searchProduct/size-mapper.xml"/>
+        <mapper resource="sql/salesManager/salesManager-mapper.xml"/>
+        <mapper resource="sql/searchProduct/invsearch-mapper.xml"/>
     </mappers>
 </configuration>

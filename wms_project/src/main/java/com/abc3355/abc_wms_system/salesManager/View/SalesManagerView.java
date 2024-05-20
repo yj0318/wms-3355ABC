@@ -2,6 +2,7 @@ package com.abc3355.abc_wms_system.salesManager.View;
 
 import com.abc3355.abc_wms_system.salesManager.controller.SalesManagerController;
 import com.abc3355.abc_wms_system.salesManager.model.dto.BranchDTO;
+import com.abc3355.abc_wms_system.salesManager.model.dto.ProductDTO;
 import com.abc3355.abc_wms_system.salesManager.model.service.SalesManagerService;
 
 import java.util.HashMap;
@@ -15,25 +16,69 @@ public class SalesManagerView {
 
         Scanner sc = new Scanner(System.in);
         SalesManagerController smController = new SalesManagerController();
+        SalesManagerService smService = new SalesManagerService();
 
         do {
             System.out.println("=========== 매출관리 메뉴 ============");
             System.out.println("1. 가맹점별 주문량 조회");
-            System.out.println("2. 전체 주문 내역 조회");
-            System.out.println("3. 전체 상품별 출고량 조회");
+            System.out.println("2. 출고 주문 전체 조회");
+            System.out.println("3. 상품별 출고량 조회");
             System.out.println("9. 이전 메뉴로");
             System.out.print("메뉴 번호를 입력하세요 : ");
             int no = sc.nextInt();
 
             switch(no) {
                 case 1 : smController.selectByBranchAndDate(inputCode());break;
-                case 2 : break;
-                case 3 : break;
+                case 2 : smController.selectAllOrder();break;
+                case 3 : selectProductOrAll(); break;
                 case 9 : return;
                 default:
                     System.out.println("잘못된 값입니다. 다시 입력해주세요.");
             }
         } while(true);
+    }
+
+    private static void selectProductOrAll() {
+        Scanner sc = new Scanner(System.in);
+        SalesManagerController smController = new SalesManagerController();
+
+        int no = 0;
+        System.out.println("=========== 상품별 출고량 조회 조건 설정 ============");
+        System.out.print("특정 상품을 선택하시려면 예를 입력하세요. (그 외 전체 검색) : ");
+
+        if(sc.nextLine().equals("예")) { smController.selectProductSale(inputProduct());}
+        else {smController.selectProductSale(no);}
+
+        }
+
+
+    /**
+     * 조회할 상품 정보를 입력 받음
+     * @return
+     */
+    private static int inputProduct() {
+        Scanner sc = new Scanner(System.in);
+        SalesManagerService smService = new SalesManagerService();
+        SalesManagerController smController = new SalesManagerController();
+        PrintResultView printResultView = new PrintResultView();
+
+        List<ProductDTO> product = smService.getAllProduct();
+        int no;
+
+        do {
+            System.out.println("=========== 조회할 가맹점 선택 ============");
+            printResultView.printProductList(product);         // 상품 리스트 노출
+            System.out.print("상품 번호를 입력하세요 : ");
+            no = sc.nextInt();
+            sc.nextLine();
+
+            if (no <= 0 && no > product.size() ) {
+                System.out.println("잘못된 값입니다. 다시 입력해주세요.");
+            } else {
+                break;
+            }
+        } while (true);
+        return no;
     }
 
     /**
@@ -43,7 +88,7 @@ public class SalesManagerView {
 
         Scanner sc = new Scanner(System.in);
         SalesManagerService smService = new SalesManagerService();
-        PrintResult printResult = new PrintResult();
+        PrintResultView printResultView = new PrintResultView();
 
         Map<String, String> parameter = new HashMap<>();
 
@@ -52,7 +97,7 @@ public class SalesManagerView {
 
 
             System.out.println("=========== 조회할 가맹점 선택 ============");
-            printResult.printBranchList(branch);         // 가맹점 리스트 노출
+            printResultView.printBranchList(branch);         // 가맹점 리스트 노출
             System.out.print("가맹점 번호를 입력하세요 : ");
             int no = sc.nextInt();
             sc.nextLine();
