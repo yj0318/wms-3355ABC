@@ -10,6 +10,8 @@ public class InventorySearchView {
 
     public void searchMenu() {
         String menu = """
+
+                    [재고 조회]
                 ==================
                 1. 전체 재고 조회
                 2. 상세 재고 조회
@@ -42,7 +44,7 @@ public class InventorySearchView {
 
     private void detailInventoryMenu() {
         String menu = """
-                    [상세 조회]
+                   [상세 재고 조회]
                 ==================
                 1. 색상으로 조회
                 2. 사이즈로 조회

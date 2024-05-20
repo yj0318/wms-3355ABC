@@ -10,6 +10,7 @@ public class SearchMenuView {
 
     public void searchMenu() {
         String menu = """
+                    [상품 조회]
                 ==================
                 1. 전체 상품 조회
                 2. 상세 상품 조회
@@ -43,7 +44,7 @@ public class SearchMenuView {
 
     private void detailSearchMenu() {
         String menu = """
-                    [상세 조회]
+                  [상세 상품 조회]
                 ==================
                 1. 색상으로 조회
                 2. 사이즈로 조회
