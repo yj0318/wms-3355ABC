@@ -2,9 +2,11 @@ package com.abc3355.abc_wms_system.orderForm.model.service;
 
 import com.abc3355.abc_wms_system.orderForm.model.dao.OrderFormMapper;
 import com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO;
+import com.abc3355.abc_wms_system.orderForm.model.dto.InventoryConditionDTO;
 import com.abc3355.abc_wms_system.orderForm.model.dto.ProductInputDTO;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.abc3355.abc_wms_system.common.MyBatisTemplate.getSqlSession;
@@ -110,6 +112,16 @@ public class OrderFormService {
 
         sqlSession.close();
         return getMaxAmount;
+    }
+
+    public List<InventoryConditionDTO> printInvByProductName(String name) {
+        SqlSession sqlSession = getSqlSession();
+        orderFormMapper = sqlSession.getMapper(OrderFormMapper.class);
+
+        List<InventoryConditionDTO> list = orderFormMapper.inventoryOrderForm(name);
+
+        sqlSession.close();
+        return list;
     }
 }
 

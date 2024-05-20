@@ -18,11 +18,19 @@ public class OrderFormView {
             if (input.toUpperCase().equals("Y")) {
 
             do{
-                    if(inputNewOrder().get("amount") != null) {
-                    orderFormController.insertOrderByNo(inputNewOrder()); // 입력한 상품 한 줄이 테이블에 insert 하는 컨트롤러
+                Map<String,String> para = new HashMap<>();
+                para = inputNewOrder();
+                    if(para.get("amount") != null) {
+                        System.out.print("name : " + para.get("name")+ ", ");
+                        System.out.print("color : " + para.get("color")+ ", ");
+                        System.out.print("size : " + para.get("size")+ ", ");
+                        System.out.println("amount : " + para.get("amount"));
+
+                    orderFormController.insertOrderByNo(para); // 입력한 상품 한 줄이 테이블에 insert 하는 컨트롤러
                     }
                     System.out.println("상품을 추가 주문하시겠습니까(취소:N) ? ");
-                    if (input.toUpperCase().equals("N")) {
+                    String next = sc.nextLine();
+                    if (next.toUpperCase().equals("N")) {
                         break;
                     }
                 } while (true);
@@ -50,7 +58,7 @@ public class OrderFormView {
             System.out.println("상품명을 입력하세요 : ");
             String name = sc.nextLine();
             parameter.put("name",name);
-            /* 민규님, 검색한 정보에 맞는 상세 정보(상품명, 단가, 재고수량, 옵션색상, 옵션사이즈) 출력해주세요. */
+
             if (orderFormController.printInvByProductName(name) == 0) {
                 System.out.println("검색한 상품이 존재하지 않습니다. 다시 검색해주세요.");
             } else {
@@ -62,12 +70,13 @@ public class OrderFormView {
         do {
             System.out.println("색상과 사이즈를 입력하세요(예: RED, 230) :");
             String[] strArr = (sc.nextLine()).split(", ");
+            parameter.put("color",strArr[0]);
+            parameter.put("size",strArr[1]);
 
-            /* 입력한 옵션 값이 정상적인지 확인 '참이면 1, 거짓이면 0' */
-            if (orderFormController.checkOpt(strArr[0], strArr[1]) == 0) {
+            if (orderFormController.checkOpt(parameter) == 0) {
                 System.out.println("선택한 옵션이 존재하지 않습니다. 다시 검색해주세요.");
             } else {
-                parameter.put("color",strArr[0]);
+                parameter.put("color",strArr[0].toUpperCase());
                 parameter.put("size",strArr[1]);
                 break;
             }
@@ -78,7 +87,7 @@ public class OrderFormView {
         do {
             System.out.println("수량을 입력하세요 :");
             String amount = sc.nextLine();
-            parameter.put("amount","amount");
+            parameter.put("amount",amount);
 
             /* 민규님, 수량을 줄테니 재고랑 비교해서 '참이면 1, 거짓이면 0' 돌려주세요. */
             int result = orderFormController.checkInvAmount(parameter);
@@ -93,5 +102,4 @@ public class OrderFormView {
 
         return parameter;
     }
-
 }
