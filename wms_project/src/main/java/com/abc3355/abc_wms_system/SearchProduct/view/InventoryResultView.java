@@ -1,20 +1,24 @@
 package com.abc3355.abc_wms_system.searchProduct.view;
 
+import com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO;
+
 import java.util.List;
 
 public class InventoryResultView {
     public void showAllInventory(List<InventoryDTO> list) {
-        System.out.println("===================================================================");
-        System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n", "상품코드", "상품명", "재고" , "가격", "단종유무", "카테고리");
-        System.out.println("===================================================================");
+        System.out.println("=================================================================================================");
+        System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", "상품코드", "상품명", "재고" , "가격", "단종유무", "카테고리", "색상", "사이즈(mm)");
+        System.out.println("=================================================================================================");
         for (InventoryDTO inventoryDTO : list) {
-            System.out.printf("%d\t%s\t%d\t%d\t%s\t%s\n",
+            System.out.printf("%d\t%s\t%d\t%d\t%s\t%s\t%s\t%d\n",
                     inventoryDTO.getProductNo(),
                     inventoryDTO.getProductName(),
                     inventoryDTO.getInventoryAmount(),
                     inventoryDTO.getProductPrice(),
                     inventoryDTO.getIsExpire(),
-                    inventoryDTO.getCategoryName()
+                    inventoryDTO.getCategoryName(),
+                    inventoryDTO.getColorName(),
+                    inventoryDTO.getSizeMm()
             );
         }
     }
