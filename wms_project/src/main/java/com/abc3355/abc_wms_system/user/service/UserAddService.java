@@ -22,6 +22,7 @@ public class UserAddService {
 
             addUserMapper.insertUser(userAndWarehouse);
             sqlSession.commit();
+
         } catch (Exception e) {
             sqlSession.rollback();
             throw new RuntimeException(e);
