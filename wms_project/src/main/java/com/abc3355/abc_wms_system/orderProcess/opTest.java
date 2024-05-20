@@ -1,3 +1,4 @@
+/*
 package com.abc3355.abc_wms_system.orderProcess;
 
 import com.abc3355.abc_wms_system.orderProcess.view.BranchesMenuView;
@@ -11,3 +12,4 @@ public class opTest {
 //        branchesMenuView.mainMenu();
     }
 }
+*/
