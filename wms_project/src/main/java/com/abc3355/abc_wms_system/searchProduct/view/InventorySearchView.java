@@ -10,6 +10,7 @@ public class InventorySearchView {
 
     public void searchMenu() {
         String menu = """
+
                     [재고 조회]
                 ==================
                 1. 전체 재고 조회

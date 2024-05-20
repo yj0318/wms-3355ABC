@@ -3,7 +3,6 @@ package com.abc3355.abc_wms_system.orderProcess.model.dto;
 
 import lombok.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -11,5 +10,8 @@ import lombok.*;
 public class OrderUpdateReqDTO {
 
     private int orderNo;
-    private String action;
+
+    public OrderUpdateReqDTO(int orderNo) {
+        this.orderNo = orderNo;
+    }
 }
