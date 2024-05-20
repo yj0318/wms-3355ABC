@@ -1,8 +1,9 @@
 package com.abc3355.abc_wms_system.searchProduct.model.service;
 
-import com.abc3355.abc_wms_system.searchProduct.model.dao.*;
-import com.abc3355.abc_wms_system.searchProduct.model.dto.InventoryDTO;
-import com.abc3355.abc_wms_system.searchProduct.model.dto.SearchProductDTO;
+import com.abc3355.abc_wms_system.searchProduct.model.dao.InvSearchMapper;
+import com.abc3355.abc_wms_system.searchProduct.model.dao.ProductSearchMapper;
+import com.abc3355.abc_wms_system.searchProduct.model.dto.InventorySearchDTO;
+import com.abc3355.abc_wms_system.searchProduct.model.dto.ProductSearchDTO;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
@@ -11,98 +12,98 @@ import static com.abc3355.abc_wms_system.common.MyBatisTemplate.getSqlSession;
 
 public class SearchService {
 
-    public List<SearchProductDTO> searchAllProduct() {
+    public List<ProductSearchDTO> searchAllProduct() {
         SqlSession sqlSession = getSqlSession();
-        SearchMapper searchMapper = sqlSession.getMapper(SearchMapper.class);
-        List<SearchProductDTO> list = searchMapper.searchAllProduct();
+        ProductSearchMapper productSearchMapper = sqlSession.getMapper(ProductSearchMapper.class);
+        List<ProductSearchDTO> list = productSearchMapper.searchAllProduct();
         sqlSession.close();
         return list;
     }
 
-    public List<SearchProductDTO> searchProductByColor(String colors) {
+    public List<ProductSearchDTO> searchProductByColor(String colors) {
         SqlSession sqlSession = getSqlSession();
-        ColorMapper colorMapper = sqlSession.getMapper(ColorMapper.class);
-        List<SearchProductDTO> productList = colorMapper.searchProductByColor(colors);
+        ProductSearchMapper productSearchMapper = sqlSession.getMapper(ProductSearchMapper.class);
+        List<ProductSearchDTO> productList = productSearchMapper.searchProductByColor(colors);
         sqlSession.close();
         return productList;
     }
 
-    public List<SearchProductDTO> searchZeroProduct() {
+    public List<ProductSearchDTO> searchZeroProduct() {
         SqlSession sqlSession = getSqlSession();
-        ZeroProductMapper zeroProductMapper = sqlSession.getMapper(ZeroProductMapper.class);
-        List<SearchProductDTO> zeroList = zeroProductMapper.searchZeroProduct();
+        ProductSearchMapper productSearchMapper = sqlSession.getMapper(ProductSearchMapper.class);
+        List<ProductSearchDTO> zeroList = productSearchMapper.searchZeroProduct();
         sqlSession.close();
         return zeroList;
     }
 
-    public List<SearchProductDTO> searchProductName(String name) {
+    public List<ProductSearchDTO> searchProductName(String name) {
         SqlSession sqlSession = getSqlSession();
-        NameMapper nameMapper = sqlSession.getMapper(NameMapper.class);
-        List<SearchProductDTO> nameList = nameMapper.searchByName(name);
+        ProductSearchMapper productSearchMapper = sqlSession.getMapper(ProductSearchMapper.class);
+        List<ProductSearchDTO> nameList = productSearchMapper.searchByName(name);
         sqlSession.close();
         return nameList;
     }
 
-    public List<SearchProductDTO> searchProductSize(int size) {
+    public List<ProductSearchDTO> searchProductSize(int size) {
         SqlSession sqlSession = getSqlSession();
-        SizeMapper sizeMapper = sqlSession.getMapper(SizeMapper.class);
-        List<SearchProductDTO> sizeList = sizeMapper.searchBySize(size);
+        ProductSearchMapper productSearchMapper = sqlSession.getMapper(ProductSearchMapper.class);
+        List<ProductSearchDTO> sizeList = productSearchMapper.searchBySize(size);
         sqlSession.close();
         return sizeList;
     }
 
-    public List<SearchProductDTO> searchProductCategory(String category) {
+    public List<ProductSearchDTO> searchProductCategory(String category) {
         SqlSession sqlSession = getSqlSession();
-        SearchMapper categoryMapper = sqlSession.getMapper(SearchMapper.class);
-        List<SearchProductDTO> categoryList = categoryMapper.searchByCategory(category);
+        ProductSearchMapper productSearchMapper = sqlSession.getMapper(ProductSearchMapper.class);
+        List<ProductSearchDTO> categoryList = productSearchMapper.searchByCategory(category);
         sqlSession.close();
         return categoryList;
     }
 
-    public List<InventoryDTO> searchAllInventory() {
+    public List<InventorySearchDTO> searchAllInventory(int user) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventoryDTO> list = invSearchMapper.showAllInventory();
+        List<InventorySearchDTO> list = invSearchMapper.showAllInventory(user);
         sqlSession.close();
         return list;
     }
 
-    public List<InventoryDTO> searchInvenByColor(String color) {
+    public List<InventorySearchDTO> searchInvenByColor(int user,String color) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventoryDTO> colors = invSearchMapper.searchInvenByColor(color);
+        List<InventorySearchDTO> colors = invSearchMapper.searchInvenByColor(user, color);
         sqlSession.close();
         return colors;
     }
 
-    public List<InventoryDTO> searchZeroInventory() {
+    public List<InventorySearchDTO> searchZeroInventory(int user) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventoryDTO> zero = invSearchMapper.searchZeroInventory();
+        List<InventorySearchDTO> zero = invSearchMapper.searchZeroInventory(user);
         sqlSession.close();
         return zero;
     }
 
-    public List<InventoryDTO> searchInventoryName(String name) {
+    public List<InventorySearchDTO> searchInventoryName(int user, String name) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventoryDTO> names = invSearchMapper.searchInventoryName(name);
+        List<InventorySearchDTO> names = invSearchMapper.searchInventoryName(user,name);
         sqlSession.close();
         return names;
     }
 
-    public List<InventoryDTO> searchInvenBySize(int size) {
+    public List<InventorySearchDTO> searchInvenBySize(int user, int size) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventoryDTO> siezs = invSearchMapper.searchInventorySize(size);
+        List<InventorySearchDTO> siezs = invSearchMapper.searchInventorySize(user, size);
         sqlSession.close();
         return siezs;
     }
 
-    public List<InventoryDTO> searchInvenByCategory(String category) {
+    public List<InventorySearchDTO> searchInvenByCategory(int user, String category) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventoryDTO> categorys = invSearchMapper.searchInventoryCategory(category);
+        List<InventorySearchDTO> categorys = invSearchMapper.searchInventoryCategory(user, category);
         sqlSession.close();
         return categorys;
     }
