@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface InvSearchMapper {
 
+
     List<InventorySearchDTO> showAllInventory();
 
     List<InventorySearchDTO> searchInvenByColor(String color);
@@ -17,4 +18,5 @@ public interface InvSearchMapper {
     List<InventorySearchDTO> searchZeroInventory();
 
     List<InventorySearchDTO> searchInventoryName(String name);
+
 }
