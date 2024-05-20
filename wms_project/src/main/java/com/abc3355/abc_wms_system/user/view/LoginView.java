@@ -29,12 +29,12 @@ public class LoginView {
                     Map<String, String> loginMatchHead = headLoginFirstMenu();
                     UserDTO userHead = loginController.headLoginSecondMenu(loginMatchHead);
                     if (userHead != null) {
-                    System.out.println("본사 로그인 성공");
-                    headMainMenu();
-                } else {
-                    System.out.println("가맹점 로그인 실패");
-                }
-                break;
+                        System.out.println("본사 로그인 성공");
+                        headMainMenu();
+                    } else {
+                        System.out.println("가맹점 로그인 실패");
+                    }
+                    break;
                 case 2:
                     Map<String, String> loginMatch = branchLoginFirstMenu();
                     UserDTO user = loginController.branchLoginSecondMenu(loginMatch);
