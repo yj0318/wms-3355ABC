@@ -1,6 +1,7 @@
 package com.abc3355.abc_wms_system.searchProduct.model.service;
 
-import com.abc3355.abc_wms_system.searchProduct.model.dao.*;
+import com.abc3355.abc_wms_system.searchProduct.model.dao.InvSearchMapper;
+import com.abc3355.abc_wms_system.searchProduct.model.dao.ProductSearchMapper;
 import com.abc3355.abc_wms_system.searchProduct.model.dto.InventorySearchDTO;
 import com.abc3355.abc_wms_system.searchProduct.model.dto.ProductSearchDTO;
 import org.apache.ibatis.session.SqlSession;
@@ -59,50 +60,50 @@ public class SearchService {
         return categoryList;
     }
 
-    public List<InventorySearchDTO> searchAllInventory() {
+    public List<InventorySearchDTO> searchAllInventory(int user) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventorySearchDTO> list = invSearchMapper.showAllInventory();
+        List<InventorySearchDTO> list = invSearchMapper.showAllInventory(user);
         sqlSession.close();
         return list;
     }
 
-    public List<InventorySearchDTO> searchInvenByColor(String color) {
+    public List<InventorySearchDTO> searchInvenByColor(int user,String color) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventorySearchDTO> colors = invSearchMapper.searchInvenByColor(color);
+        List<InventorySearchDTO> colors = invSearchMapper.searchInvenByColor(user, color);
         sqlSession.close();
         return colors;
     }
 
-    public List<InventorySearchDTO> searchZeroInventory() {
+    public List<InventorySearchDTO> searchZeroInventory(int user) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventorySearchDTO> zero = invSearchMapper.searchZeroInventory();
+        List<InventorySearchDTO> zero = invSearchMapper.searchZeroInventory(user);
         sqlSession.close();
         return zero;
     }
 
-    public List<InventorySearchDTO> searchInventoryName(String name) {
+    public List<InventorySearchDTO> searchInventoryName(int user, String name) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventorySearchDTO> names = invSearchMapper.searchInventoryName(name);
+        List<InventorySearchDTO> names = invSearchMapper.searchInventoryName(user,name);
         sqlSession.close();
         return names;
     }
 
-    public List<InventorySearchDTO> searchInvenBySize(int size) {
+    public List<InventorySearchDTO> searchInvenBySize(int user, int size) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventorySearchDTO> siezs = invSearchMapper.searchInventorySize(size);
+        List<InventorySearchDTO> siezs = invSearchMapper.searchInventorySize(user, size);
         sqlSession.close();
         return siezs;
     }
 
-    public List<InventorySearchDTO> searchInvenByCategory(String category) {
+    public List<InventorySearchDTO> searchInvenByCategory(int user, String category) {
         SqlSession sqlSession = getSqlSession();
         InvSearchMapper invSearchMapper = sqlSession.getMapper(InvSearchMapper.class);
-        List<InventorySearchDTO> categorys = invSearchMapper.searchInventoryCategory(category);
+        List<InventorySearchDTO> categorys = invSearchMapper.searchInventoryCategory(user, category);
         sqlSession.close();
         return categorys;
     }
