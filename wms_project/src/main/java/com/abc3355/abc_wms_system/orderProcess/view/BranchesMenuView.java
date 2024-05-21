@@ -1,18 +1,21 @@
 package com.abc3355.abc_wms_system.orderProcess.view;
 
+import com.abc3355.abc_wms_system.orderForm.view.OrderFormView;
 import com.abc3355.abc_wms_system.orderProcess.controller.OrderProcessController;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.GetOrderDetailDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
+import com.abc3355.abc_wms_system.user.view.LoginView;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class BranchesMenuView {
     private final OrderProcessController orderProcessController = new OrderProcessController();
+    private final OrderFormView orderFormView = new OrderFormView();
     private Scanner sc = new Scanner(System.in);
     public void mainMenu(   ) {
-        String userId = "busan";
+        String userId = LoginView.user.getUserId();
 
         String menu = """
                 ==== 주문 관리 ====================================================================================
@@ -135,7 +138,7 @@ public class BranchesMenuView {
             System.out.print("입력 : ");
             String op = sc.nextLine();
             switch (op) {
-                case "1" : break;
+                case "1" : orderFormView.inputNewOrder(); break;
                 case "2" : orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails)); break;
                 case "3" : break;
                 case "0" : return;

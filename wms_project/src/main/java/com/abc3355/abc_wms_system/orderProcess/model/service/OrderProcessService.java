@@ -84,6 +84,8 @@ public class OrderProcessService {
         List<OrderDetailResDTO> orderDetails = mapper.selectOrderDetails(orderUpdateReqDTO.getOrderNo());
         int updateInventoryResult = 0;
 
+        if(orderDetails.isEmpty()) return false;
+
         for(OrderDetailResDTO i : orderDetails) {
             int productNo = i.getProductNo();
             int odAmount = i.getOdAmount();
@@ -145,6 +147,8 @@ public class OrderProcessService {
         return (updateOrderResult > 0 && updateInventoryResult == orderDetails.size());
     }
 
+    // ---------------------------------------------------------------------------------------- //
+
     public List<GetOrderDetailDTO> getOrderDetail(OrderUpdateReqDTO orderUpdateReqDto) {
         SqlSession sqlSession = getSqlSession();
         OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
@@ -157,29 +161,14 @@ public class OrderProcessService {
         SqlSession sqlSession = getSqlSession();
         OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
 
-        int result = mapper.deleteOrderDetail(odNoToInt);
+        int updateResult = mapper.updateOrderPrice(odNoToInt, "-");
+        int deleteResult = mapper.deleteOrderDetail(odNoToInt);
 
-        if(result > 0) sqlSession.commit();
+        if(deleteResult > 0 && updateResult > 0) sqlSession.commit();
         else sqlSession.rollback();
 
-        return  result > 0;
+        return deleteResult > 0 && updateResult > 0;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

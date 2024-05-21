@@ -16,7 +16,7 @@ public class ResultView {
         }
     }
 
-    public static void displayOrderDetailList(List<GetOrderDetailDTO> orderList, String message) {
+    public void displayOrderDetailList(List<GetOrderDetailDTO> orderList, String message) {
         if(orderList.isEmpty()) {
             System.out.println(message);
         } else {
@@ -33,6 +33,7 @@ public class ResultView {
             case "cancelOrder" : errorMessage = "주문 취소에 실패하셨습니다.."; break;
             case "orderShipment" : errorMessage = "주문 출고에 실패하셨습니다.."; break;
             case "confirmOrder" : errorMessage = "주문 확정에 실패하셨습니다.."; break;
+            case "deleteOrderDetail" : errorMessage = "상세 주문 삭제에 실패하셨습니다.."; break;
         }
         System.out.println(errorMessage);
     }
@@ -44,6 +45,7 @@ public class ResultView {
             case "cancelOrder" : successMessage = "주문 취소에 성공하셨습니다!"; break;
             case "orderShipment" : successMessage = "주문 출고에 성공하셨습니다!"; break;
             case "confirmOrder" : successMessage = "주문 확정에 성공하셨습니다!"; break;
+            case "deleteOrderDetail" : successMessage = "상세 주문 삭제에 성공하셨습니다!"; break;
         }
         System.out.println(successMessage);
     }

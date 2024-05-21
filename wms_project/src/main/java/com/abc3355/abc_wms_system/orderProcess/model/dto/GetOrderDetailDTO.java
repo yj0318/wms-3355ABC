@@ -19,6 +19,6 @@ public class GetOrderDetailDTO {
         return "상제 주문 번호 : " + odNo +
                 ", 주문 번호 : " + orderNo +
                 ", 상품 이름 : '" + productName + '\'' +
-                ", 주무 수량 : " + odAmount;
+                ", 주문 수량 : " + odAmount;
     }
 }
