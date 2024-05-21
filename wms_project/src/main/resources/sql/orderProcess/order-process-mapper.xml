@@ -155,4 +155,17 @@
     WHERE ORDER_NO = #{orderNo}
 </update>
 
+<select id="checkOrderDetail" parameterType="map" resultType="int">
+    SELECT COUNT(PRODUCT_NO)
+    FROM order_details
+    WHERE ORDER_NO = #{orderNo}
+</select>
+
+<update id="updateOrderDetail" parameterType="map">
+    UPDATE order_detail
+    SET OD_AMOUNT = OD_AMOUNT + #{odAmount}
+    WHERE ORDER_NO = #{orderNo}
+    AND PRODUCT_NO = #{productNo}
+</update>
+
 </mapper>
