@@ -24,4 +24,6 @@ public interface OrderProcessMapper {
     List<GetOrderDetailDTO> getOrderDetails(int orderNo);
     int updateOrderPriceMinus(Map<String, Object> map);
     int deleteOrderDetail(Map<String, Object> map);
+    int insertOrderDetail(Map<String, Integer> map);
+    int updateOrderPricePlus(Map<String, Integer> map);
 }

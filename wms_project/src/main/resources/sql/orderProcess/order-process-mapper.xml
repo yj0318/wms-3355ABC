@@ -143,4 +143,16 @@
     WHERE ORDER_NO = #{orderNo}
 </update>
 
+<insert id="insertOrderDetail" parameterType="map">
+    INSERT INTO order_details (OD_AMOUNT, ORDER_NO, PRODUCT_NO) VALUES (#{odAmount}, #{orderNo}, #{productNo})
+</insert>
+
+<update id="updateOrderPricePlus" parameterType="map">
+    UPDATE order_product
+    SET ORDER_PRICE = ORDER_PRICE + #{odAmount} * (SELECT PRODUCT_PRICE
+                                                    FROM product
+                                                    WHERE PRODUCT_NO = #{productNo})
+    WHERE ORDER_NO = #{orderNo}
+</update>
+
 </mapper>

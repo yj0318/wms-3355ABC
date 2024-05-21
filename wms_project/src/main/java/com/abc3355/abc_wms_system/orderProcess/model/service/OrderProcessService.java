@@ -177,8 +177,26 @@ public class OrderProcessService {
         return deleteResult > 0 && updateResult > 0;
     }
 
+    public boolean insertOrderDetail(GetOrderDetailDTO orderDetail) {
+        SqlSession sqlSession = getSqlSession();
+        OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
 
+        Map<String, Integer> map = new HashMap<>();
 
+        map.put("odAmount", orderDetail.getOdAmount());
+        map.put("orderNo", orderDetail.getOrderNo());
+        map.put("productNo", orderDetail.getProductNo());
+
+        int insertResult = mapper.insertOrderDetail(map);
+        int updateResult = mapper.updateOrderPricePlus(map);
+
+        if(insertResult > 0 && updateResult > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        return insertResult > 0 && updateResult > 0;
+    }
 
 
 
