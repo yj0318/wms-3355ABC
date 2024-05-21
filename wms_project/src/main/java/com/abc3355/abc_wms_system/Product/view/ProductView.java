@@ -16,10 +16,11 @@ public class ProductView {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st = null;
 
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
 
     public void mainMenu() throws IOException {
         String menu = """
-            ==== 매출관리 =====================================================================================
             1. 신상품 등록
             2. 상품 수정
             3. 상품 삭제
@@ -29,8 +30,8 @@ public class ProductView {
             =================================================================================================
             입력 : """;
         while(true) {
+            System.out.println("==== " + ANSI_CYAN + "매출관리" + ANSI_RESET +" =====================================================================================");
             System.out.print(menu);
-
             String choice = br.readLine();
             try{
                 switch (choice) {

@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class SearchMenuView {
     private final SearchController searchController = new SearchController();
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
     private Scanner sc = new Scanner(System.in);
 
     public void searchMenu() {
         String menu = """
-                ==== 상품조회 =====================================================================================
                 1. 전체 상품 조회
                 2. 상세 상품 조회
                 3. 품절 상품 확인
@@ -19,6 +20,7 @@ public class SearchMenuView {
                 =================================================================================================
                 입력 : """;
         while (true) {
+            System.out.println("==== " + ANSI_CYAN + "상품조회" + ANSI_RESET + "  =====================================================================================");
             System.out.print(menu);
             String select = sc.next();
             switch (select) {

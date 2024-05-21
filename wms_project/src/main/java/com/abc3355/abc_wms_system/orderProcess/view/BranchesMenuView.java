@@ -13,27 +13,29 @@ import java.util.Scanner;
 public class BranchesMenuView {
     private final OrderProcessController orderProcessController = new OrderProcessController();
     private final OrderFormView orderFormView = new OrderFormView();
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
     private Scanner sc = new Scanner(System.in);
     public void mainMenu(   ) {
         String userId = LoginView.user.getUserId();
 
         String menu = """
-                ==== 주문 관리 ====================================================================================
                 1. 주문 조회
                 2. 주문 확정
                 3. 주문 변경 (수정/취소)
-                0. 메인 메뉴 돌아가기
+                9. 메인 메뉴 돌아가기
                 =================================================================================================
                 입력 : """;
 
         while(true) {
+            System.out.println("==== " + ANSI_CYAN + "주문 관리" + ANSI_RESET + "  ====================================================================================");
             System.out.print(menu);
             String choice = sc.nextLine();
             switch (choice) {
                 case "1" : selectSearchMenu(userId); break;
                 case "2" : confirmOrder(userId); break;
                 case "3" : selectProcessMenu(userId); break;
-                case "0" : return;
+                case "9" : return;
                 default :
                     System.out.println("잘못 입력했습니다!");
             }
