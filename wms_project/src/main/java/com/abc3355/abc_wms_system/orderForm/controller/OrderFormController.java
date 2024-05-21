@@ -92,13 +92,7 @@ public class OrderFormController {
 
         if(inventoryOrderForm !=null) {
             result = 1;
-
-            System.out.println("================ 현재 주문 가능 재고 ================");
-            for(InventoryConditionDTO inv : inventoryOrderForm){
-                System.out.println(inv);
-            }
-            System.out.println("=====================================================");
-
+            printResult.printInventoryList(inventoryOrderForm);
         } else {
             System.out.println("잘못된 검색어 입니다. 다시 선택해주세요.");
         }
