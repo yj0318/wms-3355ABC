@@ -6,12 +6,13 @@ import com.abc3355.abc_wms_system.user.view.LoginView;
 import java.util.Scanner;
 
 public class InventorySearchView {
-    private SearchController searchController = new SearchController();
+    private final SearchController searchController = new SearchController();
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
     private Scanner sc = new Scanner(System.in);
 
     public void searchMenu() {
         String menu = """
-                ==== 재고조회 =====================================================================================
                 1. 전체 재고 조회
                 2. 상세 재고 조회
                 3. 품절 재고 확인
@@ -20,6 +21,7 @@ public class InventorySearchView {
                 =================================================================================================
                 입력 : """;
         while (true) {
+            System.out.println("==== " + ANSI_CYAN + "재고관리" + ANSI_RESET + " =====================================================================================");
             System.out.print(menu);
             String select = sc.next();
             switch (select) {
