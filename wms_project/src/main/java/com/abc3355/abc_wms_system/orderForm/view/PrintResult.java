@@ -1,9 +1,17 @@
 package com.abc3355.abc_wms_system.orderForm.view;
 
 
+import com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO;
 import com.abc3355.abc_wms_system.orderForm.model.dto.InventoryConditionDTO;
+import com.abc3355.abc_wms_system.orderForm.model.service.OrderFormService;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.abc3355.abc_wms_system.user.view.LoginView.user;
 
 public class PrintResult {
 
@@ -42,6 +50,29 @@ public class PrintResult {
                     inv.getSizeMm()
                     );
         }
+    }
+
+    /* name, color, size, amount 를 string 으로 받아옴*/
+    public void printOrder(InputOrderDTO input) {
+
+        OrderFormService orderFormService = new OrderFormService();
+
+        int productNo = orderFormService.getProductNo(input);
+        int orderNo = orderFormService.getLastOrderNo();
+        int userNo = user.getUserNo();
+        String userId = user.getUserId();
+
+        LocalDate dateNow = LocalDate.now();
+        LocalTime timeNow = LocalTime.now();
+
+        System.out.println("============= 주문 확인서 ===============================");
+        System.out.println("주문서번호 : " + orderNo);
+        System.out.println("주문  날짜 : " + dateNow + " " + timeNow);
+        System.out.println("주문자정보 : " + "(no. " + userNo + " ) " + userId);
+        System.out.println("주문  상품 : " + "(no. " + productNo + " ) " + input.getProductName().split("_")[0] + " | " + input.getColor() + " | " + input.getSize() + "mm");
+        System.out.println("주문  수량 : " + input.getProductAmount());
+        System.out.println("============= 주문 확인서 ===============================");
+
     }
 }
 

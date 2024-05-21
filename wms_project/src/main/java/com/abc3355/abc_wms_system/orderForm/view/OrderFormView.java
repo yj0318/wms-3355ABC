@@ -60,7 +60,7 @@ public class OrderFormView {
         input.setProductAmount(Integer.parseInt(para.get("amount")));
 
         while (result == 0) {
-//            pr.printOrder(input);   // 주문 확인서 출력
+            pr.printOrder(input);   // 주문 확인서 출력
             System.out.println("[주문 확정 하시겠습니까?]");
             System.out.println("1. 주문 확정");
             System.out.println("2. 주문 수정");
