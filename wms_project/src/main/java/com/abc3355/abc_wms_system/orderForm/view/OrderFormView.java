@@ -7,7 +7,7 @@ import java.util.*;
 
 
 public class OrderFormView {
-    private OrderFormController orderFormController = new OrderFormController();
+    private final OrderFormController orderFormController = new OrderFormController();
 
 
     public void orderFormMain() {

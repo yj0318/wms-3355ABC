@@ -48,11 +48,12 @@ public class LoginView {
             System.out.println("1. 본사");
             System.out.println("2. 가맹점");
             System.out.println("9. 종료하기");
+            System.out.println("=================================================================================================");
             System.out.print("해당하는 계정을 선택하세요: ");
-            int no = sc.nextInt();
-            sc.nextLine();
+            String no = sc.nextLine();;
+
             switch (no) {
-                case 1 :
+                case "1" :
                     loginMatch = headLoginFirstMenu();
                     user = loginController.headLoginSecondMenu(loginMatch);
                     if (user != null && user.getUserType().equals("head")) {
@@ -62,7 +63,7 @@ public class LoginView {
                         System.out.println("본사 로그인에 실패하셨습니다.");
                     }
                     break;
-                case 2:
+                case "2":
                     loginMatch = branchLoginFirstMenu();
                     user = loginController.branchLoginSecondMenu(loginMatch);
                     if (user != null && user.getUserType().equals("branch")) {
@@ -72,7 +73,7 @@ public class LoginView {
                         System.out.println("가맹점 로그인에 실패하셨습니다.");
                     }
                     break;
-                case 9:
+                case "9":
                     return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
@@ -121,17 +122,16 @@ public class LoginView {
             System.out.println("9. 로그아웃"  );
             System.out.println("=================================================================================================");
             System.out.print("메뉴 선택: ");
-            int menu = sc.nextInt();
-            sc.nextLine();
+            String menu = sc.nextLine();
             switch (menu){
-                case 1: managerMenuView.mainMenu(); break;
-                case 2: inventorySearchView.searchMenu(); break;
-                case 3:
+                case "1": managerMenuView.mainMenu(); break;
+                case "2": inventorySearchView.searchMenu(); break;
+                case "3":
                     try { productView.mainMenu();} catch (IOException e) { throw new RuntimeException(e);}
                     break;
-                case 4: SalesManagerView.SalesManagerMain(); break;
-                case 5: branchControl(); break;
-                case 9:
+                case "4": SalesManagerView.SalesManagerMain(); break;
+                case "5": branchControl(); break;
+                case "9":
                     return;
                 default:
                     System.out.println("잘못된 값입니다. 다시 입력해주세요.");
@@ -151,14 +151,14 @@ public class LoginView {
             System.out.println( "9. 로그아웃" );
             System.out.println("=================================================================================================");
             System.out.print("메뉴를 선택하세요 : ");
-            int menu = sc.nextInt();
+            String menu = sc.nextLine();
             sc.nextLine();
             switch (menu){
-                case 1 : branchesMenuView.mainMenu(); break;
-                case 2: inventorySearchView.searchMenu(); break;
-                case 3: searchMenuView.searchMenu(); break;
-                case 4: orderFormView.orderFormMain();break;
-                case 9: return;
+                case "1" : branchesMenuView.mainMenu(); break;
+                case "2": inventorySearchView.searchMenu(); break;
+                case "3": searchMenuView.searchMenu(); break;
+                case "4": orderFormView.orderFormMain();break;
+                case "9": return;
                 default:
                     System.out.println("잘못된 값입니다. 다시 입력해주세요.");
             }
@@ -199,22 +199,23 @@ public class LoginView {
         System.out.println("9. 이전으로");
         System.out.println("=================================================================================================");
         System.out.print("관리할 메뉴를 선택하세요: ");
-        int num = sc.nextInt();
-        sc.nextLine();
+        String num = sc.nextLine();
+
 
         switch (num){
-            case 1: addUserController.showAllBranch();
-            case 2:
+            case "1": addUserController.showAllBranch();
+            case "2":
                 newUserAndWarehouse = inputBranch();
                 addUserController.createNewBranch(newUserAndWarehouse);
                 break;
-            case 3: addUserController.deleteBranch(deleteBranch());
-            case 9:
+            case "3": addUserController.deleteBranch(deleteBranch());
+            case "9":
                 return;
             default:
                 System.out.println("잘못된 값입니다. 다시 입력해주세요.");
         }
     }
+
 
     /* 가맹점 삭제 기능 */
     private Map<String, String> deleteBranch() {
