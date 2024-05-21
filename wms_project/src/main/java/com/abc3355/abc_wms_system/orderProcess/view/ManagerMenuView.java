@@ -3,6 +3,7 @@ package com.abc3355.abc_wms_system.orderProcess.view;
 import com.abc3355.abc_wms_system.orderProcess.controller.OrderProcessController;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
+import com.abc3355.abc_wms_system.user.view.LoginView;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,18 +12,17 @@ public class ManagerMenuView {
 
     private final OrderProcessController orderProcessController = new OrderProcessController();
     private Scanner sc = new Scanner(System.in);
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
 
     public void mainMenu() {
-        String menu = """
-                ==== 주문관리 =====================================================================================
-                1. 주문 조회
-                2. 주문 처리 (출고/취소)
-                9. 메인 메뉴 돌아가기
-                =================================================================================================
-                입력 : """;
-
         while(true) {
-            System.out.print(menu);
+            System.out.println("==== " + ANSI_CYAN + "주문관리" + ANSI_RESET + " =====================================================================================");
+            System.out.println("1. 주문 조회");
+            System.out.println("2. 주문 처리 (출고/취소)");
+            System.out.println("9. 메인 메뉴 돌아가기");
+            System.out.println("=================================================================================================");
+            System.out.print("입력 : ");
             String choice = sc.nextLine();
             switch (choice) {
                 case "1" : searchMenu(); break;
@@ -40,7 +40,7 @@ public class ManagerMenuView {
                 1. 전체 조회
                 2. 가맹점별 조회
                 3. 상태별 조회
-                0. 이전 메뉴 돌아가기
+                9. 이전 메뉴 돌아가기
                 =================================================================================================
                 입력 : """;
 
@@ -51,7 +51,7 @@ public class ManagerMenuView {
                 case "1" : orderProcessController.searchAllOrders(); break;
                 case "2" : orderProcessController.searchOrdersByName(inputBranchesName()); break;
                 case "3" : orderProcessController.searchOrdersByStatus(inputBranchesStatus()); break;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("잘못 입력했습니다! 다시 입력해주세요.");
             }

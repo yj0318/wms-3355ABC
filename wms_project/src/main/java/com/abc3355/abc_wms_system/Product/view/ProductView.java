@@ -16,10 +16,11 @@ public class ProductView {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st = null;
 
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
 
     public void mainMenu() throws IOException {
         String menu = """
-            ==== 매출관리 =====================================================================================
             1. 신상품 등록
             2. 상품 수정
             3. 상품 삭제
@@ -29,8 +30,8 @@ public class ProductView {
             =================================================================================================
             입력 : """;
         while(true) {
+            System.out.println("==== " + ANSI_CYAN + "매출관리" + ANSI_RESET +" =====================================================================================");
             System.out.print(menu);
-
             String choice = br.readLine();
             try{
                 switch (choice) {
@@ -39,12 +40,13 @@ public class ProductView {
                     case "3" : productController.deleteProduct(inputDeleteProduct()); break;
                     case "4" : productController.updateInventory(inputUpdateInventory()); break;
                     case "5" : productController.getReceivingRecord(); break;
-                    case "9" : System.out.println("====== 종료 ======"); return;
+                    case "9" : return;
                     default:
                         System.out.println("잘못된 값입니다. 다시 입력해주세요.");
                 }
             }catch (Exception e) {
                 System.out.println();
+                System.out.println(e.getMessage());
                 System.out.println("형식에 맞게 다시 입력해주세요.");
                 System.out.println();
             }
@@ -52,10 +54,10 @@ public class ProductView {
     }
 
     private ProductSaveReqDto inputSaveProduct() throws IOException {
-        System.out.println("==============상품정보를 입력해주세요.==================");
+        System.out.println("==== 상품정보를 입력해주세요.===============================================================");
         System.out.println("상품이름 가격 만료여부 색깔정보 사이즈정보 카테고리정보 수량 창고번호");
         System.out.println("ex) 에어포스1_BK_210 139000 N 1 1 1 300 1");
-        System.out.println("===================================================");
+        System.out.println("================================================================================================");
         System.out.println();
 
         st = new StringTokenizer(br.readLine().trim());
@@ -82,10 +84,10 @@ public class ProductView {
 
     private int inputDeleteProduct() throws IOException{
         System.out.println();
-        System.out.println("==========삭제할 상품번호를 입력해주세요.=============");
+        System.out.println("==========삭제할 상품번호를 입력해주세요.==============================================================");
         System.out.println("상품번호");
         System.out.println("ex) 1");
-        System.out.println("==============================================");
+        System.out.println("===============================================================================================");
         System.out.println();
 
         int productNo = Integer.parseInt(br.readLine().trim());
@@ -95,10 +97,10 @@ public class ProductView {
 
     private InventoryReqDto inputUpdateInventory() throws IOException {
         System.out.println();
-        System.out.println("==========추가할 상품정보를 입력해주세요.=============");
+        System.out.println("==========추가할 상품정보를 입력해주세요.==============================================================");
         System.out.println("상품번호 창고번호 수량");
         System.out.println("ex) 1 3 300");
-        System.out.println("==============================================");
+        System.out.println("===============================================================================================");
         System.out.println();
 
         st = new StringTokenizer(br.readLine().trim());

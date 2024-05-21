@@ -22,37 +22,40 @@ public class LoginView {
     private static Map<String, String> loginMatch;
     private UserAndWarehouseDTO newUserAndWarehouse;
     private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
     private static final String ANSI_RED = "\u001B[31m";
     private static final String ANSI_GREEN = "\u001B[32m";
     private static final String ANSI_YELLOW = "\u001B[33m";
     private static final String ANSI_BLUE = "\u001B[34m";
     private static final String ANSI_PURPLE = "\u001B[35m";
-    private static final String ANSI_CYAN = "\u001B[36m";
+
 
     /*Controller선언 부분*/
-    private LoginController loginController = new LoginController();
-    private AddUserController addUserController = new AddUserController();
-    private ManagerMenuView managerMenuView = new ManagerMenuView();
-    private ProductView productView = new ProductView();
-    private BranchesMenuView branchesMenuView = new BranchesMenuView();
-    private OrderFormView orderFormView = new OrderFormView();
-    private InventorySearchView inventorySearchView = new InventorySearchView();
-    private SearchMenuView searchMenuView = new SearchMenuView();
+    private final LoginController loginController = new LoginController();
+    private final AddUserController addUserController = new AddUserController();
+    private final ManagerMenuView managerMenuView = new ManagerMenuView();
+    private final ProductView productView = new ProductView();
+    private final BranchesMenuView branchesMenuView = new BranchesMenuView();
+    private final OrderFormView orderFormView = new OrderFormView();
+    private final InventorySearchView inventorySearchView = new InventorySearchView();
+    private final SearchMenuView searchMenuView = new SearchMenuView();
+    private final SalesManagerView salesManagerView = new SalesManagerView();
 
 
 
     public void loginFirstMenu() {
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("==== " + ANSI_BLUE + "로그인" +ANSI_RESET +" ======================================================================================");
+            System.out.println("==== " + ANSI_CYAN + "로그인" +ANSI_RESET +" ======================================================================================");
             System.out.println("1. 본사");
             System.out.println("2. 가맹점");
             System.out.println("9. 종료하기");
+            System.out.println("=================================================================================================");
             System.out.print("해당하는 계정을 선택하세요: ");
-            int no = sc.nextInt();
-            sc.nextLine();
+            String no = sc.nextLine();;
+
             switch (no) {
-                case 1 :
+                case "1" :
                     loginMatch = headLoginFirstMenu();
                     user = loginController.headLoginSecondMenu(loginMatch);
                     if (user != null && user.getUserType().equals("head")) {
@@ -62,7 +65,7 @@ public class LoginView {
                         System.out.println("본사 로그인에 실패하셨습니다.");
                     }
                     break;
-                case 2:
+                case "2":
                     loginMatch = branchLoginFirstMenu();
                     user = loginController.branchLoginSecondMenu(loginMatch);
                     if (user != null && user.getUserType().equals("branch")) {
@@ -72,7 +75,7 @@ public class LoginView {
                         System.out.println("가맹점 로그인에 실패하셨습니다.");
                     }
                     break;
-                case 9:
+                case "9":
                     return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
@@ -83,7 +86,7 @@ public class LoginView {
     /* 본사 로그인 화면 */
     private Map<String, String> headLoginFirstMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("==== " + ANSI_BLUE+"본사 로그인"+ANSI_RESET + " ===================================================================================");
+        System.out.println("==== " + ANSI_BLUE+"본사 로그인"+ANSI_RESET + " ==================================================================================");
         System.out.print("ID: ");
         String userId = sc.nextLine();
         System.out.print("PW: ");
@@ -111,27 +114,27 @@ public class LoginView {
     /* 본사 메뉴 */
     private void headMainMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("==== " + ANSI_PURPLE + "< 본사 >" + ANSI_RESET +" 메뉴 ================================================================================");
+
         while (true){
+            System.out.println("==== " + ANSI_PURPLE + "< 본사 >" + ANSI_RESET +" 메뉴 ================================================================================");
             System.out.println("1. 주문관리" );
-            System.out.println("2. 재고조회" );
+            System.out.println("2. 재고관리" );
             System.out.println("3. 상품관리" );
             System.out.println("4. 매출관리" );
             System.out.println("5. 가맹점관리");
             System.out.println("9. 로그아웃"  );
             System.out.println("=================================================================================================");
             System.out.print("메뉴 선택: ");
-            int menu = sc.nextInt();
-            sc.nextLine();
+            String menu = sc.nextLine();
             switch (menu){
-                case 1: managerMenuView.mainMenu(); break;
-                case 2: inventorySearchView.searchMenu(); break;
-                case 3:
+                case "1": managerMenuView.mainMenu(); break;
+                case "2": inventorySearchView.searchMenu(); break;
+                case "3":
                     try { productView.mainMenu();} catch (IOException e) { throw new RuntimeException(e);}
                     break;
-                case 4: SalesManagerView.SalesManagerMain(); break;
-                case 5: branchControl(); break;
-                case 9:
+                case "4": salesManagerView.SalesManagerMain(); break;
+                case "5": branchControl(); break;
+                case "9":
                     return;
                 default:
                     System.out.println("잘못된 값입니다. 다시 입력해주세요.");
@@ -142,8 +145,9 @@ public class LoginView {
     /* 가맹점 메뉴 */
     private void branchMainMenu(String whId) {
         Scanner sc = new Scanner(System.in);
-        System.out.println( "==== "+ ANSI_PURPLE +"< "+ whId + ">" + ANSI_RESET +" 지점 메뉴 ========================================================================");
+
         while (true){
+            System.out.println( "==== "+ ANSI_PURPLE +"< "+ whId + ">" + ANSI_RESET +" 지점 메뉴 ========================================================================");
             System.out.println("1. 주문관리" );
             System.out.println("2. 재고 조회" );
             System.out.println("3. 상품조회" );
@@ -151,14 +155,13 @@ public class LoginView {
             System.out.println( "9. 로그아웃" );
             System.out.println("=================================================================================================");
             System.out.print("메뉴를 선택하세요 : ");
-            int menu = sc.nextInt();
-            sc.nextLine();
+            String menu = sc.nextLine();
             switch (menu){
-                case 1 : branchesMenuView.mainMenu(); break;
-                case 2: inventorySearchView.searchMenu(); break;
-                case 3: searchMenuView.searchMenu(); break;
-                case 4: orderFormView.orderFormMain();break;
-                case 9: return;
+                case "1" : branchesMenuView.mainMenu(); break;
+                case "2": inventorySearchView.searchMenu(); break;
+                case "3": searchMenuView.searchMenu(); break;
+                case "4": orderFormView.orderFormMain();break;
+                case "9": return;
                 default:
                     System.out.println("잘못된 값입니다. 다시 입력해주세요.");
             }
@@ -192,29 +195,36 @@ public class LoginView {
     /* 가맹점 관리 메소드 */
     private void branchControl() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("==== 가맹점관리 ===================================================================================");
-        System.out.println("1. 가맹점 조회");
-        System.out.println("2. 가맹점 추가");
-        System.out.println("3. 가맹점 삭제");
-        System.out.println("9. 이전으로");
-        System.out.println("=================================================================================================");
-        System.out.print("관리할 메뉴를 선택하세요: ");
-        int num = sc.nextInt();
-        sc.nextLine();
+        while (true) {
+            System.out.println("==== " + ANSI_CYAN + "가맹점관리 " + ANSI_RESET + "===================================================================================");
+            System.out.println("1. 가맹점 조회");
+            System.out.println("2. 가맹점 추가");
+            System.out.println("3. 가맹점 삭제");
+            System.out.println("9. 이전으로");
+            System.out.println("=================================================================================================");
+            System.out.print("관리할 메뉴를 선택하세요: ");
+            String num = sc.nextLine();
 
-        switch (num){
-            case 1: addUserController.showAllBranch();
-            case 2:
-                newUserAndWarehouse = inputBranch();
-                addUserController.createNewBranch(newUserAndWarehouse);
-                break;
-            case 3: addUserController.deleteBranch(deleteBranch());
-            case 9:
-                return;
-            default:
-                System.out.println("잘못된 값입니다. 다시 입력해주세요.");
+            switch (num) {
+                case "1":
+                    System.out.println("==== 전체 가맹점 리스트 =============================================================================");
+                    addUserController.showAllBranch();
+                    break;
+                case "2":
+                    newUserAndWarehouse = inputBranch();
+                    addUserController.createNewBranch(newUserAndWarehouse);
+                    break;
+                case "3":
+                    addUserController.deleteBranch(deleteBranch());
+                    break;
+                case "9":
+                    return;
+                default:
+                    System.out.println("잘못된 값입니다. 다시 입력해주세요.");
+            }
         }
     }
+
 
     /* 가맹점 삭제 기능 */
     private Map<String, String> deleteBranch() {
