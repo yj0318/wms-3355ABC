@@ -1,5 +1,6 @@
 package com.abc3355.abc_wms_system.orderProcess.model.dao;
 
+import com.abc3355.abc_wms_system.orderProcess.model.dto.GetOrderDetailDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderDetailResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
 import org.apache.ibatis.annotations.Param;
@@ -20,6 +21,6 @@ public interface OrderProcessMapper {
     int updateBranchesInventoryAmount(Map<String, Integer> map);
     int insertBranchesInventoryAmount(Map<String, Integer> map);
     int selectInventoryData(Map<String, Integer> map);
-
-
+    List<GetOrderDetailDTO> getOrderDetails(int orderNo);
+    int deleteOrderDetail(int odNoToInt);
 }

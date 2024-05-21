@@ -1,5 +1,6 @@
 package com.abc3355.abc_wms_system.orderProcess.view;
 
+import com.abc3355.abc_wms_system.orderProcess.model.dto.GetOrderDetailDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
 
 import java.util.List;
@@ -14,6 +15,17 @@ public class ResultView {
             }
         }
     }
+
+    public static void displayOrderDetailList(List<GetOrderDetailDTO> orderList, String message) {
+        if(orderList.isEmpty()) {
+            System.out.println(message);
+        } else {
+            for(GetOrderDetailDTO i : orderList) {
+                System.out.println(i);
+            }
+        }
+    }
+
     public void displayErrorMessage(String errorCode) {
 
         String errorMessage = "";

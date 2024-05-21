@@ -1,5 +1,6 @@
 package com.abc3355.abc_wms_system.orderProcess.controller;
 
+import com.abc3355.abc_wms_system.orderProcess.model.dto.GetOrderDetailDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderDetailResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
@@ -76,14 +77,6 @@ public class OrderProcessController {
     }
 
     /***
-     * 상세 주문 조회
-     * @param orderNo
-     */
-    public void searchOrderDetails(int orderNo) {
-        List<OrderDetailResDTO> orderDetailList = orderProcessService.searchOrderDetails(orderNo);
-    }
-
-    /***
      * 주문 출고
      * @param orderUpdateReqDTO
      */
@@ -120,4 +113,22 @@ public class OrderProcessController {
     }
     // ------------------------------------------------------------------------------------ //
 
+    /***
+     * 상세 주문 출력 및 가져오기
+     * @param orderUpdateReqDto
+     * @return
+     */
+    public List<GetOrderDetailDTO> getOrderDetails(OrderUpdateReqDTO orderUpdateReqDto) {
+        List<GetOrderDetailDTO> orderDetails = orderProcessService.getOrderDetail(orderUpdateReqDto);
+        resultView.displayOrderDetailList(orderDetails, "입력하신 정보에 맞는 데이터가 없습니다!");
+        return orderDetails;
+    }
+
+    public void deleteOrderDetail(int odNoToInt) {
+        if(orderProcessService.deleteOrderDetail(odNoToInt)) {
+            resultView.displaySuccessMessage("deleteOrderDetail");
+        } else {
+            resultView.displayErrorMessage("deleteOrderDetail");
+        }
+    }
 }
