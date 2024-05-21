@@ -157,12 +157,19 @@ public class OrderProcessService {
         return orderDetails;
     }
 
-    public boolean deleteOrderDetail(int odNoToInt) {
+    public boolean deleteOrderDetail(GetOrderDetailDTO orderDetail) {
         SqlSession sqlSession = getSqlSession();
         OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
 
-        int updateResult = mapper.updateOrderPrice(odNoToInt, "-");
-        int deleteResult = mapper.deleteOrderDetail(odNoToInt);
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("odNo", orderDetail.getOdNo());
+        map.put("odAmount", orderDetail.getOdAmount());
+        map.put("orderNo", orderDetail.getOrderNo());
+        map.put("productName", orderDetail.getProductName());
+
+        int updateResult = mapper.updateOrderPriceMinus(map);
+        int deleteResult = mapper.deleteOrderDetail(map);
 
         if(deleteResult > 0 && updateResult > 0) sqlSession.commit();
         else sqlSession.rollback();
@@ -170,8 +177,26 @@ public class OrderProcessService {
         return deleteResult > 0 && updateResult > 0;
     }
 
+    public boolean insertOrderDetail(GetOrderDetailDTO orderDetail) {
+        SqlSession sqlSession = getSqlSession();
+        OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
 
+        Map<String, Integer> map = new HashMap<>();
 
+        map.put("odAmount", orderDetail.getOdAmount());
+        map.put("orderNo", orderDetail.getOrderNo());
+        map.put("productNo", orderDetail.getProductNo());
+
+        int insertResult = mapper.insertOrderDetail(map);
+        int updateResult = mapper.updateOrderPricePlus(map);
+
+        if(insertResult > 0 && updateResult > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        return insertResult > 0 && updateResult > 0;
+    }
 
 
 

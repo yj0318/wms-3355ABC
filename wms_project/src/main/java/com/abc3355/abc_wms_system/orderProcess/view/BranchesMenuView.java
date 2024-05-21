@@ -7,7 +7,9 @@ import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
 import com.abc3355.abc_wms_system.user.view.LoginView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class BranchesMenuView {
@@ -140,7 +142,12 @@ public class BranchesMenuView {
             System.out.print("입력 : ");
             String op = sc.nextLine();
             switch (op) {
-                case "1" : orderFormView.inputNewOrder(); break;
+                // 검색상품명(name), 상품번호(productNo), 수량(amount)를 얻는 메서드
+                case "1" :
+                    Map<String, String> insertMap = orderFormView.inputNewOrder();
+                    insertMap.put("orderNo", "" + orderUpdateReqDto.getOrderNo());
+                    orderProcessController.insertOrderDetail(insertMap);
+                    break;
                 case "2" : orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails)); break;
                 case "3" : break;
                 case "9" : return;
@@ -150,7 +157,7 @@ public class BranchesMenuView {
         }
     }
 
-    public int inputOrderDetailNumber(List<GetOrderDetailDTO> orderDetails) {
+    public GetOrderDetailDTO inputOrderDetailNumber(List<GetOrderDetailDTO> orderDetails) {
 
         while(true) {
             System.out.print("""
@@ -164,7 +171,7 @@ public class BranchesMenuView {
 
                 for (GetOrderDetailDTO i : orderDetails) {
                     if (i.getOdNo() == odNoToInt) {
-                        return odNoToInt;
+                        return i;
                     }
                 }
                 System.out.println("잘못 입력하셨습니다! 처리 가능한 상세 주문 번호를 입력해주세요.");
