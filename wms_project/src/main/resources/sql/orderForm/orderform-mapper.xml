@@ -81,9 +81,7 @@
         AND A.IS_EXPIRE LIKE 'N'
     </select>
 
-
-
-    <select id="getProductNo" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultType="_int">
+    <select id="getProductNo" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultType="String">
         SELECT
         A.PRODUCT_NO
         FROM product A
@@ -93,12 +91,12 @@
         JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
         JOIN user F ON (B.WH_ID = F.WH_ID)
         WHERE A.PRODUCT_NAME LIKE CONCAT('%', #{ productName }, '%')
-        AND D.COLOR_NAME LIKE CONCAT('%', #{ color }, '%')
-        AND E.SIZE_MM = #{ size }
-        LIMIT 1;
+        AND A.PRODUCT_NO = #{ productNo }
+        LIMIT 1
     </select>
 
-    <select id="getMaxAmount" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultType="_int">
+
+    <select id="getMaxAmount" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultType="String">
         SELECT
         B.INVENTORY_AMOUNT
         FROM product A
@@ -108,9 +106,8 @@
         JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
         JOIN user F ON (B.WH_ID = F.WH_ID)
         WHERE A.PRODUCT_NAME LIKE CONCAT('%', #{ productName }, '%')
-        AND D.COLOR_NAME LIKE CONCAT('%', #{ color }, '%')
-        AND E.SIZE_MM = #{ size }
-        LIMIT 1;
+        AND A.PRODUCT_NO = #{ productNo }
+        LIMIT 1
     </select>
 
 

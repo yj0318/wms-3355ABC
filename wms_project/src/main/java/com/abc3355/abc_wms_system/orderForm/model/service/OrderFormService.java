@@ -85,25 +85,29 @@ public class OrderFormService {
         SqlSession sqlSession = getSqlSession();
         orderFormMapper = sqlSession.getMapper(OrderFormMapper.class);
 
-        int getProductNo = orderFormMapper.getProductNo(input);
+        int no = 0;
+        String noStr = orderFormMapper.getProductNo(input);
 
-        if (getProductNo > 0) {
+        if (noStr != null) {
+            no = Integer.parseInt(noStr);
             sqlSession.commit();
         } else {
             sqlSession.rollback();
         }
 
         sqlSession.close();
-        return getProductNo;
+        return no;
     }
 
     public int getMaxAmount(InputOrderDTO input) {
         SqlSession sqlSession = getSqlSession();
         orderFormMapper = sqlSession.getMapper(OrderFormMapper.class);
 
-        int getMaxAmount = orderFormMapper.getMaxAmount(input);
+        String amountStr = orderFormMapper.getMaxAmount(input);
+        int getMaxAmount = 0;
 
-        if (getMaxAmount > 0) {
+        if (amountStr != null) {
+            getMaxAmount = Integer.parseInt(amountStr);
             sqlSession.commit();
         } else {
             sqlSession.rollback();
