@@ -86,15 +86,6 @@
 
 <!-- 본사 재고량 변경 (-) -->
 <update id="updateHQInventoryAmount" parameterType="map">
-<!--    <foreach collection="orderDetails" item="detail" separator=";">-->
-<!--        UPDATE inventory-->
-<!--        SET INVENTORY_AMOUNT = INVENTORY_AMOUNT - #{detail.odAmount}-->
-<!--        WHERE PRODUCT_NO = #{detail.productNo}-->
-<!--    </foreach>-->
-<!--        AND WH_ID = (SELECT a.WH_ID-->
-<!--        FROM user a JOIN order_product b ON a.USER_NO = b.USER_NO-->
-<!--        WHERE b.ORDER_NO = #{orderNo}-->
-<!--        )-->
     UPDATE inventory
     SET INVENTORY_AMOUNT = INVENTORY_AMOUNT - #{odAmount}
     WHERE PRODUCT_NO = #{productNo}
@@ -132,10 +123,6 @@
 
 <select id="getOrderDetails" parameterType="int"
         resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.GetOrderDetailDTO">
-<!--    private int odNo;-->
-<!--    private int orderNo;-->
-<!--    private String productName;-->
-<!--    private int odAmount;-->
     SELECT a.OD_NO,
     a.ORDER_NO,
     b.PRODUCT_NAME,
@@ -144,25 +131,16 @@
     WHERE a.ORDER_NO = #{orderNo}
 </select>
 
-<delete id="deleteOrderDetail" parameterType="int">
-    DELETE FROM order_details WHERE OD_NO = #{odNoToInt}
+<delete id="deleteOrderDetail" parameterType="map">
+    DELETE FROM order_details WHERE OD_NO = #{odNo}
 </delete>
 
-<update id="updateOrderPrice" parameterType="map">
+<update id="updateOrderPriceMinus" parameterType="map">
     UPDATE order_product
-    <set>
-        <choose>
-            <when test="opertor == '-'">
-              ORDER_PRICE = ORDER_PRICE - (SELECT b.PRODUCT_PRICE
-                FROM order_details a LEFT JOIN product b ON a.PRODUCT_NO = b.PRODUCT_NO
-                WHERE a.OD_NO = #{odNoToInt})
-            </when>
-            <when test="operator == '+'">
-
-            </when>
-        </choose>
-    </set>
-
+    SET ORDER_PRICE = ORDER_PRICE - #{odAmount} * (SELECT PRODUCT_PRICE
+                                                    FROM product
+                                                    WHERE PRODUCT_NAME = #{productName})
+    WHERE ORDER_NO = #{orderNo}
 </update>
 
 </mapper>

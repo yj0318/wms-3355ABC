@@ -130,7 +130,6 @@ public class BranchesMenuView {
                         작업을 선택헤주세요
                         1. 주문 추가
                         2. 주문 삭제
-                        3. 주문 변경
                         0. 이전 메뉴 돌아가기
                         ========================
                         [상세 주문은 1개 이상 있어야 합니다. 전체 삭제 요청시 주문 취소 기능을 이용해주세요]
@@ -140,7 +139,6 @@ public class BranchesMenuView {
             switch (op) {
                 case "1" : orderFormView.inputNewOrder(); break;
                 case "2" : orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails)); break;
-                case "3" : break;
                 case "0" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다! 다시 입력해주세요. (숫자 형식)");
@@ -148,7 +146,7 @@ public class BranchesMenuView {
         }
     }
 
-    public int inputOrderDetailNumber(List<GetOrderDetailDTO> orderDetails) {
+    public GetOrderDetailDTO inputOrderDetailNumber(List<GetOrderDetailDTO> orderDetails) {
 
         while(true) {
             System.out.print("""
@@ -162,7 +160,7 @@ public class BranchesMenuView {
 
                 for (GetOrderDetailDTO i : orderDetails) {
                     if (i.getOdNo() == odNoToInt) {
-                        return odNoToInt;
+                        return i;
                     }
                 }
                 System.out.println("잘못 입력하셨습니다! 처리 가능한 상세 주문 번호를 입력해주세요.");

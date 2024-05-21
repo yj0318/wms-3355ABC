@@ -126,13 +126,15 @@ public class OrderProcessController {
 
     /***
      * 상세 주문 삭제
-     * @param odNoToInt
+     * @param orderDetail
      */
-    public void deleteOrderDetail(int odNoToInt) {
-        if(orderProcessService.deleteOrderDetail(odNoToInt)) {
+    public void deleteOrderDetail(GetOrderDetailDTO orderDetail) {
+        if(orderProcessService.deleteOrderDetail(orderDetail)) {
             resultView.displaySuccessMessage("deleteOrderDetail");
         } else {
             resultView.displayErrorMessage("deleteOrderDetail");
         }
     }
+
+
 }
