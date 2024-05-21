@@ -9,7 +9,6 @@ import java.util.*;
 public class OrderFormView {
     private final OrderFormController orderFormController = new OrderFormController();
 
-    private OrderFormController orderFormController = new OrderFormController();
     int result = 0;
 
     public void orderFormMain() {

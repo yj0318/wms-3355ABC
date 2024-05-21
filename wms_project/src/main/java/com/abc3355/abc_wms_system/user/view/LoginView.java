@@ -152,7 +152,6 @@ public class LoginView {
             System.out.println("=================================================================================================");
             System.out.print("메뉴를 선택하세요 : ");
             String menu = sc.nextLine();
-            sc.nextLine();
             switch (menu){
                 case "1" : branchesMenuView.mainMenu(); break;
                 case "2": inventorySearchView.searchMenu(); break;

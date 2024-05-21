@@ -45,6 +45,7 @@ public class ProductView {
                 }
             }catch (Exception e) {
                 System.out.println();
+                System.out.println(e.getMessage());
                 System.out.println("형식에 맞게 다시 입력해주세요.");
                 System.out.println();
             }
