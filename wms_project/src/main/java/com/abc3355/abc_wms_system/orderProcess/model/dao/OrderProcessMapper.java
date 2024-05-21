@@ -26,4 +26,6 @@ public interface OrderProcessMapper {
     int deleteOrderDetail(Map<String, Object> map);
     int insertOrderDetail(Map<String, Integer> map);
     int updateOrderPricePlus(Map<String, Integer> map);
+    int checkOrderDetail(Map<String, Integer> map);
+    int updateOrderDetail(Map<String, Integer> map);
 }

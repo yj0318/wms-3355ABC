@@ -91,7 +91,7 @@ public class ManagerMenuView {
 
     public void processMenu() {
         System.out.print("""
-                ======== 처리가능 주문 목록 ========
+                ==== 처리 가능 주문 목록 ==========================================================================
                 """);
         List<OrderListResDTO> orderList = orderProcessController.printAndGetOrdersByStatus("주문 처리중");
         if(orderList.isEmpty()) return;
