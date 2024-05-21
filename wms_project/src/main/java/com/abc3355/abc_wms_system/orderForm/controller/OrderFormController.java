@@ -18,12 +18,12 @@ public class OrderFormController {
     private OrderFormService orderFormService = new OrderFormService();
 
 
-    public void insertOrderByNo(Map<String, String> parameter) {
+    public void insertOrderByNo(Map<String, String> parameter) {    // parameter : 검색상품명(name), 상품번호(productNo), 수량(amount)
 
         InsertNoAndAmountDTO input = new InsertNoAndAmountDTO();
 
         int userNo = user.getUserNo();
-        int productNo = getProductNo(parameter);   // 민규님, [(type Map<String,String>) name,color,size] 드릴테니 int no를 돌려주세요.
+        int productNo = Integer.parseInt(parameter.get("productNo"));
         int orderNo = orderFormService.getLastOrderNo();
         int amount = Integer.parseInt(parameter.get("amount"));
 
@@ -36,7 +36,7 @@ public class OrderFormController {
         input.setTotalOrderPrice(totalOrderPrice);
 
 
-        System.out.println("productNo = " + productNo);
+        System.out.println("orderNo = " + orderNo);
         System.out.println("totalOrderPrice = " + totalOrderPrice);
 
 
@@ -50,39 +50,6 @@ public class OrderFormController {
         }
     }
 
-    private int getProductNo(Map<String, String> parameter) {
-        int no;
-        InputOrderDTO input = new InputOrderDTO();
-        input.setProductName(parameter.get("name"));
-        input.setColor(parameter.get("color"));
-        input.setSize(Integer.parseInt(parameter.get("size")));
-
-        no = orderFormService.getProductNo(input);
-        System.out.println("no = " + no);
-
-        return no;
-    }
-
-
-    public int checkInvAmount(Map<String, String> parameter) {
-        int result = 0;
-
-        int amount = Integer.parseInt(parameter.get("amount"));
-        int maxAmount;
-        InputOrderDTO input = new InputOrderDTO();
-        input.setProductName(parameter.get("name"));
-        input.setColor(parameter.get("color"));
-        input.setSize(Integer.parseInt(parameter.get("size")));
-
-        maxAmount = orderFormService.getMaxAmount(input);
-        System.out.println("[[[[[maxAmount = " + maxAmount + "]]]]]");
-
-        if(amount <= maxAmount && amount > 0) {
-            result = 1;
-        }
-
-        return result;
-    }
 
     public int printInvByProductName(String name) {
         int result = 0;
@@ -100,19 +67,39 @@ public class OrderFormController {
         return result;
     }
 
-    public int checkOpt(Map<String, String> parameter) {
+    public int checkNo(Map<String, String> parameter) {
         int result = 0;
 
         InputOrderDTO input = new InputOrderDTO();
         input.setProductName(parameter.get("name"));
-        input.setColor(parameter.get("color"));
-        input.setSize(Integer.parseInt(parameter.get("size")));
+        int no = Integer.parseInt(parameter.get("productNo"));
+        input.setProductNo(no);
 
-        int checkNo = orderFormService.getProductNo(input);
+        int checkNo = 0;
+        checkNo = orderFormService.getProductNo(input);
 
-        if(checkNo > 0) {
+        if(checkNo != 0) {
             result = 1;
-            System.out.println("[[[[[옵션검사완료]]]]]");
+            System.out.println("[[[[[상품번호검사완료]]]]]");
+        }
+
+        return result;
+    }
+
+    public int checkInvAmount(Map<String, String> parameter) {
+        int result = 0;
+
+        int amount = Integer.parseInt(parameter.get("amount"));
+        int maxAmount;
+        InputOrderDTO input = new InputOrderDTO();
+        input.setProductName(parameter.get("name"));
+        input.setProductNo(Integer.parseInt(parameter.get("productNo")));
+
+        maxAmount = orderFormService.getMaxAmount(input);
+        System.out.println("[[[[[maxAmount = " + maxAmount + "]]]]]");
+
+        if(amount <= maxAmount && amount > 0) {
+            result = 1;
         }
 
         return result;
