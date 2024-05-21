@@ -21,7 +21,7 @@ public class PrintResult {
 
         String successMessage = "";
         switch(successCode) {
-            case "insert" : successMessage = "[[[[[신규 메뉴 등록을 성공하였습니다.]]]]]"; break;
+            case "insert" : successMessage = "[[[[[신규 주문 등록을 성공하였습니다.]]]]]"; break;
             case "view" : successMessage="[[[[[주문서를 확인합니다.]]]]]"; break;
         }
 
@@ -32,7 +32,7 @@ public class PrintResult {
 
         String errorMessage = "";
         switch (errorCode) {
-            case "insert" : errorMessage = "[[[[[신규 메뉴 등록을 실패하였습니다.]]]]]"; break;
+            case "insert" : errorMessage = "[[[[[신규 주문 등록을 실패하였습니다.]]]]]"; break;
             case "view" : errorMessage ="[[[[[주문서 확인을 실패하였습니다.]]]]]"; break;
         }
         System.out.println(errorMessage);
@@ -56,31 +56,31 @@ public class PrintResult {
 
     public void printOrder(int totalPriceResult, List<InputOrderDTO> detailList) {
 
-        OrderFormService orderFormService = new OrderFormService();
-
-//        int orderNo = orderFormService.getLastOrderNo();
         int userNo = user.getUserNo();
         String userId = user.getUserId();
 
         LocalDate dateNow = LocalDate.now();
         LocalTime timeNow = LocalTime.now();
 
+        int index = 1;
+
         System.out.println("============= 주문 확인서 ===============================");
-//        System.out.println("주문서번호 : " + orderNo);
         System.out.println("주문  날짜 : " + dateNow + " " + timeNow);
         System.out.println("주문자정보 : " + "(no. " + userNo + " ) " + userId);
         System.out.println("총 주문 금액 : " + totalPriceResult);
 
         System.out.println("============= 상세 주문 상품 목록 ======================");
-        System.out.printf("%s\t%s\t%s\t%s\t%s\n", "상품코드", "상품명", "가격", "색상", "사이즈(mm)");
+        System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\n", "No", "상품코드", "상품명", "가격", "색상", "사이즈(mm)","수량");
         System.out.println("======================================================");
         for (InputOrderDTO list : detailList) {
-            System.out.printf("%d\t%s\t%d\t%s\t%s\n",
+            System.out.printf("%d\t%d\t%s\t%d\t%s\t%s\t%d\n",
+                    index++,
                     list.getProductNo(),
-                    list.getProductName().split("_")[0],
+                    list.getProductName(),
                     list.getProductPrice(),
                     list.getColor(),
-                    list.getSize()
+                    list.getSize(),
+                    list.getAmount()
             );
         System.out.println("======================================================");
         }

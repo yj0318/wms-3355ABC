@@ -105,8 +105,7 @@
         JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
         JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
         JOIN user F ON (B.WH_ID = F.WH_ID)
-        WHERE A.PRODUCT_NAME LIKE CONCAT('%', #{ productName }, '%')
-        AND A.PRODUCT_NO = #{ productNo }
+        WHERE A.PRODUCT_NO = #{ productNo }
         LIMIT 1
     </select>
 

@@ -1,6 +1,5 @@
 package com.abc3355.abc_wms_system.orderForm.controller;
 
-import com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO;
 import com.abc3355.abc_wms_system.orderForm.model.dto.InventoryConditionDTO;
 import com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO;
 import com.abc3355.abc_wms_system.orderForm.model.service.OrderFormService;
@@ -39,7 +38,7 @@ public class OrderFormController {
         List<InventoryConditionDTO> inventoryOrderForm = new ArrayList<>();
         inventoryOrderForm = orderFormService.printInvByProductName(name);
 
-        if(inventoryOrderForm != null) {
+        if(inventoryOrderForm.size() > 0) {
             result = 1;
             printResult.printInventoryList(inventoryOrderForm);
         } else {
