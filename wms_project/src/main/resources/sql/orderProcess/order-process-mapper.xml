@@ -130,4 +130,39 @@
     WHERE b.ORDER_NO = #{orderNo}), #{productNo});
 </insert>
 
+<select id="getOrderDetails" parameterType="int"
+        resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.GetOrderDetailDTO">
+<!--    private int odNo;-->
+<!--    private int orderNo;-->
+<!--    private String productName;-->
+<!--    private int odAmount;-->
+    SELECT a.OD_NO,
+    a.ORDER_NO,
+    b.PRODUCT_NAME,
+    a.OD_AMOUNT
+    FROM order_details a LEFT JOIN product b ON a.PRODUCT_NO = b.PRODUCT_NO
+    WHERE a.ORDER_NO = #{orderNo}
+</select>
+
+<delete id="deleteOrderDetail" parameterType="int">
+    DELETE FROM order_details WHERE OD_NO = #{odNoToInt}
+</delete>
+
+<update id="updateOrderPrice" parameterType="map">
+    UPDATE order_product
+    <set>
+        <choose>
+            <when test="opertor == '-'">
+              ORDER_PRICE = ORDER_PRICE - (SELECT b.PRODUCT_PRICE
+                FROM order_details a LEFT JOIN product b ON a.PRODUCT_NO = b.PRODUCT_NO
+                WHERE a.OD_NO = #{odNoToInt})
+            </when>
+            <when test="operator == '+'">
+
+            </when>
+        </choose>
+    </set>
+
+</update>
+
 </mapper>

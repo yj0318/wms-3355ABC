@@ -23,7 +23,8 @@
         <result property="sizeMm" column ="SIZE_MM"/>
     </resultMap>
 
-    <insert id="insertOrderProduct">
+    <insert id="insertOrderProduct" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO" useGeneratedKeys="true"
+            keyProperty="orderNo" keyColumn="ORDER_NO">
         INSERT INTO order_product(
         USER_NO
         ,ORDER_PRICE
@@ -59,6 +60,7 @@
             #{ productNo }
         )
     </insert>
+
 
     <select id="inventoryOrderForm" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultMap="inventoryResultMap">
         SELECT  A.PRODUCT_NO
