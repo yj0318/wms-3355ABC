@@ -9,16 +9,16 @@ import java.util.Scanner;
 
 public class ManagerMenuView {
 
-    private OrderProcessController orderProcessController = new OrderProcessController();
+    private final OrderProcessController orderProcessController = new OrderProcessController();
     private Scanner sc = new Scanner(System.in);
 
     public void mainMenu() {
         String menu = """
-                ========================
+                ==== 주문관리 =====================================================================================
                 1. 주문 조회
                 2. 주문 처리 (출고/취소)
-                0. 메인 메뉴 돌아가기
-                ========================
+                9. 메인 메뉴 돌아가기
+                =================================================================================================
                 입력 : """;
 
         while(true) {
@@ -27,7 +27,7 @@ public class ManagerMenuView {
             switch (choice) {
                 case "1" : searchMenu(); break;
                 case "2" : processMenu(); break;
-                case "0" : return;
+                case "9" : return;
                 default :
                     System.out.println("잘못 입력했습니다! 다시 입력해주세요.");
             }
@@ -36,12 +36,12 @@ public class ManagerMenuView {
 
     public void searchMenu() {
         String menu = """
-                ========================
+                =================================================================================================
                 1. 전체 조회
                 2. 가맹점별 조회
                 3. 상태별 조회
                 0. 이전 메뉴 돌아가기
-                ========================
+                =================================================================================================
                 입력 : """;
 
         while(true) {
@@ -66,12 +66,12 @@ public class ManagerMenuView {
     public String inputBranchesStatus() {
         while (true) {
             System.out.print("""
-            ========================
+            =================================================================================================
             1. 주문 처리중 조회
             2. 출고 완료 조회
             3. 주문 확정 조회
             4. 주문 취소 조회
-            ========================
+            =================================================================================================
             입력 : """);
             String choice = sc.nextLine();
             String result = switch (choice) {
@@ -79,12 +79,12 @@ public class ManagerMenuView {
                 case "2" -> "출고 완료";
                 case "3" -> "주문 확정";
                 case "4" -> "주문 취소";
-                default -> "";
+                default -> "잘못된 값입니다. 다시 입력해주세요.";
             };
             if (!result.isEmpty()) {
                 return result;
             } else {
-                System.out.println("잘못 입력하셨습니다! 1 부터 4까지의 숫자를 입력하세요.");
+                System.out.println("잘못 입력하셨습니다. 1 부터 4까지의 숫자를 입력하세요.");
             }
         }
     }
@@ -118,9 +118,9 @@ public class ManagerMenuView {
                 for (OrderListResDTO i : orderList) {
                     if(i.getOrderNo() == inputToInt) return inputToInt;
                 }
-                System.out.println("잘못 입력하셨습니다! 처리 가능한 주문 번호를 입력해주세요.");
+                System.out.println("잘못된 값입니다. 처리 가능한 주문 번호를 입력해주세요.");
             } catch (NumberFormatException e) {
-                System.out.println("잘못 입력하셨습니다! 숫자를 입력해주세요!!");
+                System.out.println("잘못된 값입니다. 숫자를 입력해주세요.");
             }
         }
     }
@@ -131,7 +131,7 @@ public class ManagerMenuView {
             if (input.equals("1") || input.equals("2")) {
                 return input;
             } else {
-                System.out.println("잘못 입력하셨습니다! 1 또는 2를 입력해 주세요.");
+                System.out.println("잘못된 값입니다. 1 또는 2를 입력해 주세요.");
             }
         }
     }

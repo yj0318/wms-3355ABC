@@ -19,14 +19,14 @@ public class ProductView {
 
     public void mainMenu() throws IOException {
         String menu = """
-            =========== MENU ==========
+            ==== 매출관리 =====================================================================================
             1. 신상품 등록
             2. 상품 수정
             3. 상품 삭제
             4. 재고 등록
             5. 입고 기록 출력
-            0. 종료
-            ===========================
+            9. 이전으로
+            =================================================================================================
             입력 : """;
         while(true) {
             System.out.print(menu);
@@ -39,9 +39,9 @@ public class ProductView {
                     case "3" : productController.deleteProduct(inputDeleteProduct()); break;
                     case "4" : productController.updateInventory(inputUpdateInventory()); break;
                     case "5" : productController.getReceivingRecord(); break;
-                    case "0" : System.out.println("====== 종료 ======"); return;
+                    case "9" : System.out.println("====== 종료 ======"); return;
                     default:
-                        System.out.println("잘못 입력하셨습니다.");
+                        System.out.println("잘못된 값입니다. 다시 입력해주세요.");
                 }
             }catch (Exception e) {
                 System.out.println();
