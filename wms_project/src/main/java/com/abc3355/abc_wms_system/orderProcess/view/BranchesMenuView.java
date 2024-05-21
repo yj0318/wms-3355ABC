@@ -48,7 +48,7 @@ public class BranchesMenuView {
                 3. 출고완료 주문 조회
                 4. 배송완료 주문 조회
                 5. 취소된 주문 조회
-                0. 이전 메뉴 돌아가기
+                9. 이전 메뉴 돌아가기
                 =================================================================================================
                 입력 : """;
         while(true) {
@@ -60,7 +60,7 @@ public class BranchesMenuView {
                 case "3" : orderProcessController.searchMyOrdersByStatus(userId, 2); return;
                 case "4" : orderProcessController.searchMyOrdersByStatus(userId, 3); return;
                 case "5" : orderProcessController.searchMyOrdersByStatus(userId, 4); return;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("잘못 입력했습니다! 다시 입력해주세요. (숫자)");
             }
@@ -76,7 +76,7 @@ public class BranchesMenuView {
                 =================================================================================================
                 1. 주문 수정
                 2. 주문 취소
-                0. 이전 메뉴 돌아가기
+                9. 이전 메뉴 돌아가기
                 =================================================================================================
                 입력 : """;
         while(true) {
@@ -85,7 +85,7 @@ public class BranchesMenuView {
             switch (choice) {
                 case "1" : processMenu(1, userId); break;
                 case "2" : processMenu(2, userId); break;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("잘못 입력했습니다! 다시 입력해주세요. (숫자)");
             }
@@ -131,7 +131,7 @@ public class BranchesMenuView {
                         1. 주문 추가
                         2. 주문 삭제
                         3. 주문 변경
-                        0. 이전 메뉴 돌아가기
+                        9. 이전 메뉴 돌아가기
                         ========================
                         [상세 주문은 1개 이상 있어야 합니다. 전체 삭제 요청시 주문 취소 기능을 이용해주세요]
                         """);
@@ -141,7 +141,7 @@ public class BranchesMenuView {
                 case "1" : orderFormView.inputNewOrder(); break;
                 case "2" : orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails)); break;
                 case "3" : break;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다! 다시 입력해주세요. (숫자 형식)");
             }

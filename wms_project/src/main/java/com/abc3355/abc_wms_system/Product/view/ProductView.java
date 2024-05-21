@@ -39,7 +39,7 @@ public class ProductView {
                     case "3" : productController.deleteProduct(inputDeleteProduct()); break;
                     case "4" : productController.updateInventory(inputUpdateInventory()); break;
                     case "5" : productController.getReceivingRecord(); break;
-                    case "9" : System.out.println("====== 종료 ======"); return;
+                    case "9" : return;
                     default:
                         System.out.println("잘못된 값입니다. 다시 입력해주세요.");
                 }
