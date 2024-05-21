@@ -2,7 +2,7 @@ package com.abc3355.abc_wms_system.orderForm.controller;
 
 import com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO;
 import com.abc3355.abc_wms_system.orderForm.model.dto.InventoryConditionDTO;
-import com.abc3355.abc_wms_system.orderForm.model.dto.ProductInputDTO;
+import com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO;
 import com.abc3355.abc_wms_system.orderForm.model.service.OrderFormService;
 import com.abc3355.abc_wms_system.orderForm.view.PrintResult;
 
@@ -52,7 +52,7 @@ public class OrderFormController {
 
     private int getProductNo(Map<String, String> parameter) {
         int no;
-        ProductInputDTO input = new ProductInputDTO();
+        InputOrderDTO input = new InputOrderDTO();
         input.setProductName(parameter.get("name"));
         input.setColor(parameter.get("color"));
         input.setSize(Integer.parseInt(parameter.get("size")));
@@ -69,7 +69,7 @@ public class OrderFormController {
 
         int amount = Integer.parseInt(parameter.get("amount"));
         int maxAmount;
-        ProductInputDTO input = new ProductInputDTO();
+        InputOrderDTO input = new InputOrderDTO();
         input.setProductName(parameter.get("name"));
         input.setColor(parameter.get("color"));
         input.setSize(Integer.parseInt(parameter.get("size")));
@@ -109,7 +109,7 @@ public class OrderFormController {
     public int checkOpt(Map<String, String> parameter) {
         int result = 0;
 
-        ProductInputDTO input = new ProductInputDTO();
+        InputOrderDTO input = new InputOrderDTO();
         input.setProductName(parameter.get("name"));
         input.setColor(parameter.get("color"));
         input.setSize(Integer.parseInt(parameter.get("size")));

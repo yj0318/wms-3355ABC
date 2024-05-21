@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @ToString
-public class ProductInputDTO {
+public class InputOrderDTO {
     private String productName;
     private String color;
     private int size;
