@@ -11,15 +11,13 @@ public class InventorySearchView {
 
     public void searchMenu() {
         String menu = """
-
-                    [재고 조회]
-                ==================
+                ==== 재고조회 =====================================================================================
                 1. 전체 재고 조회
                 2. 상세 재고 조회
                 3. 품절 재고 확인
                 4. 상품 재고 검색
-                0. 이전 메뉴로
-                ==================
+                9. 이전 메뉴로
+                =================================================================================================
                 입력 : """;
         while (true) {
             System.out.print(menu);
@@ -29,9 +27,9 @@ public class InventorySearchView {
                 case "2" : detailInventoryMenu(); break;
                 case "3" : searchController.searchZeroInventory(userNum()); break;
                 case "4" : searchController.searchInventoryName(userNum(),inputName()); break;
-                case "0" : return;
+                case "9" : return;
                 default:
-                    System.out.println("올바른 숫자를 입력하세요. ");
+                    System.out.println("잘못된 값입니다. 다시 입력해주세요.");
             }
         }
     }
@@ -45,13 +43,12 @@ public class InventorySearchView {
 
     private void detailInventoryMenu() {
         String menu = """
-                   [상세 재고 조회]
-                ==================
+                =================================================================================================
                 1. 색상으로 조회
                 2. 사이즈로 조회
                 3. 카테고리로 조회
-                0. 이전 메뉴로
-                ==================
+                9. 이전 메뉴로
+                =================================================================================================
                 입력 : """;
         while (true) {
             System.out.print(menu);
@@ -60,9 +57,9 @@ public class InventorySearchView {
                 case "1" : searchController.searchInvenByColor(userNum(),inputColor()); break;
                 case "2" : searchController.searchInvenBySize(userNum(),inputSize()); break;
                 case "3" : searchController.searchInvenByCategory(userNum(), inputCategory()); break;
-                case "0" : return;
+                case "9" : return;
                 default:
-                    System.out.println("올바른 숫자를 입력하세요. ");
+                    System.out.println("잘못된 값입니다. 다시 입력해주세요.");
             }
         }
     }

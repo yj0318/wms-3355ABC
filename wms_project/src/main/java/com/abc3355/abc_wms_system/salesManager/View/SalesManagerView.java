@@ -19,11 +19,12 @@ public class SalesManagerView {
         SalesManagerService smService = new SalesManagerService();
 
         do {
-            System.out.println("=========== 매출관리 메뉴 ============");
+            System.out.println("==== 매출관리 ===================================================================================");
             System.out.println("1. 가맹점별 주문량 조회");
             System.out.println("2. 출고 주문 전체 조회");
             System.out.println("3. 상품별 출고량 조회");
             System.out.println("9. 이전 메뉴로");
+            System.out.println("=================================================================================================");
             System.out.print("메뉴 번호를 입력하세요 : ");
             int no = sc.nextInt();
 
@@ -43,7 +44,7 @@ public class SalesManagerView {
         SalesManagerController smController = new SalesManagerController();
 
         int no = 0;
-        System.out.println("=========== 상품별 출고량 조회 조건 설정 ============");
+        System.out.println("==== 상품별 출고량 조회 조건 설정 ====================================================================");
         System.out.print("특정 상품을 선택하시려면 예를 입력하세요. (그 외 전체 검색) : ");
 
         if(sc.nextLine().equals("예")) { smController.selectProductSale(inputProduct());}
@@ -66,7 +67,7 @@ public class SalesManagerView {
         int no;
 
         do {
-            System.out.println("=========== 조회할 가맹점 선택 ============");
+            System.out.println("=========== 조회할 가맹점 선택 =====================================================================");
             printResultView.printProductList(product);         // 상품 리스트 노출
             System.out.print("상품 번호를 입력하세요 : ");
             no = sc.nextInt();
@@ -95,8 +96,7 @@ public class SalesManagerView {
         do {
             List<BranchDTO> branch = smService.getAllBranch();
 
-
-            System.out.println("=========== 조회할 가맹점 선택 ============");
+            System.out.println("==== 조회할 가맹점 선택 ============================================================================");
             printResultView.printBranchList(branch);         // 가맹점 리스트 노출
             System.out.print("가맹점 번호를 입력하세요 : ");
             int no = sc.nextInt();
@@ -110,7 +110,7 @@ public class SalesManagerView {
             }
         } while (true);
 
-        System.out.println("=========== 조회할 기간 선택 ============");
+        System.out.println("==== 조회할 기간 선택 =================================================================================");
         System.out.print("기간을 선택하시려면 예를 입력하세요. (그 외 전체 검색) : ");
 
         if(sc.nextLine().equals("예")) {
@@ -119,7 +119,7 @@ public class SalesManagerView {
             String end;
 
             do {
-                System.out.println("=========== 조회할 기간 선택 ============");
+                System.out.println("==== 조회할 기간 선택 ==============================================================================");
                 System.out.print("조회 시작할 기간을 선택하세요. (ex : 20240517) : ");
                 start = sc.nextLine();
                 System.out.print("조회 종료할 기간을 선택하세요. (ex : 20240517) : ");

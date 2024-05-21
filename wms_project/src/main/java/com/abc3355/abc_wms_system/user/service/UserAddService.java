@@ -39,23 +39,6 @@ public class UserAddService {
         return list;
     }
 
-    /*public boolean deleteBranch(int no) {
-        SqlSession sqlSession = getSqlSession();
-        AddUserMapper addUserMapper = sqlSession.getMapper(AddUserMapper.class);
-        int result1 = addUserMapper.deleteUser(no);
-        int result2 = addUserMapper.deleteWarehouse(no);
-
-        int result = 0;
-
-        if(result1>0 && result2>0){
-            result = 1;
-            sqlSession.commit();
-        } else {
-            sqlSession.rollback();
-        }
-        sqlSession.close();
-        return result > 0? true:false;
-    }*/
     public boolean deleteBranch(int no) {
         SqlSession sqlSession = getSqlSession();
         AddUserMapper addUserMapper = sqlSession.getMapper(AddUserMapper.class);
