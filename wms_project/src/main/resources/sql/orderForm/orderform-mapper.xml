@@ -5,7 +5,7 @@
 <mapper namespace="com.abc3355.abc_wms_system.orderForm.model.dao.OrderFormMapper">
 
 
-    <select id="getTotalOrderPrice" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO" resultType="_int">
+    <select id="getTotalOrderPrice" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultType="_int">
         SELECT
         PRODUCT_PRICE * #{ amount } TOTAL
         FROM product
@@ -23,8 +23,7 @@
         <result property="sizeMm" column ="SIZE_MM"/>
     </resultMap>
 
-    <insert id="insertOrderProduct" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InsertNoAndAmountDTO" useGeneratedKeys="true"
-            keyProperty="orderNo" keyColumn="ORDER_NO">
+    <insert id="insertOrderTotalPrice" parameterType="map" useGeneratedKeys="true" keyProperty="orderNo">
         INSERT INTO order_product(
         USER_NO
         ,ORDER_PRICE
@@ -34,33 +33,34 @@
         )
         VALUES(
         #{ userNo },
-        #{ totalOrderPrice },
+        #{ totalPriceResult },
         1,
         NULL,
         NOW()
         )
     </insert>
 
-    <select id="getLastOrderNo" resultType="_int">
-        SELECT AUTO_INCREMENT
-        FROM information_schema.tables
-        WHERE table_name = 'order_product';
-    </select>
-
-    <insert id="insertOrderDetail">
+    <insert id="insertOrderDetails" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO">
         INSERT INTO order_details
         (
         OD_AMOUNT
         ,ORDER_NO
         ,PRODUCT_NO
         )
-        VALUES(
-            #{ amount },
-            #{ orderNo },
-            #{ productNo }
+        VALUES
+        (
+        #{ amount },
+        #{ orderNo },
+        #{ productNo }
         )
     </insert>
 
+
+<!--    <select id="getLastOrderNo" resultType="_int">-->
+<!--        SELECT AUTO_INCREMENT-->
+<!--        FROM information_schema.tables-->
+<!--        WHERE table_name = 'order_product';-->
+<!--    </select>-->
 
     <select id="inventoryOrderForm" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultMap="inventoryResultMap">
         SELECT  A.PRODUCT_NO
@@ -110,6 +110,34 @@
         LIMIT 1
     </select>
 
+    <select id="getProductNameByNo" parameterType="_int" resultType="String">
+        SELECT
+            A.PRODUCT_NAME
+        FROM product A
+        WHERE PRODUCT_NO = #{ num }
+    </select>
 
+    <select id="getProductColorByNo" parameterType="_int" resultType="String">
+        SELECT
+        D.COLOR_NAME
+        FROM product A
+        JOIN color D ON (A.COLOR_NO = D.COLOR_NO)
+        WHERE PRODUCT_NO = #{ num }
+    </select>
+
+    <select id="getProductSizeByNo" parameterType="_int" resultType="String">
+        SELECT
+        E.SIZE_MM
+        FROM product A
+        JOIN size E ON (A.SIZE_NO = E.SIZE_NO)
+        WHERE PRODUCT_NO = #{ num }
+    </select>
+
+    <select id="getProductPriceByNo" parameterType="_int" resultType="String">
+        SELECT
+        A.PRODUCT_PRICE
+        FROM product A
+        WHERE PRODUCT_NO = #{ num }
+    </select>
 
 </mapper>
