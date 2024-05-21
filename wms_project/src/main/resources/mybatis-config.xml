@@ -8,8 +8,6 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
-        <!-- 지정한 패키지 하위의 모든 클래스를 소문자로 시작하는 별칭으로 등록-->
-        <typeAlias type="com.abc3355.abc_wms_system.common.model.dto.OrderProductDTO" alias="orderProductDTO"/>
         <package name="com.abc3355.abc_wms_system"/>
     </typeAliases>
     <environments default="development">
@@ -30,11 +28,6 @@
         <mapper resource="sql/product/inventorypp-mapper.xml"/>
         <mapper resource="sql/product/storestatus-mapper.xml"/>
         <mapper resource="sql/orderProcess/order-process-mapper.xml"/>
-<!--        <mapper resource="sql/searchProduct/search-mapper.xml"/>-->
-<!--        <mapper resource="sql/searchProduct/color-mapper.xml"/>-->
-<!--        <mapper resource="sql/searchProduct/zeroproduct-mapper.xml"/>-->
-<!--        <mapper resource="sql/searchProduct/name-mapper.xml"/>-->
-<!--        <mapper resource="sql/searchProduct/size-mapper.xml"/>-->
         <mapper resource="sql/salesManager/salesManager-mapper.xml"/>
         <mapper resource="sql/searchProduct/Invsearch-mapper.xml"/>
         <mapper resource="sql/searchProduct/productsearch-mapper.xml"/>
