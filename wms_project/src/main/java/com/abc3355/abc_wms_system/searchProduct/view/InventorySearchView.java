@@ -6,7 +6,7 @@ import com.abc3355.abc_wms_system.user.view.LoginView;
 import java.util.Scanner;
 
 public class InventorySearchView {
-    private SearchController searchController = new SearchController();
+    private final SearchController searchController = new SearchController();
     private Scanner sc = new Scanner(System.in);
 
     public void searchMenu() {

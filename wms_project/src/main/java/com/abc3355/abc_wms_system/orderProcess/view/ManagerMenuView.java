@@ -40,7 +40,7 @@ public class ManagerMenuView {
                 1. 전체 조회
                 2. 가맹점별 조회
                 3. 상태별 조회
-                0. 이전 메뉴 돌아가기
+                9. 이전 메뉴 돌아가기
                 =================================================================================================
                 입력 : """;
 
@@ -51,7 +51,7 @@ public class ManagerMenuView {
                 case "1" : orderProcessController.searchAllOrders(); break;
                 case "2" : orderProcessController.searchOrdersByName(inputBranchesName()); break;
                 case "3" : orderProcessController.searchOrdersByStatus(inputBranchesStatus()); break;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("잘못 입력했습니다! 다시 입력해주세요.");
             }

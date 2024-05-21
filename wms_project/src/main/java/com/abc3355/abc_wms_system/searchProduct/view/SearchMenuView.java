@@ -5,7 +5,7 @@ import com.abc3355.abc_wms_system.searchProduct.controller.SearchController;
 import java.util.Scanner;
 
 public class SearchMenuView {
-    private SearchController searchController = new SearchController();
+    private final SearchController searchController = new SearchController();
     private Scanner sc = new Scanner(System.in);
 
     public void searchMenu() {

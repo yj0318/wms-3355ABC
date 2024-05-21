@@ -30,14 +30,14 @@ public class LoginView {
     private static final String ANSI_CYAN = "\u001B[36m";
 
     /*Controller선언 부분*/
-    private LoginController loginController = new LoginController();
-    private AddUserController addUserController = new AddUserController();
-    private ManagerMenuView managerMenuView = new ManagerMenuView();
-    private ProductView productView = new ProductView();
-    private BranchesMenuView branchesMenuView = new BranchesMenuView();
-    private OrderFormView orderFormView = new OrderFormView();
-    private InventorySearchView inventorySearchView = new InventorySearchView();
-    private SearchMenuView searchMenuView = new SearchMenuView();
+    private final LoginController loginController = new LoginController();
+    private final AddUserController addUserController = new AddUserController();
+    private final ManagerMenuView managerMenuView = new ManagerMenuView();
+    private final ProductView productView = new ProductView();
+    private final BranchesMenuView branchesMenuView = new BranchesMenuView();
+    private final OrderFormView orderFormView = new OrderFormView();
+    private final InventorySearchView inventorySearchView = new InventorySearchView();
+    private final SearchMenuView searchMenuView = new SearchMenuView();
 
 
 
@@ -192,27 +192,33 @@ public class LoginView {
     /* 가맹점 관리 메소드 */
     private void branchControl() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("==== 가맹점관리 ===================================================================================");
-        System.out.println("1. 가맹점 조회");
-        System.out.println("2. 가맹점 추가");
-        System.out.println("3. 가맹점 삭제");
-        System.out.println("9. 이전으로");
-        System.out.println("=================================================================================================");
-        System.out.print("관리할 메뉴를 선택하세요: ");
-        String num = sc.nextLine();
+        while (true) {
+            System.out.println("==== 가맹점관리 ===================================================================================");
+            System.out.println("1. 가맹점 조회");
+            System.out.println("2. 가맹점 추가");
+            System.out.println("3. 가맹점 삭제");
+            System.out.println("9. 이전으로");
+            System.out.println("=================================================================================================");
+            System.out.print("관리할 메뉴를 선택하세요: ");
+            String num = sc.nextLine();
 
-
-        switch (num){
-            case "1": addUserController.showAllBranch();
-            case "2":
-                newUserAndWarehouse = inputBranch();
-                addUserController.createNewBranch(newUserAndWarehouse);
-                break;
-            case "3": addUserController.deleteBranch(deleteBranch());
-            case "9":
-                return;
-            default:
-                System.out.println("잘못된 값입니다. 다시 입력해주세요.");
+            switch (num) {
+                case "1":
+                    System.out.println("==== 전체 가맹점 리스트 =============================================================================");
+                    addUserController.showAllBranch();
+                    break;
+                case "2":
+                    newUserAndWarehouse = inputBranch();
+                    addUserController.createNewBranch(newUserAndWarehouse);
+                    break;
+                case "3":
+                    addUserController.deleteBranch(deleteBranch());
+                    break;
+                case "9":
+                    return;
+                default:
+                    System.out.println("잘못된 값입니다. 다시 입력해주세요.");
+            }
         }
     }
 
