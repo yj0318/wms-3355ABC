@@ -83,22 +83,6 @@ public class OrderFormService {
         return totalPrice;
     }
 
-//    public int getLastOrderNo() {
-//        SqlSession sqlSession = getSqlSession();
-//        orderFormMapper = sqlSession.getMapper(OrderFormMapper.class);
-//
-//        int getOrderNo = orderFormMapper.getLastOrderNo();
-//
-//        if (getOrderNo > 0) {
-//            sqlSession.commit();
-//        } else {
-//            sqlSession.rollback();
-//        }
-//
-//        sqlSession.close();
-//        return getOrderNo;
-//    }
-
     public int getMaxAmount(InputOrderDTO input) {
         SqlSession sqlSession = getSqlSession();
         orderFormMapper = sqlSession.getMapper(OrderFormMapper.class);
