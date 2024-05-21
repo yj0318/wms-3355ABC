@@ -14,7 +14,7 @@
 
     <insert id="saveProduct" parameterType="com.abc3355.abc_wms_system.Product.model.dto.ProductSaveReqDto" useGeneratedKeys="true"
             keyProperty="productNo" keyColumn="product_no">
-        INSERT INTO PRODUCT (product_name, product_price, is_expire, color_no, size_no, category_no)
+        INSERT INTO product (product_name, product_price, is_expire, color_no, size_no, category_no)
         VALUES (#{productName}, #{productPrice}, #{isExpire}, #{colorNo}, #{sizeNo}, #{categoryNo})
     </insert>
 
