@@ -100,7 +100,7 @@ public class LoginView {
     /* 가맹점 로그인 화면 */
     private Map<String, String> branchLoginFirstMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("==== " + ANSI_BLUE+"가맹점 로그인"+ANSI_RESET + " ===============================================================================");
+        System.out.println("==== " + ANSI_BLUE+"가맹점 로그인"+ANSI_RESET + " =================================================================================");
         System.out.print("ID : ");
         String userId = sc.nextLine();
         System.out.print("PW: ");
@@ -149,7 +149,7 @@ public class LoginView {
         while (true){
             System.out.println( "==== "+ ANSI_PURPLE +"< "+ whId + ">" + ANSI_RESET +" 지점 메뉴 ========================================================================");
             System.out.println("1. 주문관리" );
-            System.out.println("2. 재고 조회" );
+            System.out.println("2. 재고조회" );
             System.out.println("3. 상품조회" );
             System.out.println("4. 주문서 작성");
             System.out.println( "9. 로그아웃" );
