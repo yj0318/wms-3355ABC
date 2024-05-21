@@ -5,20 +5,22 @@ import com.abc3355.abc_wms_system.searchProduct.controller.SearchController;
 import java.util.Scanner;
 
 public class SearchMenuView {
-    private SearchController searchController = new SearchController();
+    private final SearchController searchController = new SearchController();
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
     private Scanner sc = new Scanner(System.in);
 
     public void searchMenu() {
         String menu = """
-                ==== 상품조회 =====================================================================================
                 1. 전체 상품 조회
                 2. 상세 상품 조회
                 3. 품절 상품 확인
                 4. 상품 검색
-                0. 이전 메뉴로
+                9. 이전 메뉴로
                 =================================================================================================
                 입력 : """;
         while (true) {
+            System.out.println("==== " + ANSI_CYAN + "상품조회" + ANSI_RESET + "  =====================================================================================");
             System.out.print(menu);
             String select = sc.next();
             switch (select) {
@@ -26,7 +28,7 @@ public class SearchMenuView {
                 case "2" : detailSearchMenu(); break;
                 case "3" : searchController.searchZeroProduct(); break;
                 case "4" : searchController.searchProductName(inputName()); break;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("올바른 숫자를 입력하세요. ");
             }
@@ -47,7 +49,7 @@ public class SearchMenuView {
                 1. 색상으로 조회
                 2. 사이즈로 조회
                 3. 카테고리로 조회
-                0. 이전 메뉴로
+                9. 이전 메뉴로
                 =================================================================================================
                 입력 : """;
         while (true) {
@@ -57,7 +59,7 @@ public class SearchMenuView {
                 case "1" : searchController.searchProductByColor(inputColor()); break;
                 case "2" : searchController.searchProductBySize(inputSize()); break;
                 case "3" : searchController.searchProductByCategory(inputCategory()); break;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("올바른 숫자를 입력하세요. ");
             }
