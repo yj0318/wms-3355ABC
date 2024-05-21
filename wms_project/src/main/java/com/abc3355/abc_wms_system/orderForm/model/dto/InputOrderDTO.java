@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class InputOrderDTO {
+    private int productNo;
     private String productName;
     private String color;
     private int size;
