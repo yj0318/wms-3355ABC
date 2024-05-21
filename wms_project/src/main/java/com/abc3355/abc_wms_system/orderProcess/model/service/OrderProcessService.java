@@ -55,16 +55,6 @@ public class OrderProcessService {
         return orderList;
     }
 
-    public List<OrderDetailResDTO> searchOrderDetails(int orderNo) {
-        SqlSession sqlSession = getSqlSession();
-        OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
-        List<OrderDetailResDTO> orderDetailList = mapper.selectOrderDetails(orderNo);
-        sqlSession.close();
-        return orderDetailList;
-    }
-
-// ------------------------------------------------------------------------------------------------ //
-
     public boolean cancelOrder(OrderUpdateReqDTO orderUpdateReqDTO) {
         SqlSession sqlSession = getSqlSession();
         OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
@@ -95,10 +85,6 @@ public class OrderProcessService {
                 return false;
             }
         }
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("orderDetails", orderDetails);
-//        map.put("orderNo", orderUpdateReqDTO.getOrderNo());
-//        int updateInventoryResult = mapper.updateHQInventoryAmount(map);
 
         for(OrderDetailResDTO i : orderDetails) {
             Map<String, Integer> map = new HashMap<>();
@@ -157,12 +143,19 @@ public class OrderProcessService {
         return orderDetails;
     }
 
-    public boolean deleteOrderDetail(int odNoToInt) {
+    public boolean deleteOrderDetail(GetOrderDetailDTO orderDetail) {
         SqlSession sqlSession = getSqlSession();
         OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
 
-        int updateResult = mapper.updateOrderPrice(odNoToInt, "-");
-        int deleteResult = mapper.deleteOrderDetail(odNoToInt);
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("odNo", orderDetail.getOdNo());
+        map.put("odAmount", orderDetail.getOdAmount());
+        map.put("orderNo", orderDetail.getOrderNo());
+        map.put("productName", orderDetail.getProductName());
+
+        int updateResult = mapper.updateOrderPriceMinus(map);
+        int deleteResult = mapper.deleteOrderDetail(map);
 
         if(deleteResult > 0 && updateResult > 0) sqlSession.commit();
         else sqlSession.rollback();
@@ -170,99 +163,32 @@ public class OrderProcessService {
         return deleteResult > 0 && updateResult > 0;
     }
 
-
-
-
-
-
-
-
-
-
-// ---------------------------------------------- TEST ------------------------------------------------ //
-
-    public boolean cancelOrderTest(OrderUpdateReqDTO orderUpdateReqDTO) {
+    public boolean insertOrderDetail(GetOrderDetailDTO orderDetail) {
         SqlSession sqlSession = getSqlSession();
         OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
-        int result = mapper.updateOrderStatus(orderUpdateReqDTO.getOrderNo(), 4);
-        if(result > 0) {
-            System.out.println("제대로 되었음..");
-            sqlSession.rollback();
+        int insertResult = 0;
+
+        Map<String, Integer> map = new HashMap<>();
+
+        map.put("odAmount", orderDetail.getOdAmount());
+        map.put("orderNo", orderDetail.getOrderNo());
+        map.put("productNo", orderDetail.getProductNo());
+
+
+        if(mapper.checkOrderDetail(map) > 0) {
+            insertResult = mapper.updateOrderDetail(map);
+        } else {
+            insertResult = mapper.insertOrderDetail(map);
+        }
+
+        int updateResult = mapper.updateOrderPricePlus(map);
+
+        if(insertResult > 0 && updateResult > 0) {
+            sqlSession.commit();
         } else {
             sqlSession.rollback();
         }
-        sqlSession.close();
-        return result > 0;
+        return insertResult > 0 && updateResult > 0;
     }
-
-    public boolean processOrderShipmentTest(OrderUpdateReqDTO orderUpdateReqDTO) {
-        SqlSession sqlSession = getSqlSession();
-        OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
-        List<OrderDetailResDTO> orderDetails = mapper.selectOrderDetails(orderUpdateReqDTO.getOrderNo());
-        int updateInventoryResult = 0;
-
-        for(OrderDetailResDTO i : orderDetails) {
-            int productNo = i.getProductNo();
-            int odAmount = i.getOdAmount();
-
-            Integer stockAmount = mapper.getStockAmount(productNo);
-            if(stockAmount == null || stockAmount < odAmount) {
-                return false;
-            }
-        }
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("orderDetails", orderDetails);
-//        map.put("orderNo", orderUpdateReqDTO.getOrderNo());
-//        int updateInventoryResult = mapper.updateHQInventoryAmount(map);
-
-        for(OrderDetailResDTO i : orderDetails) {
-            Map<String, Integer> map = new HashMap<>();
-            map.put("productNo", i.getProductNo());
-            map.put("orderNo", i.getOrderNo());
-            map.put("odAmount", i.getOdAmount());
-
-            updateInventoryResult = updateInventoryResult + mapper.updateHQInventoryAmount(map);
-        }
-        int updateOrderResult = mapper.updateOrderStatus(orderUpdateReqDTO.getOrderNo(), 2);
-
-        if(updateOrderResult > 0 && updateInventoryResult == orderDetails.size()) {
-            sqlSession.rollback();
-        } else
-            sqlSession.rollback();
-
-        sqlSession.close();
-        return (updateOrderResult > 0 && updateInventoryResult == orderDetails.size());
-    }
-
-    public boolean confirmOrderTest(OrderUpdateReqDTO orderUpdateReqDto) {
-        SqlSession sqlSession = getSqlSession();
-        OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
-        List<OrderDetailResDTO> orderDetails = mapper.selectOrderDetails(orderUpdateReqDto.getOrderNo());
-        int updateInventoryResult = 0, updateOrderResult;
-
-
-        for(OrderDetailResDTO i : orderDetails) {
-            // 이 부분에서 재고 테이블에서 inventory 테이블에 해당 제품에 대한 정보가 없는지 판별해야함
-            Map<String, Integer> map = new HashMap<>();
-            map.put("productNo", i.getProductNo());
-            map.put("orderNo", i.getOrderNo());
-            map.put("odAmount", i.getOdAmount());
-
-            int checkInventory = mapper.selectInventoryData(map);
-
-            if(checkInventory != 0) {updateInventoryResult = updateInventoryResult + mapper.updateBranchesInventoryAmount(map);}
-            else {updateInventoryResult = updateInventoryResult + mapper.insertBranchesInventoryAmount(map);}
-        }
-
-        updateOrderResult = mapper.updateOrderStatus(orderUpdateReqDto.getOrderNo(), 3);
-
-        if(updateOrderResult > 0 && updateInventoryResult == orderDetails.size()) sqlSession.rollback();
-        else sqlSession.rollback();
-
-        sqlSession.close();
-        return (updateOrderResult > 0 && updateInventoryResult == orderDetails.size());
-    }
-// ------------------------------------------------------------------------------------------------  //
-
 }
 

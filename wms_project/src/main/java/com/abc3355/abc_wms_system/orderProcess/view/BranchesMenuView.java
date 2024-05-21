@@ -7,7 +7,9 @@ import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
 import com.abc3355.abc_wms_system.user.view.LoginView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class BranchesMenuView {
@@ -117,32 +119,28 @@ public class BranchesMenuView {
 
     private void inputUpdates(OrderUpdateReqDTO orderUpdateReqDto) {
         System.out.println("======== 상세 주문 리스트 ========");
-        /**
-         * 여기에 일단 해당 주문에 맞는 상세 주문 리스트 출력
-         * 그 다음 1. 주문 추가 / 2. 주문 삭제 / 3. 주문 변경
-         * 3개의 기능 추가
-         * 3개의 기능 수행하기 그리고 여기 다시 돌아오기
-         */
 
         List<GetOrderDetailDTO> orderDetails = orderProcessController.getOrderDetails(orderUpdateReqDto);
 
         while(true) {
             System.out.print("""
-                        ========================
+                        =================================================================================================
                         작업을 선택헤주세요
                         1. 주문 추가
                         2. 주문 삭제
-                        3. 주문 변경
                         9. 이전 메뉴 돌아가기
-                        ========================
+                        =================================================================================================
                         [상세 주문은 1개 이상 있어야 합니다. 전체 삭제 요청시 주문 취소 기능을 이용해주세요]
                         """);
             System.out.print("입력 : ");
             String op = sc.nextLine();
             switch (op) {
-                case "1" : orderFormView.inputNewOrder(); break;
+                case "1" :
+                    Map<String, String> insertMap = orderFormView.inputNewOrder();
+                    insertMap.put("orderNo", "" + orderUpdateReqDto.getOrderNo());
+                    orderProcessController.insertOrderDetail(insertMap);
+                    break;
                 case "2" : orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails)); break;
-                case "3" : break;
                 case "9" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다! 다시 입력해주세요. (숫자 형식)");
@@ -150,13 +148,13 @@ public class BranchesMenuView {
         }
     }
 
-    public int inputOrderDetailNumber(List<GetOrderDetailDTO> orderDetails) {
+    public GetOrderDetailDTO inputOrderDetailNumber(List<GetOrderDetailDTO> orderDetails) {
 
         while(true) {
             System.out.print("""
-                    =================================
+                    =================================================================================================
                     처리하실 상세 주문 번호를 입력해주세요
-                    =================================
+                    =================================================================================================
                     입력 : """);
             try {
                 String odNo = sc.nextLine();
@@ -164,7 +162,7 @@ public class BranchesMenuView {
 
                 for (GetOrderDetailDTO i : orderDetails) {
                     if (i.getOdNo() == odNoToInt) {
-                        return odNoToInt;
+                        return i;
                     }
                 }
                 System.out.println("잘못 입력하셨습니다! 처리 가능한 상세 주문 번호를 입력해주세요.");
