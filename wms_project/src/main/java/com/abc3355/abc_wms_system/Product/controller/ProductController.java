@@ -26,16 +26,12 @@ public class ProductController {
         int productNo = productService.saveProduct(productSaveReqDto);
 
         if(productNo > 0){
-            System.out.println();
-            System.out.println("======================");
             System.out.println("상품을 성공적으로 저장했습니다.");
             System.out.println("상품번호 : " + productNo);
             System.out.println("======================");
             System.out.println();
         }
         else{
-            System.out.println();
-            System.out.println("================================");
             System.out.println("상품 저장에 실패했습니다. 다시 시도해주세요.");
             System.out.println("상품번호 : " + productNo);
             System.out.println("================================");
@@ -53,16 +49,12 @@ public class ProductController {
         int i = productService.updateProduct(productUpdateReqDto);
 
         if(i == 1){
-            System.out.println();
-            System.out.println("======================");
             System.out.println("상품을 성공적으로 수정했습니다..");
             System.out.println("상품번호 : " + productUpdateReqDto.getProductNo());
             System.out.println("======================");
             System.out.println();
         }
         else{
-            System.out.println();
-            System.out.println("================================");
             System.out.println("상품 수정에 실패했습니다. 다시 시도해주세요.");
             System.out.println("상품번호 : " + productUpdateReqDto.getProductNo());
             System.out.println("================================");
@@ -82,18 +74,14 @@ public class ProductController {
 
         if(i == 1){
             System.out.println();
-            System.out.println("======================");
             System.out.println("상품을 성공적으로 삭제했습니다.");
             System.out.println("상품번호 : " + productNo);
-            System.out.println("======================");
             System.out.println();
         }
         else{
             System.out.println();
-            System.out.println("================================");
             System.out.println("상품 삭제에 실패했습니다. 다시 시도해주세요.");
             System.out.println("상품번호 : " + productNo);
-            System.out.println("================================");
             System.out.println();
         }
 
