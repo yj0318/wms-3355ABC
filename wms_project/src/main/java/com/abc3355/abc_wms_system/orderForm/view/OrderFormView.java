@@ -76,9 +76,7 @@ public class OrderFormView {
         Scanner sc = new Scanner(System.in);
         Map<String, String> parameter = new HashMap<>();
 
-        System.out.println("=====================");
-        System.out.println("[주문서를 작성합니다.]");
-        System.out.println("=====================");
+        System.out.println("==== 주문서 작성 ==================================================================================");
 
         // 1. 상품명 입력
         do {
