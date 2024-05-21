@@ -7,33 +7,37 @@ import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
 import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
 import com.abc3355.abc_wms_system.user.view.LoginView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class BranchesMenuView {
     private final OrderProcessController orderProcessController = new OrderProcessController();
     private final OrderFormView orderFormView = new OrderFormView();
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
     private Scanner sc = new Scanner(System.in);
     public void mainMenu(   ) {
         String userId = LoginView.user.getUserId();
 
         String menu = """
-                ==== 주문 관리 ====================================================================================
                 1. 주문 조회
                 2. 주문 확정
                 3. 주문 변경 (수정/취소)
-                0. 메인 메뉴 돌아가기
+                9. 메인 메뉴 돌아가기
                 =================================================================================================
                 입력 : """;
 
         while(true) {
+            System.out.println("==== " + ANSI_CYAN + "주문 관리" + ANSI_RESET + "  ====================================================================================");
             System.out.print(menu);
             String choice = sc.nextLine();
             switch (choice) {
                 case "1" : selectSearchMenu(userId); break;
                 case "2" : confirmOrder(userId); break;
                 case "3" : selectProcessMenu(userId); break;
-                case "0" : return;
+                case "9" : return;
                 default :
                     System.out.println("잘못 입력했습니다!");
             }
@@ -48,7 +52,7 @@ public class BranchesMenuView {
                 3. 출고완료 주문 조회
                 4. 배송완료 주문 조회
                 5. 취소된 주문 조회
-                0. 이전 메뉴 돌아가기
+                9. 이전 메뉴 돌아가기
                 =================================================================================================
                 입력 : """;
         while(true) {
@@ -60,7 +64,7 @@ public class BranchesMenuView {
                 case "3" : orderProcessController.searchMyOrdersByStatus(userId, 2); return;
                 case "4" : orderProcessController.searchMyOrdersByStatus(userId, 3); return;
                 case "5" : orderProcessController.searchMyOrdersByStatus(userId, 4); return;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("잘못 입력했습니다! 다시 입력해주세요. (숫자)");
             }
@@ -76,7 +80,7 @@ public class BranchesMenuView {
                 =================================================================================================
                 1. 주문 수정
                 2. 주문 취소
-                0. 이전 메뉴 돌아가기
+                9. 이전 메뉴 돌아가기
                 =================================================================================================
                 입력 : """;
         while(true) {
@@ -85,7 +89,7 @@ public class BranchesMenuView {
             switch (choice) {
                 case "1" : processMenu(1, userId); break;
                 case "2" : processMenu(2, userId); break;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("잘못 입력했습니다! 다시 입력해주세요. (숫자)");
             }
@@ -131,24 +135,29 @@ public class BranchesMenuView {
                         1. 주문 추가
                         2. 주문 삭제
                         3. 주문 변경
-                        0. 이전 메뉴 돌아가기
+                        9. 이전 메뉴 돌아가기
                         ========================
                         [상세 주문은 1개 이상 있어야 합니다. 전체 삭제 요청시 주문 취소 기능을 이용해주세요]
                         """);
             System.out.print("입력 : ");
             String op = sc.nextLine();
             switch (op) {
-                case "1" : orderFormView.inputNewOrder(); break;
+                // 검색상품명(name), 상품번호(productNo), 수량(amount)를 얻는 메서드
+                case "1" :
+                    Map<String, String> insertMap = orderFormView.inputNewOrder();
+                    insertMap.put("orderNo", "" + orderUpdateReqDto.getOrderNo());
+                    orderProcessController.insertOrderDetail(insertMap);
+                    break;
                 case "2" : orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails)); break;
                 case "3" : break;
-                case "0" : return;
+                case "9" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다! 다시 입력해주세요. (숫자 형식)");
             }
         }
     }
 
-    public int inputOrderDetailNumber(List<GetOrderDetailDTO> orderDetails) {
+    public GetOrderDetailDTO inputOrderDetailNumber(List<GetOrderDetailDTO> orderDetails) {
 
         while(true) {
             System.out.print("""
@@ -162,7 +171,7 @@ public class BranchesMenuView {
 
                 for (GetOrderDetailDTO i : orderDetails) {
                     if (i.getOdNo() == odNoToInt) {
-                        return odNoToInt;
+                        return i;
                     }
                 }
                 System.out.println("잘못 입력하셨습니다! 처리 가능한 상세 주문 번호를 입력해주세요.");

@@ -8,6 +8,7 @@ import com.abc3355.abc_wms_system.orderProcess.model.service.OrderProcessService
 import com.abc3355.abc_wms_system.orderProcess.view.ResultView;
 
 import java.util.List;
+import java.util.Map;
 
 public class OrderProcessController {
     OrderProcessService orderProcessService = new OrderProcessService();
@@ -126,13 +127,31 @@ public class OrderProcessController {
 
     /***
      * 상세 주문 삭제
-     * @param odNoToInt
+     * @param orderDetail
      */
-    public void deleteOrderDetail(int odNoToInt) {
-        if(orderProcessService.deleteOrderDetail(odNoToInt)) {
+    public void deleteOrderDetail(GetOrderDetailDTO orderDetail) {
+        if(orderProcessService.deleteOrderDetail(orderDetail)) {
             resultView.displaySuccessMessage("deleteOrderDetail");
         } else {
             resultView.displayErrorMessage("deleteOrderDetail");
+        }
+    }
+
+    /***
+     * 상세 주문 추가
+     * @param map
+     */
+    public void insertOrderDetail(Map<String, String> map) {
+        // 검색상품명(name), 상품번호(productNo), 수량(amount)를 얻는 메서드 + orderNo까지
+        // int orderNo, String productName, int odAmount
+        GetOrderDetailDTO orderDetail = new GetOrderDetailDTO(Integer.parseInt(map.get("orderNo")),
+                Integer.parseInt(map.get("productNo")),
+                Integer.parseInt(map.get("amount")));
+
+        if(orderProcessService.insertOrderDetail(orderDetail)) {
+            resultView.displaySuccessMessage("insertOrderDetail");
+        } else {
+            resultView.displayErrorMessage("insertOrderDetail");
         }
     }
 }

@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class SalesManagerView {
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_CYAN = "\u001B[36m";
 
     public static void SalesManagerMain() {
 
@@ -19,7 +21,7 @@ public class SalesManagerView {
         SalesManagerService smService = new SalesManagerService();
 
         do {
-            System.out.println("==== 매출관리 ===================================================================================");
+            System.out.println("==== " + ANSI_CYAN + "매출관리" + ANSI_RESET + " =====================================================================================");
             System.out.println("1. 가맹점별 주문량 조회");
             System.out.println("2. 출고 주문 전체 조회");
             System.out.println("3. 상품별 출고량 조회");
@@ -119,7 +121,7 @@ public class SalesManagerView {
             String end;
 
             do {
-                System.out.println("==== 조회할 기간 선택 ==============================================================================");
+                System.out.println("==== 조회할 기간 선택 ================================================================================");
                 System.out.print("조회 시작할 기간을 선택하세요. (ex : 20240517) : ");
                 start = sc.nextLine();
                 System.out.print("조회 종료할 기간을 선택하세요. (ex : 20240517) : ");

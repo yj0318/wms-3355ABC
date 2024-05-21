@@ -22,6 +22,8 @@ public interface OrderProcessMapper {
     int insertBranchesInventoryAmount(Map<String, Integer> map);
     int selectInventoryData(Map<String, Integer> map);
     List<GetOrderDetailDTO> getOrderDetails(int orderNo);
-    int deleteOrderDetail(int odNoToInt);
-    int updateOrderPrice(@Param("odNoInt") int odNoToInt, @Param("operator") String operator);
+    int updateOrderPriceMinus(Map<String, Object> map);
+    int deleteOrderDetail(Map<String, Object> map);
+    int insertOrderDetail(Map<String, Integer> map);
+    int updateOrderPricePlus(Map<String, Integer> map);
 }

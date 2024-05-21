@@ -12,7 +12,14 @@ public class GetOrderDetailDTO {
     private int odNo;
     private int orderNo;
     private String productName;
+    private int productNo;
     private int odAmount;
+
+    public GetOrderDetailDTO(int orderNo, int productNo, int odAmount) {
+        this.orderNo = orderNo;
+        this.productNo = productNo;
+        this.odAmount = odAmount;
+    }
 
     @Override
     public String toString() {
