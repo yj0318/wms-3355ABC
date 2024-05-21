@@ -1,10 +1,7 @@
 package com.abc3355.abc_wms_system.orderProcess.model.service;
 
 import com.abc3355.abc_wms_system.orderProcess.model.dao.OrderProcessMapper;
-import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderDetailResDTO;
-import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO;
-import com.abc3355.abc_wms_system.orderProcess.model.dto.OrderUpdateReqDTO;
-import com.abc3355.abc_wms_system.orderProcess.model.dto.StockAmountResDTO;
+import com.abc3355.abc_wms_system.orderProcess.model.dto.*;
 import com.mysql.cj.x.protobuf.MysqlxCrud;
 import org.apache.ibatis.session.SqlSession;
 
@@ -87,6 +84,8 @@ public class OrderProcessService {
         List<OrderDetailResDTO> orderDetails = mapper.selectOrderDetails(orderUpdateReqDTO.getOrderNo());
         int updateInventoryResult = 0;
 
+        if(orderDetails.isEmpty()) return false;
+
         for(OrderDetailResDTO i : orderDetails) {
             int productNo = i.getProductNo();
             int odAmount = i.getOdAmount();
@@ -147,6 +146,38 @@ public class OrderProcessService {
         sqlSession.close();
         return (updateOrderResult > 0 && updateInventoryResult == orderDetails.size());
     }
+
+    // ---------------------------------------------------------------------------------------- //
+
+    public List<GetOrderDetailDTO> getOrderDetail(OrderUpdateReqDTO orderUpdateReqDto) {
+        SqlSession sqlSession = getSqlSession();
+        OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
+        List<GetOrderDetailDTO> orderDetails = mapper.getOrderDetails(orderUpdateReqDto.getOrderNo());
+        sqlSession.close();
+        return orderDetails;
+    }
+
+    public boolean deleteOrderDetail(int odNoToInt) {
+        SqlSession sqlSession = getSqlSession();
+        OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
+
+        int updateResult = mapper.updateOrderPrice(odNoToInt, "-");
+        int deleteResult = mapper.deleteOrderDetail(odNoToInt);
+
+        if(deleteResult > 0 && updateResult > 0) sqlSession.commit();
+        else sqlSession.rollback();
+
+        return deleteResult > 0 && updateResult > 0;
+    }
+
+
+
+
+
+
+
+
+
 
 // ---------------------------------------------- TEST ------------------------------------------------ //
 
@@ -231,6 +262,7 @@ public class OrderProcessService {
         sqlSession.close();
         return (updateOrderResult > 0 && updateInventoryResult == orderDetails.size());
     }
+// ------------------------------------------------------------------------------------------------  //
 
 }
 
