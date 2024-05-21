@@ -13,43 +13,25 @@ import java.util.Map;
 import static com.abc3355.abc_wms_system.user.view.LoginView.user;
 
 public class OrderFormController {
-
+    private int userNo;
     private PrintResult printResult = new PrintResult();
     private OrderFormService orderFormService = new OrderFormService();
 
 
-    public void insertOrderByNo(Map<String, String> parameter) {    // parameter : 검색상품명(name), 상품번호(productNo), 수량(amount)
 
-        InsertNoAndAmountDTO input = new InsertNoAndAmountDTO();
+    public void insertOrderAndDetailList(int totalPriceResult, List<InputOrderDTO> detailList) {
 
-        int userNo = user.getUserNo();
-        int productNo = Integer.parseInt(parameter.get("productNo"));
-        int orderNo = orderFormService.getLastOrderNo();
-        int amount = Integer.parseInt(parameter.get("amount"));
+        userNo = user.getUserNo();
+        int result = 0;
+        result = orderFormService.insertOrder(userNo, totalPriceResult,detailList);
 
-        input.setUserNo(userNo);
-        input.setProductNo(productNo);
-        input.setAmount(amount);
-        input.setOrderNo(orderNo);
-
-        int totalOrderPrice = orderFormService.getTotalOrderPrice(input);
-        input.setTotalOrderPrice(totalOrderPrice);
-
-
-        System.out.println("orderNo = " + orderNo);
-        System.out.println("totalOrderPrice = " + totalOrderPrice);
-
-
-        Boolean resultOrder = orderFormService.insertOrderProduct(input);
-        Boolean resultDetail = orderFormService.insertOrderDetail(input);
-
-        if (resultOrder && resultDetail) {
+        if (result == 1) {
             printResult.printSuccessMessage("insert");
         } else {
             printResult.printErrorMessage("insert");
         }
-    }
 
+    }
 
     public int printInvByProductName(String name) {
         int result = 0;
@@ -57,7 +39,7 @@ public class OrderFormController {
         List<InventoryConditionDTO> inventoryOrderForm = new ArrayList<>();
         inventoryOrderForm = orderFormService.printInvByProductName(name);
 
-        if(inventoryOrderForm !=null) {
+        if(inventoryOrderForm != null) {
             result = 1;
             printResult.printInventoryList(inventoryOrderForm);
         } else {
@@ -98,11 +80,28 @@ public class OrderFormController {
         maxAmount = orderFormService.getMaxAmount(input);
         System.out.println("[[[[[maxAmount = " + maxAmount + "]]]]]");
 
-        if(amount <= maxAmount && amount > 0) {
+        if(amount <= maxAmount && amount >= 0) {
             result = 1;
         }
 
         return result;
+    }
+
+
+    public InputOrderDTO inputdetailList(Map<String, String> para) {
+
+        InputOrderDTO input = new InputOrderDTO();
+
+        int no = Integer.parseInt(para.get("productNo"));
+
+        input.setProductNo(no);
+        input.setProductName(orderFormService.getProductNameByNo(no));
+        input.setProductPrice(Integer.parseInt(orderFormService.getProductPriceByNo(no)));
+        input.setColor(orderFormService.getProductColorByNo(no));
+        input.setSize(Integer.parseInt(orderFormService.getProductSizeByNo(no)));
+        input.setAmount(Integer.parseInt(para.get("amount")));
+
+        return input;
     }
 }
 
