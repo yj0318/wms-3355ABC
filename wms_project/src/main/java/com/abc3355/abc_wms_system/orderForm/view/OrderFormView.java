@@ -47,7 +47,7 @@ public class OrderFormView {
     /**
      * 입력한 주문을 (확정진행/재작성/취소) 할지를 확인
      *
-     * @param para :  상품명(name), 색상(color), 사이즈(size), 수량(amount)
+     * @param para :  검색상품명(name), 상품번호(productNo), 수량(amount)
      */
     public int checkOrder(Map<String, String> para) {
 
@@ -56,8 +56,7 @@ public class OrderFormView {
 
         InputOrderDTO input = new InputOrderDTO();
         input.setProductName(para.get("name"));
-        input.setColor(para.get("color"));
-        input.setSize(Integer.parseInt(para.get("size")));
+        input.setProductNo(Integer.parseInt(para.get("productNo")));
         input.setProductAmount(Integer.parseInt(para.get("amount")));
 
         while (result == 0) {
@@ -89,8 +88,7 @@ public class OrderFormView {
 
 
     /**
-     * 상품명(name), 색상(color), 사이즈(size), 수량(amount)를 얻는 메서드
-     *
+     * 검색상품명(name), 상품번호(productNo), 수량(amount)를 얻는 메서드
      * @return Map<String, String> parameter
      */
     public Map<String, String> inputNewOrder() {
@@ -105,8 +103,6 @@ public class OrderFormView {
             String name = sc.nextLine();
             parameter.put("name", name);
 
-            //  상품명을 검색했을 때, 상품명을 출력하고 선택하는 방식으로 진행할 필요 있음.
-            //  현재, '에어' 를 입력하면 에어포스 단일 상품만 조회되어서 주문이 진행됨
             if (orderFormController.printInvByProductName(name) == 0) {
                 System.out.println("검색한 상품이 존재하지 않습니다. 다시 검색해주세요.");
             } else {
@@ -114,24 +110,21 @@ public class OrderFormView {
             }
         } while (true);
 
-        // 1-1. 재고 리스트를 확인 후 상품 번호를 입력???
 
-
-        // 2. 옵션 입력
+        // 2. 상품 번호 입력
         do {
-            System.out.println("색상과 사이즈를 입력하세요(예: RED, 230) :");
-            String[] strArr = (sc.nextLine()).split(",");
-            parameter.put("color", strArr[0].toUpperCase().trim());
-            parameter.put("size", strArr[1].trim());
+            System.out.println("주문할 상품 번호를 입력하세요 :");
+            String no = sc.nextLine().trim();
+            parameter.put("productNo",no);
 
-            if (orderFormController.checkOpt(parameter) == 0) {
-                System.out.println("선택한 옵션이 존재하지 않습니다. 다시 검색해주세요.");
+            if (orderFormController.checkNo(parameter) == 0) {
+                System.out.println("선택한 상품 번호가 존재하지 않습니다. 다시 입력해주세요.");
             } else {
-                parameter.put("color", strArr[0].toUpperCase().trim());
-                parameter.put("size", strArr[1].trim());
+                parameter.put("productNo",no);
                 break;
             }
         } while (true);
+
 
 
         // 3. 수량 입력
