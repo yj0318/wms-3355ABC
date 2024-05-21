@@ -13,9 +13,7 @@ public interface OrderFormMapper {
     int insertOrderDetail(InsertNoAndAmountDTO input);
     int getLastOrderNo();
     List<InventoryConditionDTO> inventoryOrderForm(String name);
-    int getProductNo(InputOrderDTO input);
+    String getProductNo(InputOrderDTO input);
 
-    int getMaxAmount(InputOrderDTO input);
-
-    String printInvByProductNameOnly(String name);
+    String getMaxAmount(InputOrderDTO input);
 }
