@@ -16,4 +16,6 @@ public interface OrderFormMapper {
     int getProductNo(InputOrderDTO input);
 
     int getMaxAmount(InputOrderDTO input);
+
+    String printInvByProductNameOnly(String name);
 }
