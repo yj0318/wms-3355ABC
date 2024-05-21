@@ -60,7 +60,7 @@
         )
     </insert>
 
-    <select id="inventoryOrderForm" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.ProductInputDTO" resultMap="inventoryResultMap">
+    <select id="inventoryOrderForm" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultMap="inventoryResultMap">
         SELECT  A.PRODUCT_NO
         , A.PRODUCT_NAME
         , B.INVENTORY_AMOUNT
@@ -81,7 +81,7 @@
 
 
 
-    <select id="getProductNo" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.ProductInputDTO" resultType="_int">
+    <select id="getProductNo" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultType="_int">
         SELECT
         A.PRODUCT_NO
         FROM product A
@@ -96,7 +96,7 @@
         LIMIT 1;
     </select>
 
-    <select id="getMaxAmount" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.ProductInputDTO" resultType="_int">
+    <select id="getMaxAmount" parameterType="com.abc3355.abc_wms_system.orderForm.model.dto.InputOrderDTO" resultType="_int">
         SELECT
         B.INVENTORY_AMOUNT
         FROM product A
