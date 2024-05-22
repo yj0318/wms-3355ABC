@@ -10,9 +10,12 @@ import lombok.*;
 public class InputOrderDTO {
     private int productNo;
     private String productName;
+    private int productPrice;
     private String color;
     private int size;
-    private int productAmount;
+
+    private int amount;
+    private int orderNo;
 }
 
 
