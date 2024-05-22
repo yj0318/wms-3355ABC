@@ -24,88 +24,7 @@
 ```
 ├─.gradle
 │  ├─8.4
-│  │  ├─checksums
-│  │  ├─dependencies-accessors
-│  │  ├─executionHistory
-│  │  ├─fileChanges
-│  │  ├─fileHashes
-│  │  └─vcsMetadata
-│  ├─buildOutputCleanup
-│  └─vcs-1
-├─.idea
-├─build
-│  ├─classes
-│  │  └─java
-│  │      └─main
-│  │          └─com
-│  │              └─abc3355
-│  │                  └─abc_wms_system
-│  │                      ├─common
-│  │                      ├─orderForm
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─view
-│  │                      ├─orderProcess
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─view
-│  │                      ├─Product
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─view
-│  │                      ├─run
-│  │                      ├─salesManager
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─View
-│  │                      ├─searchProduct
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─view
-│  │                      └─user
-│  │                          ├─controller
-│  │                          ├─model
-│  │                          │  ├─dao
-│  │                          │  │  └─UserInsert
-│  │                          │  └─dto
-│  │                          ├─service
-│  │                          └─view
-│  ├─generated
-│  │  └─sources
-│  │      ├─annotationProcessor
-│  │      │  └─java
-│  │      │      └─main
-│  │      └─headers
-│  │          └─java
-│  │              └─main
-│  ├─resources
-│  │  └─main
-│  │      └─sql
-│  │          ├─orderForm
-│  │          ├─orderProcess
-│  │          ├─product
-│  │          ├─salesManager
-│  │          ├─searchProduct
-│  │          └─userLogin
-│  └─tmp
-│      └─compileJava
-├─gradle
-│  └─wrapper
+│
 └─src
     ├─main
     │  ├─java
@@ -178,6 +97,11 @@
                             └─mapper
 ```
 <br>
+
+## 📑상세 다이어그램 및 기획 문서 노션
+  🔗[팀노션으로 바로가기](https://www.notion.so/coffit23/3-3355ABC-c26bbee54bbf44fd86fc559fd41e5981?pvs=4)
+* [ERD](https://www.notion.so/coffit23/ERD-ed25229c49c54ffd94cff72472be39a2?pvs=4)
+* [TEST CASE](https://www.notion.so/coffit23/TEST-CASE-165e5eaad3c54d89a5cc61bbf0e1cf0b?pvs=4)
 
 ## 📋역할 분담
 ####  고유진
