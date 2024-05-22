@@ -98,7 +98,7 @@
 ```
 <br>
 
-## [상세 다이어그램 및 기획 문서 노션](https://www.notion.so/coffit23/3-3355ABC-c26bbee54bbf44fd86fc559fd41e5981?pvs=4)
+## 📑[상세 다이어그램 및 기획 문서 노션](https://www.notion.so/coffit23/3-3355ABC-c26bbee54bbf44fd86fc559fd41e5981?pvs=4)
 * [ERD](https://www.notion.so/coffit23/ERD-ed25229c49c54ffd94cff72472be39a2?pvs=4)
 * [TEST CASE](https://www.notion.so/coffit23/TEST-CASE-165e5eaad3c54d89a5cc61bbf0e1cf0b?pvs=4)
 
