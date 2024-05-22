@@ -111,14 +111,11 @@ public class BranchesMenuView {
         OrderUpdateReqDTO orderUpdateReqDto = new OrderUpdateReqDTO(inputOrderNumber(orderList));
 
         if(num == 2) {
-            if(orderList.size() == 1) {
-                System.out.println("상세 주문이 1개라 취소 기능을 사용할 수 없습니다.");
-            } else {
-                System.out.print("취소 사유를 작성해주세요 : ");
-                String message = sc.nextLine();
-                orderUpdateReqDto.setOrderDetail(message);
-            }
+            System.out.print("취소 사유를 작성해주세요 : ");
+            String message = sc.nextLine();
+            orderUpdateReqDto.setOrderDetail(message);
             orderProcessController.cancelOrder(orderUpdateReqDto);
+
         } else if(num == 3) {
             orderProcessController.confirmOrder(orderUpdateReqDto);
         } else {
@@ -135,8 +132,8 @@ public class BranchesMenuView {
             System.out.print("""
                         =================================================================================================
                         작업을 선택헤주세요
-                        1. 주문 추가
-                        2. 주문 삭제
+                        1. 상세 주문 추가
+                        2. 상세 주문 삭제
                         9. 이전 메뉴 돌아가기
                         =================================================================================================
                         [상세 주문은 1개 이상 있어야 합니다. 전체 삭제 요청시 주문 취소 기능을 이용해주세요]
@@ -149,7 +146,12 @@ public class BranchesMenuView {
                     insertMap.put("orderNo", "" + orderUpdateReqDto.getOrderNo());
                     orderProcessController.insertOrderDetail(insertMap);
                     break;
-                case "2" : orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails)); break;
+                case "2" :
+                    if(orderDetails.size() == 1) {
+                        System.out.println("상세 주문이 1개라 취소 기능을 사용할 수 없습니다.");
+                    } else {
+                    orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails));
+                    } break;
                 case "9" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다! 다시 입력해주세요. (숫자 형식)");
