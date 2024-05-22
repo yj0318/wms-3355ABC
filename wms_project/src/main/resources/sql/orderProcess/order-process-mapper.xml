@@ -6,7 +6,7 @@
 
 <!-- 전체 주문 조회 -->
 <select id="selectAllOrders" resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
-    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE, a.ORDER_DETAIL
     FROM order_product a
         LEFT JOIN user b ON a.USER_NO = b.USER_NO
         JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
@@ -17,7 +17,7 @@
 <!-- 가맹점별 조회 -->
 <select id="selectOrdersByName" parameterType="String"
         resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
-    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE, a.ORDER_DETAIL
     FROM order_product a
         LEFT JOIN user b ON a.USER_NO = b.USER_NO
         JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
@@ -29,7 +29,7 @@
 <!-- 주문 타입별 조회 -->
 <select id="selectOrdersByStatus" parameterType="String"
         resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
-    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE, a.ORDER_DETAIL
     FROM order_product a
         LEFT JOIN user b ON a.USER_NO = b.USER_NO
         JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
@@ -41,7 +41,7 @@
 <!-- 전체 조회 (가맹점) -->
 <select id="selectMyOrders" parameterType="String"
         resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
-    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE, a.ORDER_DETAIL
     FROM order_product a
         LEFT JOIN user b ON a.USER_NO = b.USER_NO
         JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
@@ -53,7 +53,7 @@
 <!-- 상태별 조회 (가맹점) -->
 <select id="selectMyOrdersByStatus" parameterType="Map"
         resultType="com.abc3355.abc_wms_system.orderProcess.model.dto.OrderListResDTO">
-    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE
+    SELECT a.ORDER_NO, b.USER_ID, d.WH_NAME, a.ORDER_PRICE, c.ORDER_STATUS_NAME, a.ORDER_DATE, a.ORDER_DETAIL
     FROM order_product a
     LEFT JOIN user b ON a.USER_NO = b.USER_NO
     JOIN order_status c ON a.ORDER_STATUS_NO = c.ORDER_STATUS_NO
@@ -73,6 +73,13 @@
 <update id="updateOrderStatus" parameterType="int">
     UPDATE order_product
     SET ORDER_STATUS_NO = #{orderStatusNo}
+    WHERE ORDER_NO = #{orderNo}
+</update>
+
+<!-- 주문 취소 사유 입력 -->
+<update id="updateOrderString" parameterType="map">
+    UPDATE order_product
+    SET ORDER_DETAIL = #{orderDetail}
     WHERE ORDER_NO = #{orderNo}
 </update>
 
@@ -131,10 +138,12 @@
     WHERE a.ORDER_NO = #{orderNo}
 </select>
 
+<!-- 상세 주문 삭제 -->
 <delete id="deleteOrderDetail" parameterType="map">
     DELETE FROM order_details WHERE OD_NO = #{odNo}
 </delete>
 
+<!-- 주문 총액 빼기 -->
 <update id="updateOrderPriceMinus" parameterType="map">
     UPDATE order_product
     SET ORDER_PRICE = ORDER_PRICE - #{odAmount} * (SELECT PRODUCT_PRICE
@@ -143,10 +152,12 @@
     WHERE ORDER_NO = #{orderNo}
 </update>
 
+<!-- 상세 주문 추가 -->
 <insert id="insertOrderDetail" parameterType="map">
     INSERT INTO order_details (OD_AMOUNT, ORDER_NO, PRODUCT_NO) VALUES (#{odAmount}, #{orderNo}, #{productNo})
 </insert>
 
+<!-- 주문 총액 더하기 -->
 <update id="updateOrderPricePlus" parameterType="map">
     UPDATE order_product
     SET ORDER_PRICE = ORDER_PRICE + #{odAmount} * (SELECT PRODUCT_PRICE
@@ -155,12 +166,14 @@
     WHERE ORDER_NO = #{orderNo}
 </update>
 
+<!-- 기존에 총액 더하기 -->
 <select id="checkOrderDetail" parameterType="map" resultType="int">
     SELECT COUNT(PRODUCT_NO)
     FROM order_details
     WHERE ORDER_NO = #{orderNo}
 </select>
 
+<!-- 기존 주문에 수량 더하기 -->
 <update id="updateOrderDetail" parameterType="map">
     UPDATE order_detail
     SET OD_AMOUNT = OD_AMOUNT + #{odAmount}

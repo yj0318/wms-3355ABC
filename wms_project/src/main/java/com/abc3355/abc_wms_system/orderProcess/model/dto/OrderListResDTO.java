@@ -17,6 +17,7 @@ public class OrderListResDTO {
     private int orderPrice;
     private String orderStatusName;
     private LocalDateTime orderDate;
+    private String orderDetail;
 
     @Override
     public String toString() {
@@ -27,5 +28,16 @@ public class OrderListResDTO {
                 ", 주문 상태 : '" + orderStatusName + '\'' +
                 ", 주문 날짜 : " + orderDate +
                 " ]";
+    }
+
+    public String cancelOrder() {
+        return "[ 주문번호 : " + orderNo +
+                ", 아이디 : '" + userId + '\'' +
+                ", 지점 : '" + whName + '\'' +
+                ", 총액 : " + orderPrice +
+                ", 주문 상태 : '" + orderStatusName + '\'' +
+                ", 주문 날짜 : " + orderDate +
+                " ]\n" +
+                "* 취소 사유 : " + orderDetail;
     }
 }
