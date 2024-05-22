@@ -11,7 +11,10 @@ public class ResultView {
             System.out.println(message);
         } else {
             for (OrderListResDTO i : orderlist) {
-                System.out.println(i);
+                if(i.getOrderDetail() == null)
+                    System.out.println(i);
+                else
+                    System.out.println(i.cancelOrder());
             }
         }
     }

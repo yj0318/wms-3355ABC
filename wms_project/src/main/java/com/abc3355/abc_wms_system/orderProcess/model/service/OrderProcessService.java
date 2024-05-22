@@ -58,14 +58,15 @@ public class OrderProcessService {
     public boolean cancelOrder(OrderUpdateReqDTO orderUpdateReqDTO) {
         SqlSession sqlSession = getSqlSession();
         OrderProcessMapper mapper = sqlSession.getMapper(OrderProcessMapper.class);
-        int result = mapper.updateOrderStatus(orderUpdateReqDTO.getOrderNo(), 4);
-        if(result > 0) {
+        int result1 = mapper.updateOrderStatus(orderUpdateReqDTO.getOrderNo(), 4);
+        int result2 = mapper.updateOrderString(orderUpdateReqDTO.getOrderNo(), orderUpdateReqDTO.getOrderDetail());
+        if(result1 > 0) {
             sqlSession.commit();
         } else {
             sqlSession.rollback();
         }
         sqlSession.close();
-        return result > 0;
+        return result1 > 0;
     }
 
     public boolean processOrderShipment(OrderUpdateReqDTO orderUpdateReqDTO) {

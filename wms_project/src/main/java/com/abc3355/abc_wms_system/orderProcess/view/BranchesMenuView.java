@@ -110,9 +110,18 @@ public class BranchesMenuView {
         if(orderList.isEmpty()) return;
         OrderUpdateReqDTO orderUpdateReqDto = new OrderUpdateReqDTO(inputOrderNumber(orderList));
 
-        if(num == 2) orderProcessController.cancelOrder(orderUpdateReqDto);
-        else if(num == 3) orderProcessController.confirmOrder(orderUpdateReqDto);
-        else {
+        if(num == 2) {
+            if(orderList.size() == 1) {
+                System.out.println("상세 주문이 1개라 취소 기능을 사용할 수 없습니다.");
+            } else {
+                System.out.print("취소 사유를 작성해주세요 : ");
+                String message = sc.nextLine();
+                orderUpdateReqDto.setOrderDetail(message);
+            }
+            orderProcessController.cancelOrder(orderUpdateReqDto);
+        } else if(num == 3) {
+            orderProcessController.confirmOrder(orderUpdateReqDto);
+        } else {
             inputUpdates(orderUpdateReqDto);
         }
     }
