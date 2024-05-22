@@ -45,20 +45,17 @@ public class ProductView {
                         System.out.println("잘못된 값입니다. 다시 입력해주세요.");
                 }
             }catch (Exception e) {
-                System.out.println();
                 System.out.println(e.getMessage());
                 System.out.println("형식에 맞게 다시 입력해주세요.");
-                System.out.println();
             }
         }
     }
 
     private ProductSaveReqDto inputSaveProduct() throws IOException {
-        System.out.println("==== 상품정보를 입력해주세요.===============================================================");
+        System.out.println("==== 상품정보를 입력해주세요.========================================================================");
         System.out.println("상품이름 가격 만료여부 색깔정보 사이즈정보 카테고리정보 수량 창고번호");
         System.out.println("ex) 에어포스1_BK_210 139000 N 1 1 1 300 1");
         System.out.println("================================================================================================");
-        System.out.println();
 
         st = new StringTokenizer(br.readLine().trim());
 
@@ -69,11 +66,10 @@ public class ProductView {
 
     private ProductUpdateReqDto inputUpdateProduct() throws IOException{
         System.out.println();
-        System.out.println("==========수정할 상품정보를 입력해주세요.=============");
+        System.out.println("==== 수정할 상품정보를 입력해주세요.===================================================================");
         System.out.println("상품번호 상품이름 가격 만료여부 색깔정보 사이즈정보 카테고리정보");
         System.out.println("ex) 1 에어포스1_BK_210 139000 N 1 1 1");
-        System.out.println("==============================================");
-        System.out.println();
+        System.out.println("================================================================================================");
 
         st = new StringTokenizer(br.readLine().trim());
 
@@ -87,8 +83,7 @@ public class ProductView {
         System.out.println("==========삭제할 상품번호를 입력해주세요.==============================================================");
         System.out.println("상품번호");
         System.out.println("ex) 1");
-        System.out.println("===============================================================================================");
-        System.out.println();
+        System.out.println("=================================================================================================");
 
         int productNo = Integer.parseInt(br.readLine().trim());
 
@@ -101,7 +96,6 @@ public class ProductView {
         System.out.println("상품번호 창고번호 수량");
         System.out.println("ex) 1 3 300");
         System.out.println("===============================================================================================");
-        System.out.println();
 
         st = new StringTokenizer(br.readLine().trim());
 
