@@ -110,46 +110,48 @@ public class BranchesMenuView {
         if(orderList.isEmpty()) return;
         OrderUpdateReqDTO orderUpdateReqDto = new OrderUpdateReqDTO(inputOrderNumber(orderList));
 
-        if(num == 2) orderProcessController.cancelOrder(orderUpdateReqDto);
-        else if(num == 3) orderProcessController.confirmOrder(orderUpdateReqDto);
-        else {
+        if(num == 2) {
+            System.out.print("취소 사유를 작성해주세요 : ");
+            String message = sc.nextLine();
+            orderUpdateReqDto.setOrderDetail(message);
+            orderProcessController.cancelOrder(orderUpdateReqDto);
+
+        } else if(num == 3) {
+            orderProcessController.confirmOrder(orderUpdateReqDto);
+        } else {
             inputUpdates(orderUpdateReqDto);
         }
     }
 
     private void inputUpdates(OrderUpdateReqDTO orderUpdateReqDto) {
         System.out.println("======== 상세 주문 리스트 ========");
-        /**
-         * 여기에 일단 해당 주문에 맞는 상세 주문 리스트 출력
-         * 그 다음 1. 주문 추가 / 2. 주문 삭제 / 3. 주문 변경
-         * 3개의 기능 추가
-         * 3개의 기능 수행하기 그리고 여기 다시 돌아오기
-         */
 
         List<GetOrderDetailDTO> orderDetails = orderProcessController.getOrderDetails(orderUpdateReqDto);
 
         while(true) {
             System.out.print("""
-                        ========================
-                        작업을 선택헤주세요
-                        1. 주문 추가
-                        2. 주문 삭제
-                        3. 주문 변경
+                        =================================================================================================
+                        작업을 선택해주세요
+                        1. 상세 주문 추가
+                        2. 상세 주문 삭제
                         9. 이전 메뉴 돌아가기
-                        ========================
+                        =================================================================================================
                         [상세 주문은 1개 이상 있어야 합니다. 전체 삭제 요청시 주문 취소 기능을 이용해주세요]
                         """);
             System.out.print("입력 : ");
             String op = sc.nextLine();
             switch (op) {
-                // 검색상품명(name), 상품번호(productNo), 수량(amount)를 얻는 메서드
                 case "1" :
                     Map<String, String> insertMap = orderFormView.inputNewOrder();
                     insertMap.put("orderNo", "" + orderUpdateReqDto.getOrderNo());
                     orderProcessController.insertOrderDetail(insertMap);
                     break;
-                case "2" : orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails)); break;
-                case "3" : break;
+                case "2" :
+                    if(orderDetails.size() == 1) {
+                        System.out.println("상세 주문이 1개라 취소 기능을 사용할 수 없습니다.");
+                    } else {
+                    orderProcessController.deleteOrderDetail(inputOrderDetailNumber(orderDetails));
+                    } break;
                 case "9" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다! 다시 입력해주세요. (숫자 형식)");
@@ -161,9 +163,9 @@ public class BranchesMenuView {
 
         while(true) {
             System.out.print("""
-                    =================================
+                    =================================================================================================
                     처리하실 상세 주문 번호를 입력해주세요
-                    =================================
+                    =================================================================================================
                     입력 : """);
             try {
                 String odNo = sc.nextLine();

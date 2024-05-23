@@ -24,88 +24,7 @@
 ```
 ├─.gradle
 │  ├─8.4
-│  │  ├─checksums
-│  │  ├─dependencies-accessors
-│  │  ├─executionHistory
-│  │  ├─fileChanges
-│  │  ├─fileHashes
-│  │  └─vcsMetadata
-│  ├─buildOutputCleanup
-│  └─vcs-1
-├─.idea
-├─build
-│  ├─classes
-│  │  └─java
-│  │      └─main
-│  │          └─com
-│  │              └─abc3355
-│  │                  └─abc_wms_system
-│  │                      ├─common
-│  │                      ├─orderForm
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─view
-│  │                      ├─orderProcess
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─view
-│  │                      ├─Product
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─view
-│  │                      ├─run
-│  │                      ├─salesManager
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─View
-│  │                      ├─searchProduct
-│  │                      │  ├─controller
-│  │                      │  ├─model
-│  │                      │  │  ├─dao
-│  │                      │  │  ├─dto
-│  │                      │  │  └─service
-│  │                      │  └─view
-│  │                      └─user
-│  │                          ├─controller
-│  │                          ├─model
-│  │                          │  ├─dao
-│  │                          │  │  └─UserInsert
-│  │                          │  └─dto
-│  │                          ├─service
-│  │                          └─view
-│  ├─generated
-│  │  └─sources
-│  │      ├─annotationProcessor
-│  │      │  └─java
-│  │      │      └─main
-│  │      └─headers
-│  │          └─java
-│  │              └─main
-│  ├─resources
-│  │  └─main
-│  │      └─sql
-│  │          ├─orderForm
-│  │          ├─orderProcess
-│  │          ├─product
-│  │          ├─salesManager
-│  │          ├─searchProduct
-│  │          └─userLogin
-│  └─tmp
-│      └─compileJava
-├─gradle
-│  └─wrapper
+│
 └─src
     ├─main
     │  ├─java
@@ -179,6 +98,11 @@
 ```
 <br>
 
+## 📑상세 다이어그램 및 기획 문서 노션
+  🔗[팀노션으로 바로가기](https://www.notion.so/coffit23/3-3355ABC-c26bbee54bbf44fd86fc559fd41e5981?pvs=4)
+* [ERD](https://www.notion.so/coffit23/ERD-ed25229c49c54ffd94cff72472be39a2?pvs=4)
+* [TEST CASE](https://www.notion.so/coffit23/TEST-CASE-165e5eaad3c54d89a5cc61bbf0e1cf0b?pvs=4)
+
 ## 📋역할 분담
 ####  고유진
   * 가맹점 
@@ -242,17 +166,30 @@
     다음 프로젝트 때는 더 구조를 명확하게 이해 하고 명세화 해야 겠다. 
 
 ### 연주현
-
+    프로젝트에서 직접 ERD를 작성해 DB를 설계하고, MyBatis와 MySQL를 이용하여 데이터를 직접 사용해보며 데이터 관리에 대한 흥미가 높아졌습니다. 
+    여러 개의 테이블을 참조하여 '매출 관리' 관련 테이블을 조회하는 것에는 큰 어려움이 없었으나, '주문서 작성'에서 List와 Map을 활용한 데이터를 
+    받아 쿼리문에 적용하는 것은 자료조사가 많이 필요했습니다. 앞으로는 쿼리문을 보다 간결하고 효율적으로 작성할 수 있도록 공부하고 적용해보고 싶습니다.
 
 ### 고유진
 
+    실행하는 순간 처음 보이는 메뉴를 담당하게 되어서 시작이 부담스러웠고 원하는 테이블의 정보를 쿼리문을 사용하여
+    적절하게 갖고 와 응용하고 사용하는 부분에서 초반에 헤맸지만 그 과정에서 클래스들의 구조와 흐름, DB 다루는 방법을 확실하게 알게 되었고 
+    BRANCH를 따로 관리하면서 처음에 어려웠지만 사용하다 보니 코드 관리가 편해서 많은 것을 배울 수 있었습니다.
 
 ### 김성호
 
+    WMS에 대해 이해할 수 있었고 새로운 도메인 지식을 배울 수 있어 뜻깊었다.
+    MyBatis 활용법을 습득할 수 있었고 다음번엔 좀 더 복잡한 쿼리문을 다뤄보고 싶다.
 
 ### 좌상현
 
+    팀원들과 함께 전체적인 프로젝트 과정을 경험하면서 좋은 연습 기회를 가질 수 있었습니다. 지금까지 배운 내용을 실제 결과물로 
+    만들어보니까 DB 활용 능력에 도움이 되었고, 제가 부족한 부분과 더 공부해야 할 부분도 알게 되었습니다.
 
+    몇 가지 아쉬웠던 점도 있었습니다. 프로젝트 구조에 대해 좀 더 많이 논의했다면, 더 짜임새 있는 결과물이 나왔을 것 같고 
+    코드를 작성할 때 비슷한 메서드를 많이 만든 것 같아 재사용성 측면에서 좀 부족했던 것 같습니다.
+
+    이번 프로젝트를 통해 배운 점들을 잘 보완해서, 다음 프로젝트에서는 더 좋은 결과물을 만들도록 노력하겠습니다.
 
 ### 김민규
 

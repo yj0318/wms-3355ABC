@@ -16,6 +16,7 @@ public interface OrderProcessMapper {
     List<OrderListResDTO> selectMyOrdersByStatus(Map<String, Object> map);
     List<OrderDetailResDTO> selectOrderDetails(int orderNo);
     int updateOrderStatus(@Param("orderNo") int orderNo, @Param("orderStatusNo") int orderStatusNo);
+    int updateOrderString(@Param("orderNo") int orderNo, @Param("orderDetail") String orderDetail);
     Integer getStockAmount(int productNo);
     int updateHQInventoryAmount(Map<String, Integer> map);
     int updateBranchesInventoryAmount(Map<String, Integer> map);
@@ -26,4 +27,7 @@ public interface OrderProcessMapper {
     int deleteOrderDetail(Map<String, Object> map);
     int insertOrderDetail(Map<String, Integer> map);
     int updateOrderPricePlus(Map<String, Integer> map);
+    int checkOrderDetail(Map<String, Integer> map);
+    int updateOrderDetail(Map<String, Integer> map);
+
 }

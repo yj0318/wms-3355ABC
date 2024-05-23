@@ -91,7 +91,7 @@ public class ManagerMenuView {
 
     public void processMenu() {
         System.out.print("""
-                ======== 처리가능 주문 목록 ========
+                ==== 처리 가능 주문 목록 ==========================================================================
                 """);
         List<OrderListResDTO> orderList = orderProcessController.printAndGetOrdersByStatus("주문 처리중");
         if(orderList.isEmpty()) return;
@@ -102,9 +102,9 @@ public class ManagerMenuView {
         if(action.equals("1")) {
             orderProcessController.processOrderShipment(orderUpdateReqDto);
         } else {
-            // 이 부분에 String 취소 사유 작성해서 보내는 로직 필요하다.
-            System.out.print("취소 사유 작성해주세요 : ");
+            System.out.print("취소 사유를 작성해주세요 : ");
             String message = sc.nextLine();
+            orderUpdateReqDto.setOrderDetail(message);
             orderProcessController.cancelOrder(orderUpdateReqDto);
         }
     }
